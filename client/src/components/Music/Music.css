@@ -1,0 +1,220 @@
+/* #music .row {
+  margin: 0px;
+  text-shadow: 1px 0.5px black;
+} */
+
+/* audio {
+  opacity: 0.6;
+  border-radius: 27px;
+  border: 4px solid darkred;
+}
+
+.stem {
+  width: 100%;
+}
+
+.stem.text-center {
+  color: darkred;
+  text-shadow: 1px 1px 0px black;
+  margin-bottom: 33px;
+}
+
+#leaves {
+  display: block;
+  width: 333px;
+  height: 77px;
+  margin: auto;
+  margin-bottom: 27px;
+}
+
+#vango {
+  width: 133px;
+  display: block;
+  margin: auto;
+  margin-bottom: 13px;
+}
+
+#album-cover {
+  max-width: 100%;
+  border: 5px solid black;
+  margin-top: 33px;
+}
+
+#album-stuff {
+  max-width: 535px;
+}
+
+.hcll {
+  height: auto;
+  margin: auto;
+}
+
+.dropdown-menu {
+  border-radius: 13px;
+  border: 7px solid rgba(0, 0, 0, 0.15);
+  opacity: 0.95;
+  min-width: 9rem;
+}
+
+#music .col {
+  max-width: 333px;
+}
+
+#music .col.img-container {
+  max-width: 420px;
+}
+
+.musicvid {
+  max-height: 394px;
+  padding-left: 0px;
+  padding-right: 0px;
+  border: 3px white solid;
+  background-color: black;
+  margin: 0px 5%;
+}
+
+#vid-cont {
+  background-color: black;
+}
+
+.cbsingle {
+  min-width: 300px;
+  max-width: 420px;
+  margin-bottom: 33px;
+}
+
+.album h5 {
+  text-align: center;
+}
+
+h5#featured {
+  color: darkred;
+  text-shadow: 1px 1px white;
+  text-align: center;
+  padding-top: 27px;
+  margin: 0px 16px 27px 16px;
+}
+
+.cbsingle img {
+  width: 100%;
+  border-radius: 7px;
+}
+
+#album-stuff .nav {
+  color: white;
+}
+
+#music .nav-tabs .nav-link.active {
+  color: darkred;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.nav-tabs .nav-link:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: white;
+}
+
+#music ul {
+  max-width: 100%;
+}
+
+#music .list-group {
+  margin: 33px 0px;
+  max-width: 100%;
+  min-width: 300px;
+  position: relative;
+  z-index: 0;
+}
+
+@media only screen and (max-width: 513px) {
+  .shit {
+    max-width: 100%;
+  }
+}
+
+.album-tab a:hover {
+  color: white;
+}
+
+.alboom {
+  font-style: italic;
+}
+
+#music .list-group-item {
+  max-width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+#lyrics .nav-link.active {
+  color: darkred;
+}
+#lyrics .nav-link:hover {
+  color: darkred;
+}
+
+#music .list-group-item {
+  color: white;
+}
+
+#songs .list-group-item {
+  text-align: center;
+  max-width: 100%;
+}
+
+#lyrics .list-group-item {
+  min-width: 475px;
+  border-radius: 0.25rem;
+}
+
+@media only screen and (max-width: 600px) {
+  #lyrics .list-group-item {
+    min-width: 0px;
+  }
+}
+#lyrics li {
+  text-align: center;
+  font-size: 20px;
+}
+
+#lyrics h5 {
+  text-shadow: 1px 1px 0px black;
+  color: darkred;
+}
+
+#credits {
+  text-align: center;
+  font-size: 20px;
+  max-width: 472px;
+  color: white;
+  padding-bottom: 33px;
+}
+
+#credits h6 {
+  text-shadow: 1px 0.5px #3b0600;
+  margin: 33px 0px 13px 0px;
+  color: darkred;
+}
+
+.buyalbum {
+  margin: 29px 29%;
+}
+
+.itunes {
+  width: 106px;
+}
+
+.btn-danger:hover {
+  background-color: black;
+}
+
+.badge-danger {
+  background-color: darkred;
+  cursor: pointer;
+}
+
+#songs {
+  max-width: 100%;
+} */
