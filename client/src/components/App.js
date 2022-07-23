@@ -14,9 +14,12 @@ import BioPage from './Bio/Bio';
 import ContactPage from './Contact/Contact';
 import history from '../history';
 
+
+
+
 export const ActiveContext = createContext();
 
-const App = () => {
+function App() {
 
   const routes = [
     { name: 'Home', value: '/' },

@@ -4,9 +4,22 @@ import vango from '../../images/logos/vango.png';
 import React, { useEffect } from 'react';
 import SecondaryNav from '../Navbar/SecondaryNav';
 import { members } from './Members';
+// for authentication
+import { useMsal } from "@azure/msal-react";
+import { loginRequest } from "../../authConfig";
 
+function handleLogin(instance) {
+  instance.loginPopup(loginRequest).catch(e => {
+    console.error(e);
+  });
+}
 
 const BioPage = () => {
+
+
+
+  const { instance } = useMsal();
+
 
   useEffect(() => {
     const loadScript = src => {
@@ -56,7 +69,12 @@ const BioPage = () => {
 
           <div className="row justify-content-center">
             <div className="col-7 col-sm-auto">
-              <img className="aboutuspic" src={vango} alt="" />
+              <img
+                onClick={() => handleLogin(instance)}
+                className="aboutuspic"
+                src={vango}
+                alt=""
+              />
             </div>
 
           </div>
