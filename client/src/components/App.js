@@ -13,8 +13,9 @@ import MediaPage from './Media/Media';
 import BioPage from './Bio/Bio';
 import ContactPage from './Contact/Contact';
 import history from '../history';
+import { AuthenticatedTemplate, UnauthenticatedTemplate } from '@azure/msal-react';
 
-
+import EditPages from './EditPages';
 
 
 export const ActiveContext = createContext();
@@ -45,20 +46,27 @@ function App() {
 
 
   return (
-    <Router history={history}>
-      <ActiveContext.Provider value={{ activeIndex, setActiveIndex, toggle, setToggle }}>
-        <TopNav routes={routes} />
-        <Routes>
-          <Route path="/" exact element={<HomePage />} />
-          <Route path="/music" exact element={<MusicPage />} />
-          <Route path="/merch" exact element={<MerchPage />} />
-          <Route path="/media" exact element={<MediaPage />} />
-          <Route path="/aboutus" exact element={<BioPage />} />
-          <Route path="/contact" exact element={<ContactPage />} />
-        </Routes>
-        <BottomNav routes={routes} />
-      </ActiveContext.Provider>
-    </Router>
+    <>
+      <UnauthenticatedTemplate>
+        <Router history={history}>
+          <ActiveContext.Provider value={{ activeIndex, setActiveIndex, toggle, setToggle }}>
+            <TopNav routes={routes} />
+            <Routes>
+              <Route path="/" exact element={<HomePage />} />
+              <Route path="/music" exact element={<MusicPage />} />
+              <Route path="/merch" exact element={<MerchPage />} />
+              <Route path="/media" exact element={<MediaPage />} />
+              <Route path="/aboutus" exact element={<BioPage />} />
+              <Route path="/contact" exact element={<ContactPage />} />
+            </Routes>
+            <BottomNav routes={routes} />
+          </ActiveContext.Provider>
+        </Router>
+      </UnauthenticatedTemplate>
+      <AuthenticatedTemplate>
+        <EditPages />
+      </AuthenticatedTemplate>
+    </>
   );
 }
 
