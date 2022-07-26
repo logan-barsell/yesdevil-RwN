@@ -1,0 +1,47 @@
+.membersUpdate {
+  max-width: 450px;
+  margin: 50px auto;
+}
+
+.membersUpdate .form-group {
+  color: darkred;
+  text-shadow: 1px 1px black;
+  margin-bottom: 1rem;
+}
+
+.membersUpdate label {
+  margin-bottom: 0.5rem;
+}
+
+.membersUpdate .form-control {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+.membersUpdate .form-control:focus {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+.membersUpdate input.form-control {
+  width: 100%;
+}
+
+.fileUpload {
+  display: block;
+  overflow: hidden;
+  margin: 0px 20px;
+}
+
+.fileUpload input.upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+}
+
+.submitMember {
+  margin: 20px 0px;
+}

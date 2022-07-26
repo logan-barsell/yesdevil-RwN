@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
 
-mongoose.connect('');
+mongoose.connect(keys.mongoURI);
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
