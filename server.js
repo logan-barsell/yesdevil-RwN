@@ -1,7 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const keys = require('./config/keys');
 
-mongoose.connect('mongodb+srv://logan:Nm6B7w6ZHSGHBtXq@cluster0.1sntm53.mongodb.net/?retryWrites=true&w=majority');
+mongoose.connect('');
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
