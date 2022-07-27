@@ -7,7 +7,7 @@ export const members = [
     name: 'Matt Abbott',
     role: 'Lead Guitar',
     pic: matt,
-    fb: 'MattAbbott',
+    fb: 'matt.abbott.1422',
     ig: 'mattabbott777',
     sc: 'deadringer_87'
   },
@@ -16,7 +16,7 @@ export const members = [
     name: 'Eyan Stran',
     role: 'Drums',
     pic: eyan,
-    fb: 'AddToAny',
+    fb: 'eyan.garcia',
     ig: 'eyanstran',
     sc: 'helloexplode'
   }

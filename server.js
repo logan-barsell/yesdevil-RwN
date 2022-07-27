@@ -1,5 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+
 const keys = require('./config/keys');
 
 mongoose.connect(keys.mongoURI);
@@ -11,7 +13,11 @@ db.once('open', function () {
 });
 
 const app = express();
-app.use(express.json());
+// app.use(express.json());
+
+app.use(bodyParser.urlencoded({
+  extended: true,
+}));
 
 require('./routes/homeRoutes')(app);
 require('./routes/bioRoutes')(app);
