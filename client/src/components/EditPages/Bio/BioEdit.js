@@ -2,7 +2,8 @@ import './bioEdit.css';
 
 import React from 'react';
 import SecondaryNav from '../../Navbar/SecondaryNav';
-import AddMember from './AddMember';
+import CurrentMembers from './CurrentMembers';
+// import AddMember from './AddMember';
 
 const BioEdit = () => {
   return (
@@ -10,7 +11,8 @@ const BioEdit = () => {
       <SecondaryNav label={"Members"} />
       <div className="container">
         <div className="row">
-          <AddMember />
+          <CurrentMembers />
+          {/* <AddMember /> */}
         </div>
       </div>
     </>
