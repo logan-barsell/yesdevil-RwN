@@ -34,7 +34,7 @@ module.exports = app => {
     for (let key in req.body) {
       newMember[key] = req.body[key];
     }
-    newMember['bioPic'] = req.file.path;
+    newMember['bioPic'] = `images/${req.file.filename}`;
 
     const member = new memberModel(newMember);
     try {

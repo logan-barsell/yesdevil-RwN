@@ -13,11 +13,12 @@ db.once('open', function () {
 });
 
 const app = express();
-// app.use(express.json());
 
 app.use(bodyParser.urlencoded({
   extended: true,
 }));
+
+app.use('/public', express.static(`public`));
 
 require('./routes/homeRoutes')(app);
 require('./routes/bioRoutes')(app);

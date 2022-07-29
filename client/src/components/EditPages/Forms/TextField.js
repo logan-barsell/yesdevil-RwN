@@ -3,7 +3,7 @@ import { Field } from 'react-final-form';
 
 const required = value => (value ? undefined : 'Required');
 
-const FBUrl = /^(https?\/\/)?((w{3}\.)?)facebook.com\/.*/i;
+const FBUrl = /^(https?:\/\/)?((w{3}\.)?)facebook.com\/.*/i;
 const validFbLink = value => (value.match(FBUrl) ? undefined : 'Invalid Link');
 
 const composeValidators = (...validators) => value =>

@@ -26,13 +26,13 @@ class AddMember extends Component {
   }
 
   async onSubmit({ bioPic, name, role, fbLink, instaTag, snapName }) {
-    const parsedUrl = new URL(fbLink).pathname.replace('/', '');
+    // const parsedUrl = new URL(fbLink).pathname.replace('/', '');
 
     const newMember = {
       bioPic: bioPic[0],
       name,
       role,
-      fbLink: parsedUrl,
+      fbLink,
       instaTag,
       snapName
     };
