@@ -45,6 +45,11 @@ module.exports = app => {
     }
   });
 
+  app.get('/api/deleteMember/:id', async (req, res) => {
+    await memberModel.deleteOne({ _id: req.params.id });
+    res.redirect('/editAboutus');
+  })
+
   app.get('/api/members', async (req, res) => {
     const members = await memberModel.find({});
 

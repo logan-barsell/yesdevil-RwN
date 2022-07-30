@@ -5,8 +5,6 @@ import { ImageUpload, TextField } from '../Forms';
 
 const AddMember = ({ onCancel }) => {
 
-  const navigate = useNavigate();
-
   const txtFields = [
     { label: 'Name', name: 'name' },
     { label: 'Role', name: 'role' },

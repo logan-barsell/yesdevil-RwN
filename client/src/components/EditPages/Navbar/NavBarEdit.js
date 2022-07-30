@@ -76,6 +76,7 @@ const TopNav = ({ routes }) => {
           </div>
         </div>
       </div>
+      <div className="modal-container"></div>
     </nav>
   );
 }
