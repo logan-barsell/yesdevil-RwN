@@ -1,9 +1,15 @@
+#membersList.accordion {
+  max-width: 827px;
+  margin: auto;
+}
+
 #membersList .accordion-collapse {
   background-color: rgba(0, 0, 0, 0.9);
 }
 
 #membersList .accordion-body {
   color: white;
+  align-items: center;
 }
 
 #membersList .accordion-button {
@@ -26,4 +32,35 @@
 
 #membersList .img-thumbnail {
   max-width: 200px;
+}
+
+.bioPic {
+  display: flex;
+  justify-content: center;
+  margin: 1px 0px;
+}
+
+.memberInfo {
+  text-align: center;
+  margin: 15px 0px;
+  height: fit-content;
+}
+
+.memberInfo .role {
+  color: darkred;
+  text-shadow: 1px 1px #3b0600;
+  font-size: 30px;
+}
+
+.linkVal {
+  padding-left: 7px;
+}
+
+.addMember.btn {
+  margin: 27px auto;
+  max-width: 420px;
+}
+
+.bi-plus-square-fill {
+  margin-right: 10px;
 }

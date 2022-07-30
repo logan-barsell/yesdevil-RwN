@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Form } from 'react-final-form';
 import axios from 'axios';
 import { ImageUpload, TextField } from '../Forms';
 
-class AddMember extends Component {
+const AddMember = ({ onCancel }) => {
 
-  txtFields = [
+  const navigate = useNavigate();
+
+  const txtFields = [
     { label: 'Name', name: 'name' },
     { label: 'Role', name: 'role' },
     { label: 'Facebook Link', name: 'fbLink' },
@@ -13,8 +15,8 @@ class AddMember extends Component {
     { label: 'Snapchat Username', name: 'snapName' }
   ];
 
-  renderFields() {
-    return this.txtFields.map(({ label, name }, index) => {
+  const renderFields = () => {
+    return txtFields.map(({ label, name }, index) => {
       return (
         <TextField
           key={index}
@@ -25,8 +27,7 @@ class AddMember extends Component {
     });
   }
 
-  async onSubmit({ bioPic, name, role, fbLink, instaTag, snapName }) {
-    // const parsedUrl = new URL(fbLink).pathname.replace('/', '');
+  const onSubmit = async ({ bioPic, name, role, fbLink, instaTag, snapName }) => {
 
     const newMember = {
       bioPic: bioPic[0],
@@ -44,27 +45,35 @@ class AddMember extends Component {
     }
 
     await axios.post('/api/addMember', payload);
-
+    onCancel();
   }
 
-  render() {
-    return (
-      <div className="col-lg final-form">
-        <Form
-          onSubmit={this.onSubmit}
-          render={({ handleSubmit }) => (
-            <form onSubmit={handleSubmit}>
-              <ImageUpload name="bioPic" />
-              {this.renderFields()}
-              <div className="d-grid gap-2">
-                <button className="submitMember btn btn-primary btn-danger" type="submit">Submit</button>
-              </div>
-            </form>
-          )}
-        />
-      </div>
-    );
-  }
+  return (
+    <div className="col-lg final-form">
+
+      <Form
+        onSubmit={onSubmit}
+        render={({ handleSubmit }) => (
+          <form onSubmit={handleSubmit}>
+            <button
+              className="cancel btn btn-dark"
+              onClick={onCancel}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="16" fill="currentColor" className="bi bi-arrow-left" viewBox="0 0 16 16">
+                <path fillRule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+              </svg>
+            </button>
+            <ImageUpload name="bioPic" />
+            {renderFields()}
+            <div className="d-grid gap-2">
+              <button className="submitMember btn btn-primary btn-danger" type="submit">Submit</button>
+            </div>
+          </form>
+        )}
+      />
+    </div>
+  );
+
 }
 
 export default AddMember;
