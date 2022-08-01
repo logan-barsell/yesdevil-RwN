@@ -9,11 +9,12 @@ const validFbLink = value => (value.match(FBUrl) ? undefined : 'Invalid Link');
 const composeValidators = (...validators) => value =>
   validators.reduce((error, validator) => error || validator(value), undefined);
 
-const TextField = ({ label, name }) => {
+const TextField = ({ label, name, initialValue }) => {
   const validation = name === 'fbLink' ? composeValidators(required, validFbLink) : required;
+  const val = initialValue ? initialValue : '';
   return (
     <div className="form-group">
-      <Field name={name} validate={validation}>
+      <Field name={name} validate={validation} initialValue={val}>
         {({ input, meta }) => (
           <>
             <label htmlFor={name}>

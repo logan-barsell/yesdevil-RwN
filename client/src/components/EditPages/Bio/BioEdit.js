@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import SecondaryNav from '../../Navbar/SecondaryNav';
 import CurrentMembers from './CurrentMembers';
 import AddMember from './AddMember';
+import EditMember from './EditMember';
 
 class BioEdit extends Component {
 
@@ -15,7 +16,10 @@ class BioEdit extends Component {
         <AddMember onCancel={() => this.setState({ addMemberForm: false })} />
       );
     }
-    return <CurrentMembers onAddMember={() => this.setState({ addMemberForm: true })} />;
+
+    return (
+      <CurrentMembers onAddMember={() => this.setState({ addMemberForm: true })} />
+    );
   }
 
   render() {

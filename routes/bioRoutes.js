@@ -1,4 +1,5 @@
 const multer = require('multer');
+const fs = require('fs');
 const memberModel = require('../models/Member');
 
 
@@ -46,17 +47,48 @@ module.exports = app => {
   });
 
   app.get('/api/deleteMember/:id', async (req, res) => {
-    await memberModel.deleteOne({ _id: req.params.id });
+    await memberModel.findOneAndDelete({ _id: req.params.id }).then(res => {
+      fs.unlink(`client/public/${res.bioPic}`, (err => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log('Deleted image');
+        }
+      }));
+    });
     res.redirect('/editAboutus');
   })
 
   app.get('/api/members', async (req, res) => {
     const members = await memberModel.find({});
 
-    try {
-      res.send(members);
-    } catch (err) {
-      res.status(500).send(err);
+    res.send(members);
+  });
+
+  app.post('/api/updateMember/:id', upload.single('bioPic'), async (req, res) => {
+    const updatedFile = req.file ? req.file.filename : false;
+    const updatedMember = {};
+    for (let key in req.body) {
+      if (req.body[key] !== '') {
+        updatedMember[key] = req.body[key];
+      }
     }
+    if (updatedFile) {
+      updatedMember['bioPic'] = `images/${updatedFile}`;
+    }
+
+    await memberModel.findOneAndUpdate({ _id: updatedMember.id },
+      updatedMember
+    ).then(res => {
+      if (updatedFile) {
+        fs.unlink(`client/public/${res.bioPic}`, (err => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log('Deleted image');
+          }
+        }));
+      }
+    })
   });
 };
