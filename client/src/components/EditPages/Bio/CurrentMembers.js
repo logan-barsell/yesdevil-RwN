@@ -3,6 +3,7 @@ import './currentMembers.css';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchMembers } from '../../../actions';
+import AddMember from './AddMember';
 import DeleteMember from './DeleteMember';
 import EditMember from './EditMember';
 
@@ -11,6 +12,7 @@ class CurrentMembers extends Component {
   componentDidMount() {
     this.props.fetchMembers();
   }
+
 
   renderMembers() {
     return this.props.members.map((member) => {
@@ -77,18 +79,9 @@ class CurrentMembers extends Component {
     return (
       <>
         <div className="accordion" id="membersList">
-
-          {this.props.members.length ? this.renderMembers() : null}
+          {this.props.members.length ? this.renderMembers() : <h5>No Members</h5>}
         </div>
-        <button
-          onClick={() => this.props.onAddMember(true)}
-          className="addMember btn btn-danger"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-plus-square-fill" viewBox="0 0 16 16">
-            <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
-          </svg>
-          Add Member
-        </button>
+        <AddMember />
       </>
     );
   }

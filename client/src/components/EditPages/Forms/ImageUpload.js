@@ -9,6 +9,7 @@ const ImageUpload = ({ name, existingFile }) => {
       <Field name={name} >
         {({ input: { value, onChange, ...input } }) => (
           <>
+            <span className="selectedFile">{value ? value[0].name : 'No File Selected'}</span>
             <div className="fileUpload btn btn-danger">
               <span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-camera-fill" viewBox="0 0 16 16">

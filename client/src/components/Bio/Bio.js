@@ -3,7 +3,8 @@ import vango from '../../images/logos/vango.png';
 
 import React, { useEffect } from 'react';
 import SecondaryNav from '../Navbar/SecondaryNav';
-import { members } from './Members';
+import { connect } from 'react-redux';
+import { fetchMembers } from '../../actions';
 // for authentication
 import { useMsal } from "@azure/msal-react";
 import { loginRequest } from "../../authConfig";
@@ -16,15 +17,10 @@ function handleLogin(instance) {
     const navEvent = new PopStateEvent('popstate');
     window.dispatchEvent(navEvent);
   });
-
 }
 
-const BioPage = () => {
-
-
-
+const BioPage = ({ fetchMembers, members }) => {
   const { instance } = useMsal();
-
 
   useEffect(() => {
     const loadScript = src => {
@@ -37,26 +33,34 @@ const BioPage = () => {
     loadScript('https://static.addtoany.com/menu/page.js');
   }, []);
 
-  const renderMembers = members.map(member => {
+  useEffect(() => {
+    fetchMembers();
+  });
+
+  const renderMembers = members.map((member, index) => {
+    const { _id, bioPic, name, role, fbLink, instaTag, snapName } = member;
+    const parsedFbLink = new URL(fbLink).pathname.replace('/', '');
+    console.log(parsedFbLink);
+
     return (
-      <div key={member.id}>
-        {member.id === 0 ? null : <hr />}
+      <div key={_id}>
+        {index === 0 ? null : <hr />}
         <div className="row justify-content-center">
-          <div className="col-auto"><img src={member.pic} alt="" /></div>
-          <div className="col-auto ind-bio">
+          <div className="col-12 col-sm-6 bioPic"><img src={bioPic} alt={`${name}: ${role}`} /></div>
+          <div className="col-12 col-sm-6 ind-bio">
             <div className="row">
               <h4>
-                {member.name}
+                {name}
               </h4>
               <p>
-                {member.role}
+                {role}
               </p>
             </div>
             <div className="row">
               <div className="col-auto a2a_kit a2a_kit_size_32 a2a_default_style a2a_follow">
-                <a href="#!" className="a2a_button_facebook" data-a2a-follow={member.fb}> </a>
-                <a href="#!" className="a2a_button_instagram" data-a2a-follow={member.ig}> </a>
-                <a href="#!" className="a2a_button_snapchat" data-a2a-follow={member.sc}> </a>
+                <a href="#!" className="a2a_button_facebook" data-a2a-follow={parsedFbLink}> </a>
+                <a href="#!" className="a2a_button_instagram" data-a2a-follow={instaTag}> </a>
+                <a href="#!" className="a2a_button_snapchat" data-a2a-follow={snapName}> </a>
               </div>
             </div>
           </div>
@@ -112,22 +116,8 @@ const BioPage = () => {
   );
 }
 
-export default BioPage;
+function mapStateToProps({ members }) {
+  return { members };
+}
 
-
-  // const [fixed, setFixed] = useState(false);
-
-  // window.onscroll = () => fixedNav();
-
-  // const fixedNav = () => {
-  //   const topNavRect = document.querySelector('nav.sticky-top').getBoundingClientRect();
-  //   const membersNav = document.querySelector('.membersNav');
-  //   const membersNavRect = membersNav.getBoundingClientRect();
-  //   if(membersNavRect.top < topNavRect.bottom && fixed === false) {
-  //     setFixed(!fixed);
-  //     membersNav.style.position = 'sticky';
-  //     membersNav.style.top = topNavRect.bottom.toString() + 'px';
-  //   } else if (membersNavRect.top > topNavRect.bottom && fixed === true) {
-  //     setFixed(!fixed);
-  //   }
-  // }
+export default connect(mapStateToProps, { fetchMembers })(BioPage);

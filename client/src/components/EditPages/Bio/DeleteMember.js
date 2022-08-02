@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import { fetchMembers } from '../../../actions';
 
 class DeleteMember extends Component {
 
   modalId = `del_modal_${this.props.id}`;
   modalLabel = `del_label_${this.props.id}`;
   deleteRoute = `/api/deleteMember/${this.props.id}`;
+
+  deleteMember() {
+    axios.get(`/api/deleteMember/${this.props.id}`).then(res => {
+      this.props.fetchMembers();
+    });
+  }
 
   modal = (
     <div className="deleteMember modal fade" id={this.modalId} tabIndex="-1" aria-labelledby={this.modalLabel} aria-hidden="true">
@@ -20,8 +29,8 @@ class DeleteMember extends Component {
           </div>
           <div className="modal-footer">
             <div type="button" className="btn btn-dark" data-bs-dismiss="modal">Cancel</div>
-            <div type="button" className="btn btn-danger">
-              <a href={this.deleteRoute}>Delete</a>
+            <div onClick={() => this.deleteMember()} type="button" data-bs-dismiss="modal" className="btn btn-danger">
+              Delete
             </div>
           </div>
         </div>
@@ -52,4 +61,8 @@ class DeleteMember extends Component {
   }
 }
 
-export default DeleteMember;
+function mapStateToProps({ members }) {
+  return { members };
+}
+
+export default connect(mapStateToProps, { fetchMembers })(DeleteMember);

@@ -1,9 +1,12 @@
 import React from 'react';
 import { Form } from 'react-final-form';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { fetchMembers } from '../../../actions';
 import { ImageUpload, TextField } from '../Forms';
+import { createPortal } from 'react-dom';
 
-const AddMember = ({ onCancel }) => {
+const AddMember = ({ fetchMembers }) => {
 
   const txtFields = [
     { label: 'Name', name: 'name' },
@@ -25,7 +28,7 @@ const AddMember = ({ onCancel }) => {
     });
   }
 
-  const onSubmit = async ({ bioPic, name, role, fbLink, instaTag, snapName }) => {
+  const onSubmit = ({ bioPic, name, role, fbLink, instaTag, snapName }) => {
 
     const newMember = {
       bioPic: bioPic[0],
@@ -35,36 +38,34 @@ const AddMember = ({ onCancel }) => {
       instaTag,
       snapName
     };
-    console.log(newMember);
 
     const payload = new FormData();
     for (let key in newMember) {
       payload.append(key, newMember[key]);
     }
 
-    await axios.post('/api/addMember', payload);
-    onCancel();
+    axios.post('/api/addMember', payload).then(res => {
+      fetchMembers();
+    });
   }
 
-  return (
+  const renderForm = (
     <div className="col-lg final-form">
-
       <Form
         onSubmit={onSubmit}
-        render={({ handleSubmit }) => (
-          <form onSubmit={handleSubmit}>
-            <button
-              className="cancel btn btn-dark"
-              onClick={onCancel}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="16" fill="currentColor" className="bi bi-arrow-left" viewBox="0 0 16 16">
-                <path fillRule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
-              </svg>
-            </button>
-            <ImageUpload name="bioPic" />
-            {renderFields()}
-            <div className="d-grid gap-2">
-              <button className="submitMember btn btn-primary btn-danger" type="submit">Submit</button>
+        render={({ handleSubmit, form, meta }) => (
+          <form onSubmit={async (event) => {
+            const error = await handleSubmit(event);
+            if (error) { return error; }
+            form.restart();
+          }}>
+            <div className="modal-body">
+              <ImageUpload name="bioPic" />
+              {renderFields()}
+            </div>
+            <div className="modal-footer">
+              <div onClick={form.reset} type="button" className="btn btn-dark" data-bs-dismiss="modal">Cancel</div>
+              <button className="submitMember btn btn-primary btn-danger" data-bs-dismiss="modal" type="submit">Submit</button>
             </div>
           </form>
         )}
@@ -72,6 +73,52 @@ const AddMember = ({ onCancel }) => {
     </div>
   );
 
+  const modalId = 'add_modal';
+  const modalLabel = 'add_label';
+
+  const modal = (
+    <div className="editMember modal fade" id={modalId} tabIndex="-1" aria-labelledby={modalLabel} aria-hidden="true">
+      <div className="modal-dialog modal-dialog-centered">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title" id={modalLabel}>NEW MEMBER</h5>
+            <div type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></div>
+          </div>
+          {renderForm}
+        </div>
+      </div>
+    </div>
+  );
+
+
+  const renderModal = () => {
+    const modalContainer = document.querySelector('.modal-container');
+    return createPortal(modal, modalContainer);
+  }
+
+  return (
+    <>
+      <button
+        data-bs-toggle="modal"
+        data-bs-target={`#${modalId}`}
+        className="addMember btn btn-danger"
+        type="button"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-plus-square-fill" viewBox="0 0 16 16">
+          <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
+        </svg>
+        Add Member
+      </button>
+
+      {renderModal()}
+
+    </>
+  );
+
 }
 
-export default AddMember;
+function mapStateToProps({ members }) {
+  return { members };
+}
+
+export default connect(mapStateToProps, { fetchMembers })(AddMember);

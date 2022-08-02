@@ -80,3 +80,10 @@
   color: darkred;
   margin: 0px 5px;
 }
+
+#membersList h5 {
+  color: darkred;
+  text-align: center;
+  font-variant: small-caps;
+  font-size: 40px;
+}

@@ -48,22 +48,24 @@ const EditMember = ({ member, fetchMembers }) => {
       payload.append(key, updatedMember[key]);
     }
 
-    axios.post(`/api/updateMember/${_id}`, payload);
-    fetchMembers();
+    axios.post(`/api/updateMember/${_id}`, payload).then(res => {
+      fetchMembers();
+    });
+
   }
 
   const renderForm = (
     <div className="col-lg final-form">
       <Form
         onSubmit={onSubmit}
-        render={({ handleSubmit }) => (
+        render={({ handleSubmit, form }) => (
           <form onSubmit={handleSubmit}>
             <div className="modal-body">
               <ImageUpload name="bioPic" existingFile={bioPic} />
               {renderFields()}
             </div>
             <div className="modal-footer">
-              <div type="button" className="btn btn-dark" data-bs-dismiss="modal">Cancel</div>
+              <div onClick={form.reset} type="button" className="btn btn-dark" data-bs-dismiss="modal">Cancel</div>
               <button className="submitMember btn btn-primary btn-danger" data-bs-dismiss="modal" type="submit">Update</button>
             </div>
           </form>

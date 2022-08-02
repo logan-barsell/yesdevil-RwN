@@ -56,12 +56,11 @@ module.exports = app => {
         }
       }));
     });
-    res.redirect('/editAboutus');
+    res.end();
   })
 
   app.get('/api/members', async (req, res) => {
     const members = await memberModel.find({});
-
     res.send(members);
   });
 
@@ -89,6 +88,7 @@ module.exports = app => {
           }
         }));
       }
-    })
+    });
+    res.end();
   });
 };

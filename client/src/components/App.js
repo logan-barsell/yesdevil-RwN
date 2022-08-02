@@ -65,7 +65,6 @@ function App() {
       </UnauthenticatedTemplate>
       <AuthenticatedTemplate>
         <EditPages />
-        <div className="modal-container"></div>
       </AuthenticatedTemplate>
     </>
   );

@@ -3,24 +3,8 @@ import './bioEdit.css';
 import React, { Component } from 'react';
 import SecondaryNav from '../../Navbar/SecondaryNav';
 import CurrentMembers from './CurrentMembers';
-import AddMember from './AddMember';
-import EditMember from './EditMember';
 
 class BioEdit extends Component {
-
-  state = { addMemberForm: false };
-
-  renderContent() {
-    if (this.state.addMemberForm) {
-      return (
-        <AddMember onCancel={() => this.setState({ addMemberForm: false })} />
-      );
-    }
-
-    return (
-      <CurrentMembers onAddMember={() => this.setState({ addMemberForm: true })} />
-    );
-  }
 
   render() {
     return (
@@ -28,7 +12,7 @@ class BioEdit extends Component {
         <SecondaryNav label={"Members"} />
         <div className="container">
           <div className="row">
-            {this.renderContent()}
+            <CurrentMembers />
           </div>
         </div>
       </>
