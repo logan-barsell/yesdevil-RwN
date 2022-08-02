@@ -22,12 +22,16 @@ const ModalForm = ({ onSubmit, fields }) => {
             if (error) { return error; }
             form.restart();
           }}>
-            <div className="modal-body">
+            <div className="modal-body mx-auto mx-sm-4 my-3">
               {renderFields()}
             </div>
             <div className="modal-footer">
-              <div onClick={form.reset} type="button" className="btn btn-dark" data-bs-dismiss="modal">Cancel</div>
-              <button className="submitForm btn btn-primary btn-danger" data-bs-dismiss="modal" type="submit">Submit</button>
+              <div className="d-grid col-auto">
+                <div onClick={form.reset} type="button" className="btn btn-dark" data-bs-dismiss="modal">Cancel</div>
+              </div>
+              <div className="d-grid col-6">
+                <button className="submitForm btn btn-primary btn-danger" data-bs-dismiss="modal" type="submit">Submit</button>
+              </div>
             </div>
           </form>
         )}

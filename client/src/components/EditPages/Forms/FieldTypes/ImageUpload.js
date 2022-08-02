@@ -1,6 +1,7 @@
+import './imageUpload.css';
+
 import React from 'react';
 import { Field } from 'react-final-form';
-
 
 const ImageUpload = ({ name, existingFile }) => {
   const isRequired = existingFile ? false : true;

@@ -19,25 +19,30 @@ const AddMember = ({ fetchShows }) => {
 
 
   const onSubmit = ({ poster, venue, city, date, doors, showtime, tixlink }) => {
+    const dateString = new Date(date).toLocaleString().split(',')[0];
+    const timeString = new Date(doors).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
 
-    const newShow = {
-      poster: poster[0],
-      venue,
-      city,
-      date,
-      doors,
-      showtime,
-      tixlink
-    };
+    console.log(timeString);
+    // const newShow = {
+    //   poster: poster[0],
+    //   venue,
+    //   city,
+    //   date,
+    //   doors,
+    //   showtime,
+    //   tixlink
+    // };
 
-    const payload = new FormData();
-    for (let key in newShow) {
-      payload.append(key, newShow[key]);
-    }
+    // console.log(newShow);
 
-    axios.post('/api/addShow', payload).then(res => {
-      fetchShows();
-    });
+    // const payload = new FormData();
+    // for (let key in newShow) {
+    //   payload.append(key, newShow[key]);
+    // }
+
+    // axios.post('/api/addShow', payload).then(res => {
+    //   fetchShows();
+    // });
   }
 
   const modalProps = {
