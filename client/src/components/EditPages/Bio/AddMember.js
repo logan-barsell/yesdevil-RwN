@@ -3,7 +3,7 @@ import { Form } from 'react-final-form';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { fetchMembers } from '../../../actions';
-import { ImageUpload, TextField } from '../Forms';
+import { ImageUpload, TextField } from '../Forms/FieldTypes';
 import { createPortal } from 'react-dom';
 
 const AddMember = ({ fetchMembers }) => {

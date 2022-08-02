@@ -14,7 +14,6 @@ module.exports = app => {
 
   app.get('/api/shows', async (req, res) => {
     const shows = await showModel.find({});
-
     try {
       res.send(shows);
     } catch (err) {

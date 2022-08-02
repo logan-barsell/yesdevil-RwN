@@ -35,7 +35,7 @@ const BioPage = ({ fetchMembers, members }) => {
 
   useEffect(() => {
     fetchMembers();
-  });
+  }, [fetchMembers]);
 
   const renderMembers = members.map((member, index) => {
     const { _id, bioPic, name, role, fbLink, instaTag, snapName } = member;
@@ -97,13 +97,13 @@ const BioPage = ({ fetchMembers, members }) => {
         <br />
 
 
-        <div className="members mb-4">
+        <div className="members">
 
           <SecondaryNav label="Members" />
 
           <br />
 
-          <div className="container">
+          <div className="container pb-4">
             {renderMembers}
           </div>
 
