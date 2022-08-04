@@ -6,9 +6,10 @@ const ShowSchema = new Schema({
   venue: String,
   city: String,
   date: Date,
-  doors: String,
-  showtime: String,
-  price: String,
+  doors: Date,
+  showtime: Date,
+  doorprice: String,
+  advprice: String,
   tixlink: String
 });
 

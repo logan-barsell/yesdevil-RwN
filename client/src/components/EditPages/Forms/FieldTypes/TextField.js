@@ -21,9 +21,9 @@ const TextField = ({ label, name, initialValue }) => {
               {label}
             </label>
             <div className="input-group">
-              {name === 'instaTag' ?
+              {name === 'instaTag' &&
                 <span className="input-group-text" id="basic-addon1">@</span>
-                : null}
+              }
               <input
                 className={`form-control${meta.error && meta.touched ? ' error' : ''}`}
                 id={name}

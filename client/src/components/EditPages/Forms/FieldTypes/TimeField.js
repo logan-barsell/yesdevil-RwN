@@ -11,16 +11,14 @@ const required = value => (value ? undefined : 'Required');
 //   validators.reduce((error, validator) => error || validator(value), undefined);
 
 
-const TimeField = ({ label, name, initialValue }) => {
+const TimeField = ({ label, name, placeholder, initialValue }) => {
   const val = initialValue ? initialValue : '';
 
-  const renderTimePicker = ({ name, input: { value, onChange } }) => {
+  const renderTimePicker = ({ name, placeholder, input: { value, onChange } }) => {
     return (
       <>
-        <label htmlFor={name}>
-          {label}
-        </label>
         <DatePicker
+          placeholderText={placeholder}
           name={name}
           selected={value}
           onChange={date => onChange(date)}
@@ -29,6 +27,7 @@ const TimeField = ({ label, name, initialValue }) => {
           timeIntervals={15}
           timeCaption="Time"
           dateFormat="h:mm aa"
+          required
         />
       </>
     )
@@ -36,11 +35,26 @@ const TimeField = ({ label, name, initialValue }) => {
 
   return (
     <div className="form-group">
-      <Field
-        name={name}
-        validate={required}
-        component={renderTimePicker}
-        initialValue={val} />
+      <label htmlFor={name.doors}>
+        {label}
+      </label>
+      <div className="input-group mb-3">
+        <Field
+          name={name.doors}
+          placeholder={placeholder.doors}
+          validate={required}
+          component={renderTimePicker}
+          initialValue={val}
+        />
+        <Field
+          name={name.showtime}
+          placeholder={placeholder.showtime}
+          validate={required}
+          component={renderTimePicker}
+          initialValue={val}
+        />
+      </div>
+
     </div>
   );
 };

@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import { TextField, DateField, TimeField, ImageUpload } from './FieldTypes';
+import { TextField, DateField, TimeField, ImageUpload, PriceField } from './FieldTypes';
 
 class RenderField extends Component {
 
   renderContent() {
-    const { name, label, type } = this.props.field;
+    const { name, label, placeholder, type } = this.props.field;
     if (type === 'text') {
       return (
         <TextField
           label={label}
           name={name}
+          placeholder={placeholder}
         />
       );
     } else if (type === 'date') {
@@ -24,6 +25,7 @@ class RenderField extends Component {
         <TimeField
           label={label}
           name={name}
+          placeholder={placeholder}
         />
       )
     } else if (type === 'image') {
@@ -31,6 +33,14 @@ class RenderField extends Component {
         <ImageUpload
           label={label}
           name={name}
+        />
+      )
+    } else if (type === 'price') {
+      return (
+        <PriceField
+          label={label}
+          name={name}
+          placeholder={placeholder}
         />
       )
     }

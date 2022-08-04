@@ -43,10 +43,9 @@
 .final-form .input-group-text#basic-addon1 {
   font-size: 25px;
   color: darkred;
-  background-color: rgba(0, 0, 0, 0.9);
-  border: 3px solid rgba(425, 425, 425, 0.2);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: rgba(0, 0, 0, 1);
+  border: 2px solid #272727;
+  border-radius: 3px;
 }
 
 .final-form .cancel {
@@ -59,4 +58,10 @@
 
 .final-form .modal-footer {
   justify-content: center;
+}
+
+@media screen and (max-width: 352px) {
+  .input-group-text {
+    padding: 0.375rem 0.35rem;
+  }
 }
