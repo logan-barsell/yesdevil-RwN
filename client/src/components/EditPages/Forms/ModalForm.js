@@ -13,6 +13,11 @@ const ModalForm = ({ onSubmit, fields }) => {
     });
   }
 
+  const onFormRestart = form => {
+    form.restart();
+    document.querySelector('.upload').value = null;
+  }
+
   return (
     <div className="col-lg final-form">
       <Form
@@ -21,7 +26,7 @@ const ModalForm = ({ onSubmit, fields }) => {
           <form onSubmit={async (event) => {
             const error = await handleSubmit(event);
             if (error) { return error; }
-            form.restart();
+            onFormRestart(form);
           }}>
             {console.log(Object.keys(form.getState().errors).length === 0)}
             <div className="modal-body mx-auto mx-sm-4 my-3">
@@ -29,7 +34,11 @@ const ModalForm = ({ onSubmit, fields }) => {
             </div>
             <div className="modal-footer">
               <div className="d-grid col-auto">
-                <div onClick={form.restart} type="button" className="btn btn-dark" data-bs-dismiss="modal">Cancel</div>
+                <div onClick={() => {
+                  // form.restart();
+                  // document.querySelector('.upload').value = null;
+                  onFormRestart(form);
+                }} type="button" className="btn btn-dark" data-bs-dismiss="modal">Cancel</div>
               </div>
               <div className="d-grid col-6">
                 <button

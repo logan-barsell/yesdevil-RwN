@@ -1,41 +1,35 @@
 import 'react-datepicker/dist/react-datepicker.css';
 import './dateField.css';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Field } from 'react-final-form';
 import DatePicker from 'react-datepicker';
 
 const required = value => (value ? undefined : 'Required');
 
-// const composeValidators = (...validators) => value =>
-//   validators.reduce((error, validator) => error || validator(value), undefined);
-
-
 const DateField = ({ label, name, initialValue }) => {
-  const val = initialValue ? initialValue : '';
-
-  const renderDatePicker = ({ name, input: { value, onChange } }) => {
-    return (
-      <>
-        <label htmlFor={name}>
-          {label}
-        </label>
-        <DatePicker
-          name={name}
-          selected={value}
-          onChange={date => onChange(date)}
-        />
-      </>
-    )
-  }
+  // const val = initialValue ? initialValue : new Date();
 
   return (
     <div className="form-group">
-      <Field
-        name={name}
-        validate={required}
-        component={renderDatePicker}
-        initialValue={val} />
+      <Field name={name} validate={required}>
+        {({ name, meta, input: { value, onChange, onBlur } }) => (
+          <>
+            <label htmlFor={name}>
+              {label}
+            </label>
+            <DatePicker
+              className={meta.error && meta.touched ? ' error' : ''}
+              name={name}
+              selected={value}
+              onChange={date => onChange(date)}
+              onBlur={onBlur}
+              required
+            />
+          </>
+        )}
+      </Field>
+
     </div>
   );
 };

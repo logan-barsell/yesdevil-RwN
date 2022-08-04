@@ -1,12 +1,12 @@
 import './imageUpload.css';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Field } from 'react-final-form';
 const required = value => (value ? undefined : 'Required');
 
 const ImageUpload = ({ name, existingFile }) => {
-  console.log(existingFile);
   const isRequired = existingFile ? false : true;
+
   return (
     <div className="form-group">
       <Field name={name} validate={required}>

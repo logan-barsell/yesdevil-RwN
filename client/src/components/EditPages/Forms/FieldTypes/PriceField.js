@@ -29,6 +29,7 @@ const PriceField = ({ label, name, placeholder, initialValue }) => {
                 placeholder={placeholder}
                 {...input}
                 required
+                autoComplete='off'
               />
             </>
           )}

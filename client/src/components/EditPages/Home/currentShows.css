@@ -1,0 +1,12 @@
+#showsList.accordion {
+  max-width: 827px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+#showsList h5 {
+  color: darkred;
+  text-align: center;
+  font-variant: small-caps;
+  font-size: 40px;
+}

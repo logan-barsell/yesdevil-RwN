@@ -1,3 +1,5 @@
+import './currentShows.css';
+
 import React, { Component } from 'react';
 import { fetchShows } from '../../../actions';
 import { connect } from 'react-redux';
@@ -9,9 +11,21 @@ class CurrentShows extends Component {
     this.props.fetchShows();
   }
 
+  renderShows() {
+    console.log(this.props.shows);
+    return (
+      <div>Shows</div>
+    );
+  }
+
   render() {
     return (
-      <AddShow />
+      <>
+        <div className="accordion" id="showsList">
+          {this.props.shows.length ? this.renderShows() : <h5>No Shows</h5>}
+        </div>
+        < AddShow />
+      </>
     );
   }
 }
