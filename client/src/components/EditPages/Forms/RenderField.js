@@ -4,13 +4,14 @@ import { TextField, DateField, TimeField, ImageUpload, PriceField } from './Fiel
 class RenderField extends Component {
 
   renderContent() {
-    const { name, label, placeholder, type } = this.props.field;
+    const { name, label, placeholder, type, initialValue } = this.props.field;
     if (type === 'text') {
       return (
         <TextField
           label={label}
           name={name}
           placeholder={placeholder}
+          initialValue={initialValue}
         />
       );
     } else if (type === 'date') {
@@ -18,6 +19,7 @@ class RenderField extends Component {
         <DateField
           label={label}
           name={name}
+          initialValue={initialValue}
         />
       )
     } else if (type === 'time') {
@@ -26,6 +28,7 @@ class RenderField extends Component {
           label={label}
           name={name}
           placeholder={placeholder}
+          initialValue={initialValue}
         />
       )
     } else if (type === 'image') {
@@ -33,6 +36,7 @@ class RenderField extends Component {
         <ImageUpload
           label={label}
           name={name}
+          initialValue={initialValue}
         />
       )
     } else if (type === 'price') {
@@ -41,6 +45,7 @@ class RenderField extends Component {
           label={label}
           name={name}
           placeholder={placeholder}
+          initialValue={initialValue}
         />
       )
     }
