@@ -8,11 +8,15 @@ import DatePicker from 'react-datepicker';
 const required = value => (value ? undefined : 'Required');
 
 const DateField = ({ label, name, initialValue }) => {
-  // const val = initialValue ? initialValue : new Date();
+  const val = initialValue ? initialValue : '';
 
   return (
     <div className="form-group">
-      <Field name={name} validate={required}>
+      <Field
+        name={name}
+        validate={required}
+        initialValue={new Date(val).getTime()}
+      >
         {({ name, meta, input: { value, onChange, onBlur } }) => (
           <>
             <label htmlFor={name}>

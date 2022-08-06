@@ -11,7 +11,7 @@ import CustomModal from '../Bootstrap/CustomModal';
 const EditMember = ({ member, fetchMembers }) => {
   const { _id, bioPic, name, role, fbLink, instaTag, snapName } = member;
 
-  const txtFields = [
+  const EDIT_FIELDS = [
     {
       label: 'Upload Image',
       name: 'bioPic',
@@ -128,7 +128,7 @@ const EditMember = ({ member, fetchMembers }) => {
 
     <>
       <CustomModal modalProps={modalProps} modalButton={<EditButton />}>
-        <ModalForm fields={txtFields} onSubmit={onSubmit} />
+        <ModalForm fields={EDIT_FIELDS} onSubmit={onSubmit} />
       </CustomModal>
     </>
   );

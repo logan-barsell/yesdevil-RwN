@@ -11,8 +11,12 @@ const required = value => (value ? undefined : 'Required');
 //   validators.reduce((error, validator) => error || validator(value), undefined);
 
 
-const TimeField = ({ label, name, placeholder, initialValue }) => {
-  const val = initialValue ? initialValue : '';
+const TimeField = ({ label, name, placeholder, initialValues }) => {
+  const val = initialValues ? initialValues : '';
+  console.log(val);
+  console.log(val.doors, val.showtime);
+  const initVal = new Date(val.doors).getTime();
+
 
   // const renderTimePicker = ({ name, placeholder, input: { value, onChange } }) => {
   //   return (
@@ -43,7 +47,7 @@ const TimeField = ({ label, name, placeholder, initialValue }) => {
           name={name.doors}
           placeholder={placeholder.doors}
           validate={required}
-        // initialValue={val}
+          initialValue={new Date(val.doors).getTime()}
         >
           {({ name, placeholder, meta, input: { value, onChange, onBlur } }) => (
             <DatePicker
@@ -66,7 +70,7 @@ const TimeField = ({ label, name, placeholder, initialValue }) => {
           name={name.showtime}
           placeholder={placeholder.showtime}
           validate={required}
-        // initialValue={val}
+          initialValue={new Date(val.showtime).getTime()}
         >
           {({ name, placeholder, meta, input: { value, onChange, onBlur } }) => (
             <DatePicker

@@ -28,7 +28,6 @@ const ModalForm = ({ onSubmit, fields }) => {
             if (error) { return error; }
             onFormRestart(form);
           }}>
-            {console.log(Object.keys(form.getState().errors).length === 0)}
             <div className="modal-body mx-auto mx-sm-4 my-3">
               {renderFields()}
             </div>

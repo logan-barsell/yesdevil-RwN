@@ -6,13 +6,11 @@ import ModalForm from '../Forms/ModalForm';
 import CustomModal from '../Bootstrap/CustomModal';
 import ADD_SHOW_FIELDS from './addShowFields';
 
-const AddMember = ({ fetchShows }) => {
+const AddShow = ({ fetchShows }) => {
 
 
 
   const onSubmit = ({ poster, venue, city, date, doors, showtime, doorprice, advprice, tixlink }) => {
-    // const dateString = new Date(date).toLocaleString().split(',')[0];
-    // const timeString = new Date(doors).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
 
     const newDate = date.getTime();
     const newDoors = doors.getTime();
@@ -66,9 +64,6 @@ const AddMember = ({ fetchShows }) => {
     );
   };
 
-
-
-
   return (
     <>
       <CustomModal modalProps={modalProps} modalButton={<AddButton />}>
@@ -83,4 +78,4 @@ function mapStateToProps({ shows }) {
   return { shows };
 }
 
-export default connect(mapStateToProps, { fetchShows })(AddMember);
+export default connect(mapStateToProps, { fetchShows })(AddShow);

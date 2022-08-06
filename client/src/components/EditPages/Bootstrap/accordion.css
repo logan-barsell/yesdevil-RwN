@@ -1,47 +1,41 @@
-#showsList.accordion {
+.accordion {
   max-width: 827px;
   margin: auto;
   margin-top: 50px;
 }
 
-#showsList h5 {
+.accordion h5 {
   color: darkred;
   text-align: center;
   font-variant: small-caps;
   font-size: 40px;
 }
 
-#showsList.accordion {
-  max-width: 827px;
-  margin: auto;
-  margin-top: 50px;
-}
-
-#showsList .accordion-collapse {
+.accordion .accordion-collapse {
   background-color: rgba(0, 0, 0, 0.9);
 }
 
-#showsList .modify-options {
+.accordion .modify-options {
   position: absolute;
   right: 29px;
   display: flex;
 }
 
-#showsList .accordion-header .btn-sm {
+.accordion .accordion-header .btn-sm {
   margin-left: 5px;
 }
 
-#showsList .accordion-body {
+.accordion .accordion-body {
   color: white;
   align-items: center;
 }
 
-#showsList .accordion-button {
+.accordion .accordion-button {
   background-color: black;
   color: darkred;
 }
 
-#showsList .accordion-button:not(.collapsed) {
+.accordion .accordion-button:not(.collapsed) {
   background-color: black;
   color: darkred;
 }
@@ -54,32 +48,45 @@
   box-shadow: 0 0 0 0.25rem rgb(139 0 0 / 35%);
 }
 
-#showsList .img-thumbnail {
+.accordion .img-thumbnail {
   max-width: 200px;
 }
 
-.bioPic {
+.accordion-img {
   display: flex;
   justify-content: center;
   margin: 1px 0px;
 }
 
-.memberInfo {
+.itemInfo {
   text-align: center;
   margin: 15px 0px;
   height: fit-content;
 }
 
-.memberInfo .role {
+.itemInfo .subhead {
   color: darkred;
   text-shadow: 1px 1px #3b0600;
   font-size: 30px;
 }
 
-.linkVal {
+.subItemVal {
   padding-left: 7px;
+  color: white;
+  display: inline-block;
 }
 
+.memberMediaIcon {
+  color: white;
+}
+
+.accordion .content {
+  color: darkred;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  padding: 27px 0px;
+  margin-top: 7px;
+}
 .addMember.btn {
   margin: 27px auto;
   max-width: 420px;
@@ -89,14 +96,7 @@
   margin-right: 10px;
 }
 
-.deleteItem .modal-body span {
+.deleteMember .modal-body span {
   color: darkred;
   margin: 0px 5px;
-}
-
-#showsList h5 {
-  color: darkred;
-  text-align: center;
-  font-variant: small-caps;
-  font-size: 40px;
 }

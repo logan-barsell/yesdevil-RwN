@@ -1,3 +1,4 @@
+const fs = require('fs');
 const upload = require('../middlewares/fileUpload');
 const showModel = require('../models/Show');
 
@@ -28,4 +29,45 @@ module.exports = app => {
       res.status(500).send(err);
     }
   });
+
+  app.post('/api/updateShow/:id', upload().single('poster'), async (req, res) => {
+    const updatedFile = req.file ? req.file.filename : false;
+    const updatedShow = {};
+    for (let key in req.body) {
+      if (req.body[key] !== '') {
+        updatedShow[key] = req.body[key];
+      }
+    }
+    if (updatedFile) {
+      updatedShow['poster'] = `images/${updatedFile}`;
+    }
+
+    await showModel.findOneAndUpdate({ _id: updatedShow.id },
+      updatedShow
+    ).then(res => {
+      if (updatedFile) {
+        fs.unlink(`client/public/${res.poster}`, (err => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log('Deleted image');
+          }
+        }));
+      }
+    });
+    res.end();
+  });
+
+  app.get('/api/deleteShow/:id', async (req, res) => {
+    await showModel.findOneAndDelete({ _id: req.params.id }).then(res => {
+      fs.unlink(`client/public/${res.poster}`, (err => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log('Deleted image');
+        }
+      }));
+    });
+    res.end();
+  })
 };

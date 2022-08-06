@@ -4,7 +4,7 @@ import { TextField, DateField, TimeField, ImageUpload, PriceField } from './Fiel
 class RenderField extends Component {
 
   renderContent() {
-    const { name, label, placeholder, type, initialValue } = this.props.field;
+    const { name, label, placeholder, type, initialValue, initialValues } = this.props.field;
     if (type === 'text') {
       return (
         <TextField
@@ -28,7 +28,7 @@ class RenderField extends Component {
           label={label}
           name={name}
           placeholder={placeholder}
-          initialValue={initialValue}
+          initialValues={initialValues}
         />
       )
     } else if (type === 'image') {
@@ -45,7 +45,7 @@ class RenderField extends Component {
           label={label}
           name={name}
           placeholder={placeholder}
-          initialValue={initialValue}
+          initialValues={initialValues}
         />
       )
     }

@@ -1,23 +1,29 @@
 import 'bootstrap/dist/js/bootstrap.bundle';
 
-import React from 'react';
-import { shows } from './ShowDetails';
+import React, { useEffect } from 'react';
+// import { shows } from './ShowDetails';
 import SnipcartButton from '../Merch/SnipcartButton';
 import InfoCollapse from '../Bootstrap/InfoCollapse';
+import { connect } from 'react-redux';
+import { fetchShows } from '../../actions';
 
-const ShowAd = () => {
+const ShowAd = ({ shows, fetchShows }) => {
+
+  useEffect(() => {
+    fetchShows();
+  }, [fetchShows])
 
   const renderShows = shows.map(show => {
     return (
-      <div key={show.id} className="col-sm showad">
-        <div className="card"><img className="card-img-top" src={show.picURL} alt="PromoFlyer" /></div>
+      <div key={show._id} className="col-sm showad">
+        <div className="card"><img className="card-img-top" src={show.poster} alt="PromoFlyer" /></div>
         <InfoCollapse show={show} />
         <div className="d-grid gap-2">
-          {show.ticketLink === null ?
+          {show.tixlink === null ?
             <SnipcartButton data={show.snipcartData} />
             :
             <button className="btn btn-danger">
-              <a href={show.ticketLink} className="gettix card-link" target="_blank" rel="noreferrer">Get Tickets</a>
+              <a href={show.tixlink} className="gettix card-link" target="_blank" rel="noreferrer">Get Tickets</a>
             </button>
           }
         </div>
@@ -27,10 +33,13 @@ const ShowAd = () => {
 
   return (
     <>
-
       {renderShows}
     </>
   );
 };
 
-export default ShowAd;
+function mapStateToProps({ shows }) {
+  return { shows };
+}
+
+export default connect(mapStateToProps, { fetchShows })(ShowAd);

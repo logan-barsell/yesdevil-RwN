@@ -5,10 +5,14 @@ const InfoCollapse = ({ show }) => {
   var [toggle, setToggle] = useState(false);
 
   useEffect(() => {
-    var myCollapse = document.getElementById(`show${show.id}`);
+    var myCollapse = document.getElementById(`show${show._id}`);
     var bsCollapse = new Collapse(myCollapse, { toggle: false });
     toggle ? bsCollapse.show() : bsCollapse.hide()
   });
+
+  const dateString = new Date(show.date).toLocaleString().split(',')[0];
+  const doorstimeString = new Date(show.doors).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
+  const showtimeString = new Date(show.showtime).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
 
   return (
     <>
@@ -25,16 +29,16 @@ const InfoCollapse = ({ show }) => {
           </svg>
         </button>
       </div>
-      <div className={`col-sm showinfo collapse multi-collapse`} id={`show${show.id}`}>
+      <div className={`col-sm showinfo collapse multi-collapse`} id={`show${show._id}`}>
         <div className="card">
           <div className="card-body text-center">
-            <h5 className="card-title">{show.name}</h5>
-            <p className="card-text">{show.location}</p>
+            <h5 className="card-title">{show.venue}</h5>
+            <p className="card-text">{show.city}</p>
           </div>
           <ul className="list-group list-group-flush">
-            <li className="list-group-item">Dates: <span>{show.date}</span></li>
-            <li className="list-group-item">Time: <span>{show.time}</span></li>
-            <li className="list-group-item">Price: <span>{show.price}</span></li>
+            <li className="list-group-item">Date: <span>{dateString}</span></li>
+            <li className="list-group-item">Time: <span>Doors: {doorstimeString}, Show: {showtimeString}</span></li>
+            <li className="list-group-item">Price: <span>${show.advprice} Adv, ${show.doorprice} Door </span></li>
           </ul>
         </div>
       </div>
