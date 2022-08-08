@@ -53,7 +53,7 @@ const AddShow = ({ fetchShows }) => {
       <button
         data-bs-toggle="modal"
         data-bs-target={`#${modalProps.id}`}
-        className="addMember btn btn-danger"
+        className="addButton btn btn-danger"
         type="button"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-plus-square-fill" viewBox="0 0 16 16">

@@ -1,5 +1,3 @@
-import './currentShows.css';
-
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import { fetchShows } from '../../../actions';
@@ -12,7 +10,7 @@ const CurrentShows = ({ fetchShows, shows }) => {
 
   useEffect(() => {
     fetchShows();
-  }, []);
+  }, [fetchShows]);
 
 
   const deleteShow = id => {
@@ -74,7 +72,7 @@ const CurrentShows = ({ fetchShows, shows }) => {
           { prefix: 'Show: ', value: showtimeString },
           { prefix: 'Door Price: ', value: doorprice },
           { prefix: 'Adv. Price: ', value: advprice },
-          { prefix: 'Ticket Link: ', value: (<a style={{ 'textDecoration': 'underline' }} target="_blank" href={tixlink}>Link</a>) }
+          { prefix: 'Ticket Link: ', value: (<a style={{ 'textDecoration': 'underline' }} target="_blank" rel="noreferrer" href={tixlink}>Link</a>) }
         ]
       });
     });

@@ -1,5 +1,3 @@
-import './bioEdit.css';
-
 import React, { Component } from 'react';
 import SecondaryNav from '../../Navbar/SecondaryNav';
 import CurrentMembers from './CurrentMembers';

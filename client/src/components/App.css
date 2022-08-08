@@ -135,3 +135,8 @@ hr {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
+
+.addButton.btn {
+  margin: 27px auto;
+  max-width: 420px;
+}

@@ -87,7 +87,7 @@
   padding: 27px 0px;
   margin-top: 7px;
 }
-.addMember.btn {
+.addButton.btn {
   margin: 27px auto;
   max-width: 420px;
 }
@@ -96,7 +96,7 @@
   margin-right: 10px;
 }
 
-.deleteMember .modal-body span {
+.deleteItem span {
   color: darkred;
   margin: 0px 5px;
 }

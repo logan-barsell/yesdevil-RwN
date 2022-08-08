@@ -3,11 +3,15 @@ module.exports = () => {
 
   const multerStorage = multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, 'client/public/images');
+      if (file.fieldname === 'bioPic') {
+        cb(null, 'client/public/images/bio');
+      } else if (file.fieldname === 'poster') {
+        cb(null, 'client/public/images/shows');
+      }
     },
     filename: (req, file, cb) => {
       const ext = file.mimetype.split('/')[1];
-      cb(null, `bio-${file.fieldname}-${Date.now()}.${ext}`);
+      cb(null, `${file.fieldname}-${Date.now()}.${ext}`);
     },
   });
 

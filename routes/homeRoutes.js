@@ -9,7 +9,7 @@ module.exports = app => {
     for (let key in req.body) {
       newShow[key] = req.body[key];
     }
-    newShow['poster'] = `images/${req.file.filename}`;
+    newShow['poster'] = `images/shows/${req.file.filename}`;
     console.log(newShow);
     const show = new showModel(newShow);
 
@@ -39,7 +39,7 @@ module.exports = app => {
       }
     }
     if (updatedFile) {
-      updatedShow['poster'] = `images/${updatedFile}`;
+      updatedShow['poster'] = `images/shows/${updatedFile}`;
     }
 
     await showModel.findOneAndUpdate({ _id: updatedShow.id },
