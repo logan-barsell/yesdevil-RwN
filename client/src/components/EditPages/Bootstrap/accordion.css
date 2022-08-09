@@ -15,12 +15,6 @@
   background-color: rgba(0, 0, 0, 0.9);
 }
 
-.accordion .modify-options,
-.accordion .tix {
-  position: absolute;
-  right: 29px;
-  display: flex;
-}
 
 .accordion .accordion-header .btn-sm {
   margin-left: 5px;
@@ -29,6 +23,7 @@
 .accordion .accordion-body {
   color: white;
   align-items: center;
+  padding: 20px 15px;
 }
 
 .accordion .accordion-button {

@@ -15,7 +15,6 @@ const TimeField = ({ label, name, placeholder, initialValues }) => {
   const val = initialValues ? initialValues : '';
   console.log(val);
   console.log(val.doors, val.showtime);
-  const initVal = new Date(val.doors).getTime();
 
 
   // const renderTimePicker = ({ name, placeholder, input: { value, onChange } }) => {

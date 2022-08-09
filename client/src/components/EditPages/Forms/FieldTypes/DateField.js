@@ -1,7 +1,7 @@
 import 'react-datepicker/dist/react-datepicker.css';
 import './dateField.css';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Field } from 'react-final-form';
 import DatePicker from 'react-datepicker';
 

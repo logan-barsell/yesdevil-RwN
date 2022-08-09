@@ -21,22 +21,29 @@ class ShowsAccordion extends Component {
     return this.props.items.map((item, index) => {
       console.log(item);
 
-      const { id, venue, poster, date, city, content } = item;
+      const { id, venue, poster, date, city, tixlink, content } = item;
       const headerId = `show_heading${id}`;
       const collapseId = `show_collapse${id}`;
+
+      const headerDate = new Date(date).toDateString();
 
 
       return (
         <div key={index} className="accordion-item">
           <h2 className="accordion-header" id={headerId}>
             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#${collapseId}`} aria-expanded="false" aria-controls={collapseId}>
-              <div>
-                <div className="coHeader">{date}</div>
-                <div className="header">{venue}</div>
-                <div className='coHeader'>{city}</div>
-              </div>
+              <div className="row w-100 gx-0 justify-content-between" >
+                <div className="col-12 col-sm-6">
+                  <div className="coHeader">{headerDate}</div>
+                  <div className="header">{venue}</div>
+                  <div className='coHeader'>{city}</div>
+                </div>
 
-              <span className="tix btn btn-sm btn-danger">Tickets</span>
+                <div className="col-12 col-sm-6 w-auto align-self-center mt-2 mt-sm-0">
+                  <a href={tixlink} target="_blank" rel="noreferrer" className="tix btn btn-sm btn-danger">Tickets</a>
+                </div>
+              </div>
+              
 
             </button>
           </h2>
@@ -47,10 +54,14 @@ class ShowsAccordion extends Component {
               </div>
               <div className="itemInfo col-12 col-sm-6 col-lg-7 center">
                 <div className='subhead'>
-                  {city}
+                  {venue}
+                  <div className="coSubhead">
+                    {city}
+                  </div>
                 </div>
                 <div className="content">
                   {this.renderSubItems(content)}
+                  <a href={tixlink} target="_blank" rel="noreferrer" className="tix btn btn-danger">Buy Tickets</a>
                 </div>
               </div>
             </div>

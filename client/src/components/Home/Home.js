@@ -12,7 +12,7 @@ import { fetchShows } from '../../actions';
 const HomePage = ({ fetchShows, shows }) => {
   useEffect(() => {
     fetchShows();
-  }, []);
+  }, [fetchShows]);
 
   const accordionItems = [];
 
@@ -28,8 +28,9 @@ const HomePage = ({ fetchShows, shows }) => {
         date: dateString,
         poster,
         city,
+        tixlink,
         content: [
-          { prefix: 'Date: ', value: dateString },
+          { value: dateString },
           { prefix: 'Doors: ', value: doorstimeString },
           { prefix: 'Show: ', value: showtimeString },
           { prefix: 'Door Price: ', value: `$${doorprice}` },
