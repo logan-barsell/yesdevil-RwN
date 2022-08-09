@@ -15,7 +15,8 @@
   background-color: rgba(0, 0, 0, 0.9);
 }
 
-.accordion .modify-options {
+.accordion .modify-options,
+.accordion .tix {
   position: absolute;
   right: 29px;
   display: flex;

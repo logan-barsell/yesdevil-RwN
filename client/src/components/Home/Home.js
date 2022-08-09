@@ -4,7 +4,7 @@ import 'bootstrap/dist/js/bootstrap.bundle';
 import React, { useEffect } from 'react';
 import Carousel from '../Bootstrap/Carousel';
 import SecondaryNav from '../Navbar/SecondaryNav';
-import Accordion from '../EditPages/Bootstrap/Accordion';
+import ShowsAccordion from './ShowsAccordion';
 import { connect } from 'react-redux';
 import { fetchShows } from '../../actions';
 // import ShowAd from './ShowAd';
@@ -23,20 +23,17 @@ const HomePage = ({ fetchShows, shows }) => {
       const doorstimeString = new Date(doors).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
       const showtimeString = new Date(showtime).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
       return accordionItems.push({
-        data: show,
-        group: 'shows',
         id: _id,
-        name: venue,
-        header: venue,
-        img: poster,
-        subhead: city,
+        venue,
+        date: dateString,
+        poster,
+        city,
         content: [
           { prefix: 'Date: ', value: dateString },
           { prefix: 'Doors: ', value: doorstimeString },
           { prefix: 'Show: ', value: showtimeString },
-          { prefix: 'Door Price: ', value: doorprice },
-          { prefix: 'Adv. Price: ', value: advprice },
-          { prefix: 'Ticket Link: ', value: (<a style={{ 'textDecoration': 'underline' }} target="_blank" rel="noreferrer" href={tixlink}>Link</a>) }
+          { prefix: 'Door Price: ', value: `$${doorprice}` },
+          { prefix: 'Adv. Price: ', value: `$${advprice}` }
         ]
       });
     });
@@ -56,7 +53,7 @@ const HomePage = ({ fetchShows, shows }) => {
           <div id="upcomingshows">
             <div className="row justify-content-around">
               {/* <ShowAd /> */}
-              <Accordion
+              <ShowsAccordion
                 id="currentShows"
                 title="Shows"
                 items={accordionItems}

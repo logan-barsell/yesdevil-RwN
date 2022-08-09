@@ -1,10 +1,8 @@
-import './accordion.css';
+import './showsAccordion.css';
+import '../EditPages/Bootstrap/accordion.css';
 
 import React, { Component } from 'react';
-import EditItem from '../Modifiers/EditItem';
-import DeleteItem from '../Modifiers/DeleteItem';
-
-class Accordion extends Component {
+class ShowsAccordion extends Component {
 
   renderSubItems(content) {
     return content.map(({ prefix, value }, index) => {
@@ -23,30 +21,33 @@ class Accordion extends Component {
     return this.props.items.map((item, index) => {
       console.log(item);
 
-      const { id, header, img, subhead, content } = item;
-      const headerId = `heading${id}`;
-      const collapseId = `collapse${id}`;
+      const { id, venue, poster, date, city, content } = item;
+      const headerId = `show_heading${id}`;
+      const collapseId = `show_collapse${id}`;
 
 
       return (
         <div key={index} className="accordion-item">
           <h2 className="accordion-header" id={headerId}>
             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#${collapseId}`} aria-expanded="false" aria-controls={collapseId}>
-              <span className="header">{header}</span>
-              <div className="modify-options">
-                <EditItem item={item} editFields={this.props.editFields} onEdit={this.props.onEdit} />
-                <DeleteItem item={item} onDelete={this.props.onDelete} />
+              <div>
+                <div className="coHeader">{date}</div>
+                <div className="header">{venue}</div>
+                <div className='coHeader'>{city}</div>
               </div>
+
+              <span className="tix btn btn-sm btn-danger">Tickets</span>
+
             </button>
           </h2>
           <div id={collapseId} className="accordion-collapse collapse" aria-labelledby={headerId} data-bs-parent={`#${this.props.id}`}>
             <div className="accordion-body row">
               <div className="accordion-img col-12 col-sm-6 col-lg-5">
-                <img src={img} className="img-thumbnail" alt='preview' />
+                <img src={poster} className="img-thumbnail" alt='preview' />
               </div>
               <div className="itemInfo col-12 col-sm-6 col-lg-7 center">
                 <div className='subhead'>
-                  {subhead}
+                  {city}
                 </div>
                 <div className="content">
                   {this.renderSubItems(content)}
@@ -72,4 +73,4 @@ class Accordion extends Component {
 
 
 
-export default Accordion;
+export default ShowsAccordion;
