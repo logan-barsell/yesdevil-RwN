@@ -39,9 +39,9 @@ const HomePage = ({ fetchShows, shows }) => {
       });
     });
   }
-  if(shows.length) {
-    createAccordionItems();
-  }
+
+  createAccordionItems();
+
   
   console.log(shows);
 
