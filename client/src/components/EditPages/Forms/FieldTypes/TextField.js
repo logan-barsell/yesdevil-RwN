@@ -1,7 +1,10 @@
 import React from 'react';
 import { Field } from 'react-final-form';
 
-const required = value => (value ? undefined : 'Required');
+
+const required = value => value ? undefined : 'Required';
+
+
 
 const FBUrl = /^(https:\/\/)((w{3}\.))facebook.com\/.*/i;
 const validFbLink = value => (value.match(FBUrl) ? undefined : 'Invalid Link');
@@ -9,12 +12,33 @@ const validFbLink = value => (value.match(FBUrl) ? undefined : 'Invalid Link');
 const composeValidators = (...validators) => value =>
   validators.reduce((error, validator) => error || validator(value), undefined);
 
+// const configureValidation = (input) => {
+//   if(input === 'fbLink') {
+//     return composeValidators(required, validFbLink);
+//   }
+//   if(input === 'tixlink') {
+//     return undefined;
+//   }
+// } 
+
 const TextField = ({ label, name, initialValue }) => {
-  const validation = name === 'fbLink' ? composeValidators(required, validFbLink) : required;
-  const val = initialValue ? initialValue : '';
+  const isRequired = name !== 'tixlink' && !initialValue;
+  
+  const validation = () => {
+    if(name === 'fbLink') {
+      return composeValidators(required, validFbLink);
+    }
+    if(isRequired) {
+      return required;
+    }
+    return undefined;
+  }
+  const val = initialValue ? initialValue : undefined;
+  console.log(name);
+  
   return (
     <div className="form-group">
-      <Field name={name} validate={validation} initialValue={val}>
+      <Field name={name} validate={validation()} initialValue={val}>
         {({ input, meta }) => (
           <>
             <label htmlFor={name}>
@@ -30,7 +54,7 @@ const TextField = ({ label, name, initialValue }) => {
                 type="text"
                 name={name}
                 {...input}
-                required
+                required={isRequired}
                 autoComplete='off'
               />
             </div>

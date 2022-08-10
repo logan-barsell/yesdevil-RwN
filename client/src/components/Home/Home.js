@@ -18,7 +18,7 @@ const HomePage = ({ fetchShows, shows }) => {
 
   const createAccordionItems = () => {
     shows.map((show) => {
-      const { _id, poster, venue, city, date, doors, showtime, doorprice, advprice, tixlink } = show;
+      const { _id, poster, venue, location, date, doors, showtime, doorprice, advprice, tixlink } = show;
       const dateString = new Date(date).toLocaleString().split(',')[0];
       const doorstimeString = new Date(doors).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
       const showtimeString = new Date(showtime).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
@@ -27,14 +27,14 @@ const HomePage = ({ fetchShows, shows }) => {
         venue,
         date: dateString,
         poster,
-        city,
+        location,
         tixlink,
         content: [
           { value: dateString },
           { prefix: 'Doors: ', value: doorstimeString },
           { prefix: 'Show: ', value: showtimeString },
-          { prefix: 'Door Price: ', value: `$${doorprice}` },
-          { prefix: 'Adv. Price: ', value: `$${advprice}` }
+          { prefix: 'Door Price: ', value: doorprice ? `$${doorprice}` : null },
+          { prefix: 'Adv. Price: ', value: advprice ? `$${advprice}` : null }
         ]
       });
     });

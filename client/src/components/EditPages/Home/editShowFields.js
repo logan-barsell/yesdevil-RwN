@@ -1,5 +1,5 @@
 export default (show) => {
-  const { poster, venue, city, date, doors, showtime, doorprice, advprice, tixlink } = show ? show : null;
+  const { poster, venue, location, date, doors, showtime, doorprice, advprice, tixlink } = show ? show : null;
   return [
     {
       label: 'Upload Image',
@@ -14,10 +14,10 @@ export default (show) => {
       initialValue: venue
     },
     {
-      label: 'City',
-      name: 'city',
+      label: 'Location',
+      name: 'location',
       type: 'text',
-      initialValue: city
+      initialValue: location
     },
     {
       label: 'Date',

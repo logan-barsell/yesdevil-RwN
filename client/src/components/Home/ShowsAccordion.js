@@ -6,22 +6,24 @@ class ShowsAccordion extends Component {
 
   renderSubItems(content) {
     return content.map(({ prefix, value }, index) => {
-      return (
-        <div key={index}>
-          {prefix}
-          <span className="subItemVal">
-            {value}
-          </span>
-        </div>
-      )
-    })
+      if(value) {
+        return (
+          <div key={index}>
+            {prefix}
+            <span className="subItemVal">
+              {value}
+            </span>
+          </div>
+        );
+      }
+    });
   }
 
   renderContent() {
     return this.props.items.map((item, index) => {
       console.log(item);
 
-      const { id, venue, poster, date, city, tixlink, content } = item;
+      const { id, venue, poster, date, location, tixlink, content } = item;
       const headerId = `show_heading${id}`;
       const collapseId = `show_collapse${id}`;
 
@@ -36,12 +38,15 @@ class ShowsAccordion extends Component {
                 <div className="col-12 col-sm-6">
                   <div className="coHeader">{headerDate}</div>
                   <div className="header">{venue}</div>
-                  <div className='coHeader'>{city}</div>
+                  <div className='coHeader'>{location}</div>
                 </div>
-
-                <div className="col-12 col-sm-6 w-auto align-self-center mt-2 mt-sm-0">
-                  <a href={tixlink} target="_blank" rel="noreferrer" className="tix btn btn-sm btn-danger">Tickets</a>
-                </div>
+                {tixlink ? 
+                  <div className="col-12 col-sm-6 w-auto align-self-center mt-2 mt-sm-0">
+                    <a href={tixlink} target="_blank" rel="noreferrer" className="tix btn btn-sm btn-danger">Tickets</a>
+                  </div>
+                  : null
+                }
+                
               </div>
               
 
@@ -56,12 +61,16 @@ class ShowsAccordion extends Component {
                 <div className='subhead'>
                   {venue}
                   <div className="coSubhead">
-                    {city}
+                    {location}
                   </div>
                 </div>
                 <div className="content">
                   {this.renderSubItems(content)}
-                  <a href={tixlink} target="_blank" rel="noreferrer" className="tix btn btn-danger">Buy Tickets</a>
+                  {tixlink ? 
+                    <a href={tixlink} target="_blank" rel="noreferrer" className="tix btn btn-danger">Buy Tickets</a>
+                    : null
+                  }
+                  
                 </div>
               </div>
             </div>

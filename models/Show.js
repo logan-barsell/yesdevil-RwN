@@ -4,13 +4,13 @@ const { Schema } = mongoose;
 const ShowSchema = new Schema({
   poster: String,
   venue: String,
-  city: String,
+  location: String,
   date: Date,
   doors: Date,
   showtime: Date,
-  doorprice: String,
-  advprice: String,
-  tixlink: String
+  doorprice: {type: String, required: false},
+  advprice:  {type: String, required: false},
+  tixlink: {type: String, required: false}
 });
 
 const Show = mongoose.model('Shows', ShowSchema);

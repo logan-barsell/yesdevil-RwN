@@ -8,14 +8,17 @@ class Accordion extends Component {
 
   renderSubItems(content) {
     return content.map(({ prefix, value }, index) => {
-      return (
-        <div key={index}>
-          {prefix}
-          <span className="subItemVal">
-            {value}
-          </span>
-        </div>
-      )
+      if(value) {
+        return (
+          <div key={index}>
+            {prefix}
+            <span className="subItemVal">
+              {value}
+            </span>
+          </div>
+        );
+      }
+      
     })
   }
 

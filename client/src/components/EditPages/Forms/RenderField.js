@@ -5,6 +5,7 @@ class RenderField extends Component {
 
   renderContent() {
     const { name, label, placeholder, type, initialValue, initialValues } = this.props.field;
+    
     if (type === 'text') {
       return (
         <TextField

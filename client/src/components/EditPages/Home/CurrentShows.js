@@ -23,14 +23,13 @@ const CurrentShows = ({ fetchShows, shows }) => {
     return editShowFields(show);
   };
 
-  const editShow = (_id, { poster, venue, city, date, doors, showtime, doorprice, advprice, tixlink }) => {
+  const editShow = (_id, { poster, venue, location, date, doors, showtime, doorprice, advprice, tixlink }) => {
     const newPhoto = poster ? poster[0] : '';
-
     const updatedShow = {
       id: _id,
       poster: newPhoto,
       venue,
-      city,
+      location,
       date,
       doors,
       showtime,
@@ -54,7 +53,7 @@ const CurrentShows = ({ fetchShows, shows }) => {
 
   const createAccordionItems = () => {
     shows.map((show) => {
-      const { _id, poster, venue, city, date, doors, showtime, doorprice, advprice, tixlink } = show;
+      const { _id, poster, venue, location, date, doors, showtime, doorprice, advprice, tixlink } = show;
       const dateString = new Date(date).toLocaleString().split(',')[0];
       const doorstimeString = new Date(doors).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
       const showtimeString = new Date(showtime).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
@@ -65,14 +64,14 @@ const CurrentShows = ({ fetchShows, shows }) => {
         name: venue,
         header: venue,
         img: poster,
-        subhead: city,
+        subhead: location,
         content: [
           { prefix: 'Date: ', value: dateString },
           { prefix: 'Doors: ', value: doorstimeString },
           { prefix: 'Show: ', value: showtimeString },
           { prefix: 'Door Price: ', value: doorprice },
           { prefix: 'Adv. Price: ', value: advprice },
-          { prefix: 'Ticket Link: ', value: (<a style={{ 'textDecoration': 'underline' }} target="_blank" rel="noreferrer" href={tixlink}>Link</a>) }
+          { prefix: 'Ticket Link: ', value: tixlink ? (<a style={{ 'textDecoration': 'underline' }} target="_blank" rel="noreferrer" href={tixlink}>Link</a>) : null }
         ]
       });
     });

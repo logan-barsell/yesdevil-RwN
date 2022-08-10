@@ -10,8 +10,8 @@ const ADD_SHOW_FIELDS = [
     type: 'text'
   },
   {
-    label: 'City',
-    name: 'city',
+    label: 'Location',
+    name: 'location',
     type: 'text'
   },
   {

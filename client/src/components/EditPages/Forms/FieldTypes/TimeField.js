@@ -13,8 +13,6 @@ const required = value => (value ? undefined : 'Required');
 
 const TimeField = ({ label, name, placeholder, initialValues }) => {
   const val = initialValues ? initialValues : '';
-  console.log(val);
-  console.log(val.doors, val.showtime);
 
 
   // const renderTimePicker = ({ name, placeholder, input: { value, onChange } }) => {

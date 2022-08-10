@@ -18,7 +18,6 @@ function handleLogin(instance) {
     window.dispatchEvent(navEvent);
   });
 }
-
 const BioPage = ({ fetchMembers, members }) => {
   const { instance } = useMsal();
 
@@ -96,18 +95,17 @@ const BioPage = ({ fetchMembers, members }) => {
 
         <br />
 
-
-        <div className="members">
-
-          <SecondaryNav label="Members" />
-
-          <br />
-
-          <div className="container pb-4">
-            {renderMembers}
+        {members.length ? 
+        
+          <div className="members">
+            <SecondaryNav label="Members" />
+            <br />
+            <div className="container pb-4">
+              {renderMembers}
+            </div>
           </div>
-
-        </div>
+        : null
+        }
 
       </div>
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field } from 'react-final-form';
 
-const required = value => (value ? undefined : 'Required');
+// const required = value => (value ? undefined : 'Required');
 
 const PriceField = ({ label, name, placeholder, initialValues }) => {
   const val = initialValues ? initialValues : '';
@@ -15,7 +15,7 @@ const PriceField = ({ label, name, placeholder, initialValues }) => {
         <Field
           name={name.doorprice}
           placeholder={placeholder.doorprice}
-          validate={required}
+          // validate={required}
           initialValue={val.doorprice}
         >
           {({ input, meta, name, placeholder }) => (
@@ -28,7 +28,7 @@ const PriceField = ({ label, name, placeholder, initialValues }) => {
                 name={name}
                 placeholder={placeholder}
                 {...input}
-                required
+                // required
                 autoComplete='off'
               />
             </>
@@ -37,7 +37,7 @@ const PriceField = ({ label, name, placeholder, initialValues }) => {
         <Field
           name={name.advprice}
           placeholder={placeholder.advprice}
-          validate={required}
+          // validate={required}
           initialValue={val.advprice}
         >
           {({ input, meta, name, placeholder }) => (
@@ -50,7 +50,7 @@ const PriceField = ({ label, name, placeholder, initialValues }) => {
                 name={name}
                 placeholder={placeholder}
                 {...input}
-                required
+                // required
               />
             </>
           )}

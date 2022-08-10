@@ -10,7 +10,7 @@ const AddShow = ({ fetchShows }) => {
 
 
 
-  const onSubmit = ({ poster, venue, city, date, doors, showtime, doorprice, advprice, tixlink }) => {
+  const onSubmit = ({ poster, venue, location, date, doors, showtime, doorprice, advprice, tixlink }) => {
 
     const newDate = date.getTime();
     const newDoors = doors.getTime();
@@ -19,7 +19,7 @@ const AddShow = ({ fetchShows }) => {
     const newShow = {
       poster: poster[0],
       venue,
-      city,
+      location,
       date: newDate,
       doors: newDoors,
       showtime: newShowtime,
@@ -32,7 +32,9 @@ const AddShow = ({ fetchShows }) => {
 
     const payload = new FormData();
     for (let key in newShow) {
-      payload.append(key, newShow[key]);
+      if(newShow[key] !== undefined) {
+        payload.append(key, newShow[key]);
+      }
     }
 
     axios.post('/api/addShow', payload).then(res => {
