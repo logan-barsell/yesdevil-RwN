@@ -10,13 +10,12 @@ import { useMsal } from "@azure/msal-react";
 import { loginRequest } from "../../authConfig";
 
 function handleLogin(instance) {
-  instance.loginPopup(loginRequest).catch(e => {
-    console.error(e);
-    return;
-  }).then(() => {
+  instance.loginPopup(loginRequest).then(() => {
     window.history.pushState({}, '', '/editHome');
     const navEvent = new PopStateEvent('popstate');
     window.dispatchEvent(navEvent);
+  }).catch(e => {
+    console.error(e);
   });
 }
 const BioPage = ({ fetchMembers, members }) => {
