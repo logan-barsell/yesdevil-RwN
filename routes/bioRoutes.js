@@ -71,7 +71,7 @@ module.exports = app => {
           }
         }));
       }
-    }).catch(err => console.log(err));
+    }).catch(err => console.log('HERE IS THE ERROR',err));
     res.end();
   });
 };
