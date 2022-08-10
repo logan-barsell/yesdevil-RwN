@@ -45,7 +45,7 @@ const CurrentMembers = ({ fetchMembers, members }) => {
 
     axios.post(`/api/updateMember/${_id}`, payload).then(res => {
       fetchMembers();
-    });
+    }).catch(err => console.log(err));
 
   }
 
