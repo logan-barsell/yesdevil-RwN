@@ -1,4 +1,4 @@
-const keys = require('./config/keys');
+const keys = require('../../config/keys');
 
 export const msalConfig = {
   auth: {
