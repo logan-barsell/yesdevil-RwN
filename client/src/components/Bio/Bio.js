@@ -15,7 +15,7 @@ function handleLogin(instance) {
     const navEvent = new PopStateEvent('popstate');
     window.dispatchEvent(navEvent);
   }).catch(e => {
-    console.error(e);
+    console.error("ERROR: >>>", e);
   });
 }
 const BioPage = ({ fetchMembers, members }) => {
