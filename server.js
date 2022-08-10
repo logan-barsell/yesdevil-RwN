@@ -4,6 +4,11 @@ const bodyParser = require('body-parser');
 
 const keys = require('./config/keys');
 
+if(process.env.NODE_ENV == 'production') {
+  require('dotenv').config();
+} 
+
+
 mongoose.connect(keys.mongoURI);
 
 const db = mongoose.connection;

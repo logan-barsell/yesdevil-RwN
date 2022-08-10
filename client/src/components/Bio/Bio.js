@@ -10,13 +10,12 @@ import { useMsal } from "@azure/msal-react";
 import { loginRequest } from "../../authConfig";
 
 function handleLogin(instance) {
-  instance.loginPopup(loginRequest).then((response) => {
-    console.log(response);
+  instance.loginPopup(loginRequest).then(() => {
     window.history.pushState({}, '', '/editHome');
     const navEvent = new PopStateEvent('popstate');
     window.dispatchEvent(navEvent);
   }).catch(e => {
-    console.log("ERROR: >>>", e);
+    console.error(e);
   });
 }
 const BioPage = ({ fetchMembers, members }) => {
@@ -99,7 +98,7 @@ const BioPage = ({ fetchMembers, members }) => {
         {members.length ? 
         
           <div className="members">
-            <SecondaryNav label="Members List" />
+            <SecondaryNav label="Members" />
             <br />
             <div className="container pb-4">
               {renderMembers}

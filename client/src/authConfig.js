@@ -1,8 +1,10 @@
+const keys = require('./config/keys');
+
 export const msalConfig = {
   auth: {
-    clientId: "ee2c531a-b402-4bd5-ab01-df3ff3900ab0",
-    authority: "https://login.microsoftonline.com/5184daaf-16a2-479b-8174-79d2e7257401", // This is a URL (e.g. https://login.microsoftonline.com/{your tenant ID})
-    redirectUri: "http://localhost:3000",
+    clientId: keys.clientId,
+    authority: keys.authorityURL, // This is a URL (e.g. https://login.microsoftonline.com/{your tenant ID})
+    redirectUri: keys.redirectURI,
   },
   cache: {
     cacheLocation: "sessionStorage", // This configures where your cache will be stored
