@@ -46,6 +46,7 @@ module.exports = app => {
   });
 
   app.post('/api/updateMember/:id', upload().single('bioPic'), async (req, res) => {
+    console.log(req.body);
     const updatedFile = req.file ? req.file.filename : false;
     const updatedMember = {};
     for (let key in req.body) {
@@ -53,6 +54,7 @@ module.exports = app => {
         updatedMember[key] = req.body[key];
       }
     }
+    console.log(updatedMember);
     if (updatedFile) {
       updatedMember['bioPic'] = `images/bio/${updatedFile}`;
     }
@@ -65,11 +67,11 @@ module.exports = app => {
           if (err) {
             console.log(err);
           } else {
-            console.log('Deleted image');
+            console.log('Deleted previous image');
           }
         }));
       }
-    });
+    }).catch(err => console.log(err));
     res.end();
   });
 };
