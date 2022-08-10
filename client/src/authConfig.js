@@ -1,10 +1,8 @@
-const keys = require('../../config/keys');
-
 export const msalConfig = {
   auth: {
-    clientId: keys.clientId,
-    authority: keys.authorityURL, // This is a URL (e.g. https://login.microsoftonline.com/{your tenant ID})
-    redirectUri: keys.redirectURI,
+    clientId: process.env.REACT_APP_CLIENT_ID,
+    authority: process.env.REACT_APP_AUTHORITY_URL, // This is a URL (e.g. https://login.microsoftonline.com/{your tenant ID})
+    redirectUri: process.env.REACT_APP_REDIRECT_URI,
   },
   cache: {
     cacheLocation: "sessionStorage", // This configures where your cache will be stored
