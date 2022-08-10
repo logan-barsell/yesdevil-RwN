@@ -10,7 +10,8 @@ import { useMsal } from "@azure/msal-react";
 import { loginRequest } from "../../authConfig";
 
 function handleLogin(instance) {
-  instance.loginPopup(loginRequest).then(() => {
+  instance.loginPopup(loginRequest).then((response) => {
+    console.log(response);
     window.history.pushState({}, '', '/editHome');
     const navEvent = new PopStateEvent('popstate');
     window.dispatchEvent(navEvent);
