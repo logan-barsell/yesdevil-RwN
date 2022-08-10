@@ -16,7 +16,7 @@ function handleLogin(instance) {
     const navEvent = new PopStateEvent('popstate');
     window.dispatchEvent(navEvent);
   }).catch(e => {
-    console.error("ERROR: >>>", e);
+    console.log("ERROR: >>>", e);
   });
 }
 const BioPage = ({ fetchMembers, members }) => {
@@ -99,7 +99,7 @@ const BioPage = ({ fetchMembers, members }) => {
         {members.length ? 
         
           <div className="members">
-            <SecondaryNav label="Members" />
+            <SecondaryNav label="Members List" />
             <br />
             <div className="container pb-4">
               {renderMembers}
