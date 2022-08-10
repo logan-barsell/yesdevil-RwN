@@ -12,8 +12,8 @@ import { loginRequest } from "../../authConfig";
 function handleLogin(instance) {
   instance.loginPopup(loginRequest).catch(e => {
     console.error(e);
-  }).then((res, error) => {
-    console.log(res, error);
+    return;
+  }).then(() => {
     window.history.pushState({}, '', '/editHome');
     const navEvent = new PopStateEvent('popstate');
     window.dispatchEvent(navEvent);
