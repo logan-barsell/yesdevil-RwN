@@ -46,7 +46,7 @@ module.exports = app => {
   });
 
   app.post('/api/updateMember/:id', upload().single('bioPic'), async (req, res) => {
-    console.log(req.body);
+    console.log("REQUEST", req.body);
     const updatedFile = req.file ? req.file.filename : false;
     const updatedMember = {};
     for (let key in req.body) {
@@ -54,7 +54,7 @@ module.exports = app => {
         updatedMember[key] = req.body[key];
       }
     }
-    console.log(updatedMember);
+    console.log('updated Member:', updatedMember);
     if (updatedFile) {
       updatedMember['bioPic'] = `images/bio/${updatedFile}`;
     }
