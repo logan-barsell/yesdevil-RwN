@@ -28,8 +28,8 @@ const DateField = ({ label, name, initialValue }) => {
               selected={value}
               onChange={date => onChange(date)}
               onBlur={onBlur}
+              onFocus={(e) => e.target.readOnly = true}
               required
-              inputmode="none"
             />
           </>
         )}
