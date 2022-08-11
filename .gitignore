@@ -24,7 +24,3 @@ yarn-debug.log*
 yarn-error.log*
 
 dev.js
-
-authConfig.js
-client/public/images/bio/*
-client/public/images/shows/*
