@@ -12,7 +12,7 @@ import youtube from '../../images/icons/youtube.png';
 const BottomNav = ({ routes }) => {
   return (
     <>
-      <nav id="bottomNav" className="navbar navbar-light justify-content-around">
+      <nav id="bottomNav" className="navbar navbar-light justify-content-center">
         {/* Button trigger modal */}
         <div className="col-md-7">
           <div className="row justify-content-center">
@@ -62,7 +62,7 @@ const BottomNav = ({ routes }) => {
         </div>
 
 
-        <div className="iconsNav col-auto justify-content-center mx-1">
+        <div className="iconsNav col-auto justify-content-center mx-auto">
           <a className="" target="_blank" rel="noreferrer" href="https://www.facebook.com/YESDEVIL/"><img className="hvr-grow" src={facebook} alt="" /></a>
           <a className="w" target="_blank" rel="noreferrer" href="https://www.instagram.com/yes_devil/?hl=en"><img className="hvr-grow" src={insta} alt="" /></a>
           <a className="" target="_blank" rel="noreferrer" href="https://www.youtube.com/channel/UC_jExvqWhRlM-gBt9iEsLxA"><img className="hvr-grow" src={youtube} alt="" /></a>
