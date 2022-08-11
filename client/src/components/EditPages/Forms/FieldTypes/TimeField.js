@@ -54,13 +54,13 @@ const TimeField = ({ label, name, placeholder, initialValues }) => {
               selected={value}
               onChange={date => onChange(date)}
               onBlur={onBlur}
+              onFocus={(e) => e.target.readOnly = true}
               showTimeSelect
               showTimeSelectOnly
               timeIntervals={15}
               timeCaption="Time"
               dateFormat="h:mm aa"
               required
-              inputmode="none"
             />
           )}
         </Field>
@@ -69,7 +69,6 @@ const TimeField = ({ label, name, placeholder, initialValues }) => {
           placeholder={placeholder.showtime}
           validate={required}
           initialValue={new Date(val.showtime).getTime()}
-          inputmode="none"
         >
           {({ name, placeholder, meta, input: { value, onChange, onBlur } }) => (
             <DatePicker
@@ -79,6 +78,7 @@ const TimeField = ({ label, name, placeholder, initialValues }) => {
               selected={value}
               onChange={date => onChange(date)}
               onBlur={onBlur}
+              onFocus={(e) => e.target.readOnly = true}
               showTimeSelect
               showTimeSelectOnly
               timeIntervals={15}
