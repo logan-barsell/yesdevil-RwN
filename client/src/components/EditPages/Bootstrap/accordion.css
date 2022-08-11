@@ -85,7 +85,8 @@
 }
 .addButton.btn {
   margin: 27px auto;
-  max-width: 420px;
+  width: 69%;
+  min-width: 250px;
 }
 
 .bi-plus-square-fill {

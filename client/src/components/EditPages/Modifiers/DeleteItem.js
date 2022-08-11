@@ -61,7 +61,7 @@ const DeleteItem = ({ item, onDelete }) => {
   const DeleteButton = () => {
     return (
       <div
-        className="btn-sm btn-danger"
+        className="btn btn-sm btn-danger"
         type="button"
         data-bs-toggle="modal"
         data-bs-target={`#${modalProps.id}`}>

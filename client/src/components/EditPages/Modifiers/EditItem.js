@@ -21,7 +21,7 @@ const EditItem = ({ item, editFields, onEdit }) => {
       <div
         data-bs-toggle="modal"
         data-bs-target={`#${modalProps.id}`}
-        className="btn-sm btn-dark"
+        className="btn btn-sm btn-dark align-middle"
         type="button"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-pencil-square" viewBox="0 0 16 16">

@@ -33,11 +33,11 @@ const ModalForm = ({ onSubmit, fields }) => {
             </div>
             <div className="modal-footer">
               <div className="d-grid col-auto">
-                <div onClick={() => {
+                <button onClick={() => {
                   // form.restart();
                   // document.querySelector('.upload').value = null;
                   onFormRestart(form);
-                }} type="button" className="btn btn-dark" data-bs-dismiss="modal">Cancel</div>
+                }} type="button" className="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
               </div>
               <div className="d-grid col-6">
                 <button
