@@ -34,7 +34,6 @@ const TextField = ({ label, name, initialValue }) => {
     return undefined;
   }
   const val = initialValue ? initialValue : undefined;
-  console.log(name);
   
   return (
     <div className="form-group">
