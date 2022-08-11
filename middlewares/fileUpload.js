@@ -3,11 +3,11 @@ module.exports = () => {
 
   const multerStorage = multer.diskStorage({
     destination: (req, file, cb) => {
-      // if (file.fieldname === 'bioPic') {
-        cb(null, process.env.UPLOAD_PATH);
-      // } else if (file.fieldname === 'poster') {
-        // cb(null, 'client/public/images/shows');
-        // }
+      if (process.env.NODE_ENV === 'production') {
+        cb(null, 'client/build/images');
+      } else {
+        cb(null, 'client/public/images');
+        }
     },
     filename: (req, file, cb) => {
       const ext = file.mimetype.split('/')[1];

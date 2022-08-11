@@ -11,7 +11,7 @@ module.exports = app => {
     for (let key in req.body) {
       newMember[key] = req.body[key];
     }
-    newMember['bioPic'] = `images/bio/${req.file.filename}`;
+    newMember['bioPic'] = `images/${req.file.filename}`;
 
     const member = new memberModel(newMember);
     try {
@@ -56,7 +56,7 @@ module.exports = app => {
     }
     console.log('updated Member:', updatedMember);
     if (updatedFile) {
-      updatedMember['bioPic'] = `images/bio/${updatedFile}`;
+      updatedMember['bioPic'] = `images/${updatedFile}`;
     }
 
     await memberModel.findOneAndUpdate({ _id: updatedMember.id },
