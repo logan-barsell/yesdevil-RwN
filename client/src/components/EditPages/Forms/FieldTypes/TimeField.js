@@ -60,6 +60,7 @@ const TimeField = ({ label, name, placeholder, initialValues }) => {
               timeCaption="Time"
               dateFormat="h:mm aa"
               required
+              readOnly
             />
           )}
         </Field>

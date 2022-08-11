@@ -29,6 +29,7 @@ const DateField = ({ label, name, initialValue }) => {
               onChange={date => onChange(date)}
               onBlur={onBlur}
               required
+              readOnly
             />
           </>
         )}
