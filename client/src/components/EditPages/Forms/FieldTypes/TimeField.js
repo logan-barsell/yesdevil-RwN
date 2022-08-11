@@ -60,7 +60,7 @@ const TimeField = ({ label, name, placeholder, initialValues }) => {
               timeCaption="Time"
               dateFormat="h:mm aa"
               required
-              inputMode="none"
+              inputmode="none"
             />
           )}
         </Field>
@@ -69,7 +69,7 @@ const TimeField = ({ label, name, placeholder, initialValues }) => {
           placeholder={placeholder.showtime}
           validate={required}
           initialValue={new Date(val.showtime).getTime()}
-          readOnly
+          inputmode="none"
         >
           {({ name, placeholder, meta, input: { value, onChange, onBlur } }) => (
             <DatePicker
