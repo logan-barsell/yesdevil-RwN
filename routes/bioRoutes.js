@@ -4,8 +4,6 @@ const upload = require('../middlewares/fileUpload');
 const memberModel = require('../models/Member');
 
 const filePath = process.env.NODE_ENV === 'production' ? 'client/build/' : 'client/public/';
-console.log('filePath: ', filePath, process.env.NODE_ENV);
-
 
 module.exports = app => {
 

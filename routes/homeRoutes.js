@@ -2,6 +2,8 @@ const fs = require('fs');
 const upload = require('../middlewares/fileUpload');
 const showModel = require('../models/Show');
 
+const filePath = process.env.NODE_ENV === 'production' ? 'client/build/' : 'client/public/';
+
 module.exports = app => {
 
   app.post('/api/addShow', upload().single('poster'), async (req, res) => {
@@ -9,7 +11,7 @@ module.exports = app => {
     for (let key in req.body) {
       newShow[key] = req.body[key];
     }
-    newShow['poster'] = `images/shows/${req.file.filename}`;
+    newShow['poster'] = `images/${req.file.filename}`;
     console.log(newShow);
     const show = new showModel(newShow);
 
@@ -39,14 +41,14 @@ module.exports = app => {
       }
     }
     if (updatedFile) {
-      updatedShow['poster'] = `images/shows/${updatedFile}`;
+      updatedShow['poster'] = `images/${updatedFile}`;
     }
 
     await showModel.findOneAndUpdate({ _id: updatedShow.id },
       updatedShow
     ).then(res => {
       if (updatedFile) {
-        fs.unlink(`client/public/${res.poster}`, (err => {
+        fs.unlink(`${filePath}${res.poster}`, (err => {
           if (err) {
             console.log(err);
           } else {
@@ -60,7 +62,7 @@ module.exports = app => {
 
   app.get('/api/deleteShow/:id', async (req, res) => {
     await showModel.findOneAndDelete({ _id: req.params.id }).then(res => {
-      fs.unlink(`client/public/${res.poster}`, (err => {
+      fs.unlink(`${filePath}${res.poster}`, (err => {
         if (err) {
           console.log(err);
         } else {
