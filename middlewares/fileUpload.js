@@ -2,6 +2,7 @@ module.exports = () => {
   const multer = require('multer');
 
   const uploadPath = process.env.NODE_ENV === 'production' ? 'client/build/images' : 'client/public/images';
+  console.log('upload path:', uploadPath);
 
   const multerStorage = multer.diskStorage({
     destination: (req, file, cb) => {
