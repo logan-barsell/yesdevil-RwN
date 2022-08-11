@@ -3,6 +3,8 @@ const fs = require('fs');
 const upload = require('../middlewares/fileUpload');
 const memberModel = require('../models/Member');
 
+const filePath = process.env.NODE_ENV === 'production' ? 'client/build/' : 'client/public';
+
 
 module.exports = app => {
 
@@ -27,7 +29,7 @@ module.exports = app => {
       console.log(req.params);
       const response = await memberModel.findOneAndDelete({ _id: req.params.id });
       console.log(response);
-      fs.unlink(`client/public/${response.bioPic}`, (err => {
+      fs.unlink(`${filePath}${response.bioPic}`, (err => {
         if (err) {
           console.log(err);
         } else {
@@ -63,7 +65,7 @@ module.exports = app => {
       updatedMember
     ).then(res => {
       if (updatedFile) {
-        fs.unlink(`client/public/${res.bioPic}`, (err => {
+        fs.unlink(`${filePath}${res.bioPic}`, (err => {
           if (err) {
             console.log(err);
           } else {
