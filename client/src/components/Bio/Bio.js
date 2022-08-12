@@ -84,7 +84,7 @@ const BioPage = ({ fetchMembers, members }) => {
           </div>
 
           <div className="row justify-content-center bio">
-            <p><span>We are <span className="yesdevil">YES DEVIL</span></span> , a hard rock band currently based out of the San Francisco Bay Area. Our sound is shaped by a wide range of influences from a variety of genres. From the bluesy origins of Rock 'N' Roll to in your face Heavy Metal, we have a modern take on the classic sounds that have shaped rock music into what it is today. After releasing our first EP, <a href="https://itunes.apple.com/us/album/get-damned-ep/924263735" target="_blank" rel="noreferrer">Get Damned</a>, under our original band name and line-up (<a href="https://www.reverbnation.com/se7endead" target="_blank" rel="noreferrer">Se7en Dead</a>), a series of break-ups and line-up changes prompted us to rebrand ourselves a handful of times before finally re-emerging as Yes Devil. With our new full length album, <a href="/music">The High Cost of Living Low</a>, we tie together years of experiences we've shared together as a band. These songs embody the essence of these experiences, the lives we've lived, the people we've met, and lessons we've learned. </p>
+            <p><span>We are <span className="yesdevil">YES DEVIL</span></span> , a metal band from the San Francisco Bay Area. Our sound has been shaped by a variety of influences that all come together to create the in your face heavy metal we play today. With attitude charged riffs and groove fueled beats, we have a unique modern take to bring onto the scene.</p>
           </div>
 
         </div>
