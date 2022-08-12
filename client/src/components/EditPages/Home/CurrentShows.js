@@ -38,9 +38,13 @@ const CurrentShows = ({ fetchShows, shows }) => {
       tixlink
     };
 
+    console.log(updatedShow);
+
     const payload = new FormData();
     for (let key in updatedShow) {
-      payload.append(key, updatedShow[key]);
+      if(updatedShow[key]) {
+        payload.append(key, updatedShow[key]);
+      }
     }
 
     axios.post(`/api/updateShow/${_id}`, payload).then(res => {

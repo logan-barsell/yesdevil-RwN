@@ -4,7 +4,8 @@ import { Field } from 'react-final-form';
 // const required = value => (value ? undefined : 'Required');
 
 const PriceField = ({ label, name, placeholder, initialValues }) => {
-  const val = initialValues ? initialValues : '';
+  const doorval = initialValues ? initialValues.doorprice : '';
+  const advval = initialValues ? initialValues.advprice : '';
 
   return (
     <div className="form-group">
@@ -16,7 +17,7 @@ const PriceField = ({ label, name, placeholder, initialValues }) => {
           name={name.doorprice}
           placeholder={placeholder.doorprice}
           // validate={required}
-          initialValue={val.doorprice}
+          initialValue={doorval}
         >
           {({ input, meta, name, placeholder }) => (
             <>
@@ -38,7 +39,7 @@ const PriceField = ({ label, name, placeholder, initialValues }) => {
           name={name.advprice}
           placeholder={placeholder.advprice}
           // validate={required}
-          initialValue={val.advprice}
+          initialValue={advval}
         >
           {({ input, meta, name, placeholder }) => (
             <>

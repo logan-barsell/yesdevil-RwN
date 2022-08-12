@@ -1,5 +1,6 @@
 import './Bio.css';
 import vango from '../../images/logos/vango.png';
+import followme from '../../images/aboutus/instafollow.png';
 
 import React, { useEffect } from 'react';
 import SecondaryNav from '../Navbar/SecondaryNav';
@@ -22,17 +23,6 @@ const BioPage = ({ fetchMembers, members }) => {
   const { instance } = useMsal();
 
   useEffect(() => {
-    const loadScript = src => {
-      const tag = document.createElement('script');
-      tag.async = false;
-      tag.src = src;
-      const body = document.getElementsByTagName('body')[0];
-      body.appendChild(tag);
-    }
-    loadScript('https://static.addtoany.com/menu/page.js');
-  }, []);
-
-  useEffect(() => {
     fetchMembers();
   }, [fetchMembers]);
 
@@ -53,9 +43,11 @@ const BioPage = ({ fetchMembers, members }) => {
                 {role}
               </p>
             </div>
-            <div className="row">
-              <div className="col-auto a2a_kit a2a_kit_size_32 a2a_default_style a2a_follow">
-                <a href="#!" className="a2a_button_instagram" data-a2a-follow={instaTag}> </a>
+            <div className="row justify-content-center">
+              <div className="col-auto">
+                <a href={instaTag} target="_blank" rel="noreferrer">
+                  <img className="instafollow" src={followme} alt="Follow Me"/>
+                </a>
               </div>
             </div>
           </div>

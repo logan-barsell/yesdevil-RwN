@@ -38,7 +38,9 @@ const CurrentMembers = ({ fetchMembers, members }) => {
 
     const payload = new FormData();
     for (let key in updatedMember) {
-      payload.append(key, updatedMember[key]);
+      if(updatedMember[key]) {
+        payload.append(key, updatedMember[key]);
+      }
     }
 
     axios.post(`/api/updateMember/${_id}`, payload).then(res => {
@@ -52,6 +54,7 @@ const CurrentMembers = ({ fetchMembers, members }) => {
   const createAccordionItems = () => {
     members.map((member, index) => {
       const { _id, bioPic, name, role, instaTag } = member;
+      const parsedInsta = new URL(instaTag).pathname.replace('/', '');
       return accordionItems.push({
         data: member,
         group: 'members',
@@ -61,7 +64,7 @@ const CurrentMembers = ({ fetchMembers, members }) => {
         img: bioPic,
         subhead: role,
         content: [
-          { prefix: <Instagram />, value: instaTag }
+          { prefix: <Instagram />, value: parsedInsta }
         ]
       });
     });

@@ -5,18 +5,6 @@ import { Field } from 'react-final-form';
 const required = value => value ? undefined : 'Required';
 
 
-// const composeValidators = (...validators) => value =>
-//   validators.reduce((error, validator) => error || validator(value), undefined);
-
-// const configureValidation = (input) => {
-//   if(input === 'fbLink') {
-//     return composeValidators(required, validFbLink);
-//   }
-//   if(input === 'tixlink') {
-//     return undefined;
-//   }
-// } 
-
 const TextField = ({ label, name, initialValue }) => {
   const isRequired = name !== 'tixlink' && !initialValue;
   
@@ -26,7 +14,7 @@ const TextField = ({ label, name, initialValue }) => {
     }
     return undefined;
   }
-  const val = initialValue ? initialValue : undefined;
+  const val = initialValue ? initialValue : '';
   
   return (
     <div className="form-group">
