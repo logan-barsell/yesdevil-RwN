@@ -23,4 +23,4 @@ jobs:
           git pull
           cd client
           npm run build
-          systemctl restart nginx
+          sudo systemctl restart nginx
