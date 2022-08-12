@@ -1,4 +1,4 @@
-import slide1 from '../../images/home/newdevil.jpeg';
+import slide1 from '../../images/home/homePage.jpeg';
 
 import React from 'react';
 
