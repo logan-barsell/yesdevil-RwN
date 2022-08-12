@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Accordion from '../Bootstrap/Accordion';
 import AddMember from './AddMember';
 import editMemberFields from './editMemberFields';
-import { Facebook, Instagram, Snapchat } from './socialMediaIcons';
+import { Instagram } from './socialMediaIcons';
 
 const CurrentMembers = ({ fetchMembers, members }) => {
 
@@ -25,7 +25,7 @@ const CurrentMembers = ({ fetchMembers, members }) => {
     return editMemberFields(member);
   };
 
-  const editMember = (_id, { bioPic, name, role, fbLink, instaTag, snapName }) => {
+  const editMember = (_id, { bioPic, name, role, instaTag }) => {
     const newPhoto = bioPic ? bioPic[0] : '';
 
     const updatedMember = {
@@ -33,9 +33,7 @@ const CurrentMembers = ({ fetchMembers, members }) => {
       bioPic: newPhoto,
       name,
       role,
-      fbLink,
-      instaTag,
-      snapName
+      instaTag
     };
 
     const payload = new FormData();
@@ -53,8 +51,7 @@ const CurrentMembers = ({ fetchMembers, members }) => {
 
   const createAccordionItems = () => {
     members.map((member, index) => {
-      const { _id, bioPic, name, role, fbLink, instaTag, snapName } = member;
-      const parsedFbLink = new URL(fbLink).pathname.replace('/', '');
+      const { _id, bioPic, name, role, instaTag } = member;
       return accordionItems.push({
         data: member,
         group: 'members',
@@ -64,9 +61,7 @@ const CurrentMembers = ({ fetchMembers, members }) => {
         img: bioPic,
         subhead: role,
         content: [
-          { prefix: <Facebook />, value: parsedFbLink },
-          { prefix: <Instagram />, value: instaTag },
-          { prefix: <Snapchat />, value: snapName },
+          { prefix: <Instagram />, value: instaTag }
         ]
       });
     });

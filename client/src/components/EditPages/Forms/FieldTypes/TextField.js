@@ -5,12 +5,8 @@ import { Field } from 'react-final-form';
 const required = value => value ? undefined : 'Required';
 
 
-
-const FBUrl = /^(https:\/\/)((w{3}\.))facebook.com\/.*/i;
-const validFbLink = value => (value.match(FBUrl) ? undefined : 'Invalid Link');
-
-const composeValidators = (...validators) => value =>
-  validators.reduce((error, validator) => error || validator(value), undefined);
+// const composeValidators = (...validators) => value =>
+//   validators.reduce((error, validator) => error || validator(value), undefined);
 
 // const configureValidation = (input) => {
 //   if(input === 'fbLink') {
@@ -25,9 +21,6 @@ const TextField = ({ label, name, initialValue }) => {
   const isRequired = name !== 'tixlink' && !initialValue;
   
   const validation = () => {
-    if(name === 'fbLink') {
-      return composeValidators(required, validFbLink);
-    }
     if(isRequired) {
       return required;
     }

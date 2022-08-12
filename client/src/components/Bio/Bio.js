@@ -37,9 +37,7 @@ const BioPage = ({ fetchMembers, members }) => {
   }, [fetchMembers]);
 
   const renderMembers = members.map((member, index) => {
-    const { _id, bioPic, name, role, fbLink, instaTag, snapName } = member;
-    const parsedFbLink = new URL(fbLink).pathname.replace('/', '');
-    console.log(parsedFbLink);
+    const { _id, bioPic, name, role, instaTag} = member;
 
     return (
       <div key={_id}>
@@ -57,9 +55,7 @@ const BioPage = ({ fetchMembers, members }) => {
             </div>
             <div className="row">
               <div className="col-auto a2a_kit a2a_kit_size_32 a2a_default_style a2a_follow">
-                <a href="#!" className="a2a_button_facebook" data-a2a-follow={parsedFbLink}> </a>
                 <a href="#!" className="a2a_button_instagram" data-a2a-follow={instaTag}> </a>
-                <a href="#!" className="a2a_button_snapchat" data-a2a-follow={snapName}> </a>
               </div>
             </div>
           </div>

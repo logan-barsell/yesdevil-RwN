@@ -15,20 +15,16 @@ const AddMember = ({ fetchMembers }) => {
     },
     { label: 'Name', name: 'name', type: 'text' },
     { label: 'Role', name: 'role', type: 'text' },
-    { label: 'Facebook Link', name: 'fbLink', type: 'text' },
-    { label: 'Instagram Tag', name: 'instaTag', type: 'text' },
-    { label: 'Snapchat Username', name: 'snapName', type: 'text' }
+    { label: 'Instagram Tag', name: 'instaTag', type: 'text' }
   ];
 
-  const onSubmit = ({ bioPic, name, role, fbLink, instaTag, snapName }) => {
+  const onSubmit = ({ bioPic, name, role, instaTag }) => {
 
     const newMember = {
       bioPic: bioPic[0],
       name,
       role,
-      fbLink,
-      instaTag,
-      snapName
+      instaTag
     };
 
     const payload = new FormData();
