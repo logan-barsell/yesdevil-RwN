@@ -114,3 +114,8 @@ a.nav-item.active {
   color: darkred;
   text-shadow: 1px 1px black;
 }
+
+
+#subscribe {
+  margin: 0px 13px;
+}
