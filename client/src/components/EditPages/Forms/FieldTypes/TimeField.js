@@ -7,32 +7,8 @@ import DatePicker from 'react-datepicker';
 
 const required = value => (value ? undefined : 'Required');
 
-// const composeValidators = (...validators) => value =>
-//   validators.reduce((error, validator) => error || validator(value), undefined);
-
-
 const TimeField = ({ label, name, placeholder, initialValues }) => {
   const val = initialValues ? initialValues : '';
-
-
-  // const renderTimePicker = ({ name, placeholder, input: { value, onChange } }) => {
-  //   return (
-  //     <>
-  //       <DatePicker
-  //         placeholderText={placeholder}
-  //         name={name}
-  //         selected={value}
-  //         onChange={date => onChange(date)}
-  //         showTimeSelect
-  //         showTimeSelectOnly
-  //         timeIntervals={15}
-  //         timeCaption="Time"
-  //         dateFormat="h:mm aa"
-  //         required
-  //       />
-  //     </>
-  //   )
-  // }
 
   return (
     <div className="form-group">
