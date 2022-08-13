@@ -8,7 +8,9 @@ const filePath = process.env.NODE_ENV === 'production' ? 'client/build/' : 'clie
 module.exports = app => {
 
   app.post('/api/addMember', upload().single('bioPic'), async (req, res) => {
-    fs.copyFile(`client/build/images/${req.file.filename}`, 'client/public/');
+    fs.copyFile(`client/build/images/${req.file.filename}`, 'client/public/', err => {
+      console.log(err);
+    });
     const newMember = {};
     for (let key in req.body) {
       newMember[key] = req.body[key];
