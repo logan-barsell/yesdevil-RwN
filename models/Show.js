@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const ImageSchema = require('./Image');
 
 const ShowSchema = new Schema({
-  poster: String,
+  poster: ImageSchema,
   venue: String,
   location: String,
   date: Date,

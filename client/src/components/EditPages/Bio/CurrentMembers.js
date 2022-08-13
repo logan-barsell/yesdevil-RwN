@@ -54,6 +54,8 @@ const CurrentMembers = ({ fetchMembers, members }) => {
   const createAccordionItems = () => {
     members.map((member, index) => {
       const { _id, bioPic, name, role, instaTag } = member;
+      const blob = new Blob([Int8Array.from(bioPic.img.image.data)], {type: bioPic.img.contentType});
+      const imgURL = window.URL.createObjectURL(blob);
       const parsedInsta = new URL(instaTag).pathname.replace('/', '');
       return accordionItems.push({
         data: member,
@@ -61,7 +63,7 @@ const CurrentMembers = ({ fetchMembers, members }) => {
         id: _id,
         name,
         header: name,
-        img: bioPic,
+        img: imgURL,
         subhead: role,
         content: [
           { prefix: <Instagram />, value: parsedInsta }

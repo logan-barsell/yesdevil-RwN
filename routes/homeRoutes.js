@@ -7,12 +7,18 @@ const filePath = process.env.NODE_ENV === 'production' ? 'client/build/' : 'clie
 module.exports = app => {
 
   app.post('/api/addShow', upload().single('poster'), async (req, res) => {
+    const img = fs.readFileSync(req.file.path);
+    const encode_img = img.toString('base64');
+    const final_img = {
+        contentType: req.file.mimetype,
+        image: new Buffer.from(encode_img, 'base64')
+    };
     const newShow = {};
     for (let key in req.body) {
       newShow[key] = req.body[key];
     }
-    newShow['poster'] = `images/${req.file.filename}`;
-    console.log(newShow);
+    // newShow['poster'] = `images/${req.file.filename}`;
+    newShow['poster'] = {img: final_img};
     const show = new showModel(newShow);
 
     try {
@@ -41,7 +47,14 @@ module.exports = app => {
       }
     }
     if (updatedFile) {
-      updatedShow['poster'] = `images/${updatedFile}`;
+      // updatedShow['poster'] = `images/${updatedFile}`;
+      const img = fs.readFileSync(req.file.path);
+      const encode_img = img.toString('base64');
+      const final_img = {
+          contentType: req.file.mimetype,
+          image: new Buffer.from(encode_img, 'base64')
+      };
+      updatedShow['poster'] = { img: final_img };
     }
 
     await showModel.findOneAndUpdate({ _id: updatedShow.id },

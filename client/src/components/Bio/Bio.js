@@ -28,12 +28,16 @@ const BioPage = ({ fetchMembers, members }) => {
 
   const renderMembers = members.map((member, index) => {
     const { _id, bioPic, name, role, instaTag} = member;
+    const blob = new Blob([Int8Array.from(bioPic.img.image.data)], {type: bioPic.img.contentType});
+    console.log(blob);
+    const imgURL = window.URL.createObjectURL(blob);
+    console.log(imgURL);
 
     return (
       <div key={_id}>
         {index === 0 ? null : <hr />}
         <div className="row justify-content-center">
-          <div className="col-12 col-sm-6 bioPic"><img src={bioPic} alt={`${name}: ${role}`} /></div>
+          <div className="col-12 col-sm-6 bioPic"><img src={imgURL} alt={`${name}: ${role}`} /></div>
           <div className="col-12 col-sm-6 ind-bio">
             <div className="row">
               <h4>

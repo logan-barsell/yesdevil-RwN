@@ -8,9 +8,9 @@ const filePath = process.env.NODE_ENV === 'production' ? 'client/build/' : 'clie
 module.exports = app => {
 
   app.post('/api/addMember', upload().single('bioPic'), async (req, res) => {
-    var img = fs.readFileSync(req.file.path);
-    var encode_img = img.toString('base64');
-    var final_img = {
+    const img = fs.readFileSync(req.file.path);
+    const encode_img = img.toString('base64');
+    const final_img = {
         contentType: req.file.mimetype,
         image: new Buffer.from(encode_img, 'base64')
     };
@@ -19,8 +19,7 @@ module.exports = app => {
       newMember[key] = req.body[key];
     }
     // newMember['bioPic'] = `images/${req.file.filename}`;
-    newMember['bioPic'] = final_img;
-
+    newMember['bioPic'] = {img: final_img};
     const member = new memberModel(newMember);
     try {
       await member.save();
@@ -50,6 +49,7 @@ module.exports = app => {
 
   app.get('/api/members', async (req, res) => {
     const members = await memberModel.find({});
+    console.log(members);
     res.send(members);
   });
 
@@ -64,7 +64,14 @@ module.exports = app => {
     }
     console.log('updated Member:', updatedMember);
     if (updatedFile) {
-      updatedMember['bioPic'] = `images/${updatedFile}`;
+      // updatedMember['bioPic'] = `images/${updatedFile}`;
+      const img = fs.readFileSync(req.file.path);
+      const encode_img = img.toString('base64');
+      const final_img = {
+          contentType: req.file.mimetype,
+          image: new Buffer.from(encode_img, 'base64')
+      };
+      updatedMember['bioPic'] = {img: final_img};
     }
 
     await memberModel.findOneAndUpdate({ _id: updatedMember.id },

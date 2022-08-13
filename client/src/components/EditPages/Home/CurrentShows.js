@@ -58,6 +58,8 @@ const CurrentShows = ({ fetchShows, shows }) => {
   const createAccordionItems = () => {
     shows.map((show) => {
       const { _id, poster, venue, location, date, doors, showtime, doorprice, advprice, tixlink } = show;
+      const blob = new Blob([Int8Array.from(poster.img.image.data)], {type: poster.img.contentType});
+      const imgURL = window.URL.createObjectURL(blob);
       const dateString = new Date(date).toLocaleString().split(',')[0];
       const doorstimeString = new Date(doors).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
       const showtimeString = new Date(showtime).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
@@ -67,7 +69,7 @@ const CurrentShows = ({ fetchShows, shows }) => {
         id: _id,
         name: venue,
         header: venue,
-        img: poster,
+        img: imgURL,
         subhead: location,
         content: [
           { prefix: 'Date: ', value: dateString },
