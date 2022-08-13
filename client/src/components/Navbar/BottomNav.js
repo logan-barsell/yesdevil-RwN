@@ -17,7 +17,7 @@ const BottomNav = ({ routes }) => {
         <div className="col-md-7">
           <div className="row justify-content-center">
             <div className="col-auto">
-              <button id="subscribe" type="button" className="btn btn-danger mx-sm-3" data-bs-toggle="modal" data-bs-target="#newsletterModal">
+              <button id="subscribe" type="button" className="btn btn-sm btn-danger mx-sm-3" data-bs-toggle="modal" data-bs-target="#newsletterModal">
                 Subscribe to our Newsletter
               </button>
             </div>

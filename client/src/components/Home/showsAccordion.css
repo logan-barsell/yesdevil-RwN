@@ -19,3 +19,7 @@
 #currentShows .content .tix {
   margin-top: 13px
 }
+
+#currentShows .poster {
+  width: 62px;
+}

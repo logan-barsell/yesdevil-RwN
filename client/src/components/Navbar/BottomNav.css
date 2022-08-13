@@ -34,7 +34,7 @@
 /*BOTTOM NAV ICONS*/
 
 .iconsNav {
-  margin: auto;
+  margin: 0px 9px;
 }
 
 .iconsNav img {
@@ -43,7 +43,7 @@
   margin: 11px 7px;
 }
 
-@media only screen and (max-width: 949px) {
+@media only screen and (max-width: 587px) {
   .iconsNav {
     margin-top: 13px;
   }

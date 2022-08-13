@@ -34,7 +34,8 @@ class ShowsAccordion extends Component {
         <div key={index} className="accordion-item">
           <h2 className="accordion-header" id={headerId}>
             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#${collapseId}`} aria-expanded="false" aria-controls={collapseId}>
-              <div className="row w-100 gx-0 justify-content-between" >
+            <div className="col-auto"><img className="poster" src={poster} alt="show poster" /></div>
+              <div className="row w-100 gx-0 justify-content-between ms-2">
                 <div className="col-12 col-sm-6">
                   <div className="coHeader">{headerDate}</div>
                   <div className="header">{venue}</div>

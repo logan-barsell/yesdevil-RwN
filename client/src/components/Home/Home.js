@@ -58,7 +58,6 @@ const HomePage = ({ fetchShows, shows }) => {
 
           <div id="upcomingshows">
             <div className="row justify-content-around">
-              {/* <ShowAd /> */}
               <ShowsAccordion
                 id="currentShows"
                 title="Shows"
