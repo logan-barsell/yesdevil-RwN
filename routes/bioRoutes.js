@@ -3,11 +3,12 @@ const fs = require('fs');
 const upload = require('../middlewares/fileUpload');
 const memberModel = require('../models/Member');
 
-const filePath = process.env.NODE_ENV === 'production' ? 'client/public/' : 'client/public/';
+const filePath = process.env.NODE_ENV === 'production' ? 'client/build/' : 'client/public/';
 
 module.exports = app => {
 
   app.post('/api/addMember', upload().single('bioPic'), async (req, res) => {
+    fs.copyFile(req.file, 'client/public/');
     const newMember = {};
     for (let key in req.body) {
       newMember[key] = req.body[key];
