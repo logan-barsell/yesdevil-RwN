@@ -6,6 +6,9 @@ module.exports = () => {
   const multerStorage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, uploadPath);
+        if(process.env.NODE_ENV === 'production') {
+        cb(null, './client/build/images');
+        }
     },
     filename: (req, file, cb) => {
       const ext = file.mimetype.split('/')[1];
