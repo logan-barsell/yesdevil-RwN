@@ -8,14 +8,18 @@ const filePath = process.env.NODE_ENV === 'production' ? 'client/build/' : 'clie
 module.exports = app => {
 
   app.post('/api/addMember', upload().single('bioPic'), async (req, res) => {
-    fs.copyFile(`./client/build/images/${req.file.filename}`, `./client/public/images/`, err => {
-      console.log(err);
-    });
+    var img = fs.readFileSync(req.file.path);
+    var encode_img = img.toString('base64');
+    var final_img = {
+        contentType: req.file.mimetype,
+        image: new Buffer.from(encode_img, 'base64')
+    };
     const newMember = {};
     for (let key in req.body) {
       newMember[key] = req.body[key];
     }
-    newMember['bioPic'] = `images/${req.file.filename}`;
+    // newMember['bioPic'] = `images/${req.file.filename}`;
+    newMember['bioPic'] = final_img;
 
     const member = new memberModel(newMember);
     try {
