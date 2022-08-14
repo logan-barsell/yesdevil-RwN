@@ -92,7 +92,7 @@ const BioPage = ({ fetchMembers, members }) => {
           <div className="members">
             <SecondaryNav label="Members" />
             <br />
-            <div className="container pb-4">
+            <div className="container pb-5">
               {renderMembers}
             </div>
           </div>

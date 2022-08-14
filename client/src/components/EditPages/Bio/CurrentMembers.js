@@ -75,15 +75,21 @@ const CurrentMembers = ({ fetchMembers, members }) => {
 
   return (
     <>
-      <Accordion
-        id="membersList"
-        title="Members"
-        items={accordionItems}
-        editFields={editFields}
-        onEdit={editMember}
-        onDelete={deleteMember}
-      />
-      < AddMember />
+      <div className="row">
+        <Accordion
+          id="membersList"
+          title="Members"
+          items={accordionItems}
+          editFields={editFields}
+          onEdit={editMember}
+          onDelete={deleteMember}
+        />
+      </div>
+      <div className="row">
+        <AddMember />
+      </div>
+      
+      
     </>
   );
 }

@@ -86,15 +86,20 @@ const CurrentShows = ({ fetchShows, shows }) => {
 
   return (
     <>
+    <div className="row">
       <Accordion
-        id="showsList"
-        title="Shows"
-        items={accordionItems}
-        editFields={editFields}
-        onEdit={editShow}
-        onDelete={deleteShow}
-      />
-      < AddShow />
+          id="showsList"
+          title="Shows"
+          items={accordionItems}
+          editFields={editFields}
+          onEdit={editShow}
+          onDelete={deleteShow}
+        />
+    </div>
+    <div className="row">
+      <AddShow />
+    </div>
+      
     </>
   );
 }
