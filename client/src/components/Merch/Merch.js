@@ -17,7 +17,16 @@ const MerchPage = () => {
 
       <div className="row container justify-content-around py-3 py-lg-4" id="product-list">
         {/* <Products /> */}
-        <h1>UNDER CONSTRUCTION</h1>
+        <h1
+          style={{ 
+            "textAlign": 'center',
+            'height': '50vh',
+            'display': 'flex',
+            'justifyContent': 'center',
+            'alignItems': 'center',
+            'color': 'darkred'
+          }}
+        >UNDER CONSTRUCTION</h1>
       </div>
     </div>
 
