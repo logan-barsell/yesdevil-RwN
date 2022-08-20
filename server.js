@@ -24,6 +24,7 @@ app.use(bodyParser.urlencoded({
 
 app.use('/public', express.static(`public`));
 
+require('./routes/billingRoutes')(app);
 require('./routes/homeRoutes')(app);
 require('./routes/bioRoutes')(app);
 

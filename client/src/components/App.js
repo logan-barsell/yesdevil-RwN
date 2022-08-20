@@ -1,6 +1,7 @@
 import './App.css';
 import './Merch/Snipcart.css'
 import '../plugins/loading-bar.css';
+import '@stripe/stripe-js';
 
 import React, { useState, createContext } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -14,6 +15,7 @@ import BioPage from './Bio/Bio';
 import ContactPage from './Contact/Contact';
 import history from '../history';
 import { AuthenticatedTemplate, UnauthenticatedTemplate } from '@azure/msal-react';
+
 
 import EditPages from './EditPages';
 

@@ -6,7 +6,6 @@
 
 #product-list {
   margin-top: 30px;
-  padding: 77px 0px;
   margin: auto;
 }
 
@@ -59,6 +58,11 @@
 
 .price {
   color: white;
-  font-size: 27px;
+  font-size: 22px;
   margin-bottom: 10px;
+}
+
+.bi-cart4 {
+  margin-left: 5px;
+  margin-bottom: 3px;
 }
