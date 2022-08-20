@@ -18,7 +18,6 @@ module.exports = app => {
     for (let key in req.body) {
       newMember[key] = req.body[key];
     }
-    // newMember['bioPic'] = `images/${req.file.filename}`;
     newMember['bioPic'] = {img: final_img};
     const member = new memberModel(newMember);
     try {
@@ -49,7 +48,6 @@ module.exports = app => {
 
   app.get('/api/members', async (req, res) => {
     const members = await memberModel.find({});
-    console.log(members);
     res.send(members);
   });
 
@@ -62,9 +60,7 @@ module.exports = app => {
         updatedMember[key] = req.body[key];
       }
     }
-    console.log('updated Member:', updatedMember);
     if (updatedFile) {
-      // updatedMember['bioPic'] = `images/${updatedFile}`;
       const img = fs.readFileSync(req.file.path);
       const encode_img = img.toString('base64');
       const final_img = {

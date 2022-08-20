@@ -17,7 +17,6 @@ module.exports = app => {
     for (let key in req.body) {
       newShow[key] = req.body[key];
     }
-    // newShow['poster'] = `images/${req.file.filename}`;
     newShow['poster'] = {img: final_img};
     const show = new showModel(newShow);
 
@@ -47,7 +46,6 @@ module.exports = app => {
       }
     }
     if (updatedFile) {
-      // updatedShow['poster'] = `images/${updatedFile}`;
       const img = fs.readFileSync(req.file.path);
       const encode_img = img.toString('base64');
       const final_img = {
