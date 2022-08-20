@@ -29,7 +29,7 @@ module.exports = app => {
   });
 
   app.get('/api/shows', async (req, res) => {
-    const shows = await showModel.find({});
+    const shows = await showModel.find({}).sort({date: 1});
     try {
       res.send(shows);
     } catch (err) {

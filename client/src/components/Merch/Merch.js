@@ -16,7 +16,8 @@ const MerchPage = () => {
       <SecondaryNav label='Merchandise' />
 
       <div className="row container justify-content-around py-3 py-lg-4" id="product-list">
-        <Products />
+        {/* <Products /> */}
+        <h1>UNDER CONSTRUCTION</h1>
       </div>
     </div>
 

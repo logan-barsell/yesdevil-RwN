@@ -43,7 +43,13 @@ class ShowsAccordion extends Component {
                 </div>
                 {tixlink ? 
                   <div className="col-12 col-sm-6 w-auto align-self-center mt-2 mt-sm-0">
-                    <a href={tixlink} target="_blank" rel="noreferrer" className="tix btn btn-sm btn-danger">Tickets</a>
+                    <a 
+                      href={tixlink}
+                      onClick={(e) => window.open(e.target.href, '_blank')} 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      className="tix btn btn-sm btn-danger"
+                    >Tickets</a>
                   </div>
                   : null
                 }
@@ -68,7 +74,12 @@ class ShowsAccordion extends Component {
                 <div className="content">
                   {this.renderSubItems(content)}
                   {tixlink ? 
-                    <a href={tixlink} target="_blank" rel="noreferrer" className="tix btn btn-danger">Buy Tickets</a>
+                    <a 
+                      href={tixlink} 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      className="tix btn btn-danger"
+                    >Buy Tickets</a>
                     : null
                   }
                   
