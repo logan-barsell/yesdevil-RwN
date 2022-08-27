@@ -26,3 +26,4 @@ jobs:
           npm i
           npm run build
           sudo systemctl restart nginx
+          pm2 reload yesdevil-rwn
