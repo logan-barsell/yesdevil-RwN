@@ -50,7 +50,7 @@ module.exports = app => {
           },
           shipping_options: [
             {
-              shipping_rate: 'shr_1Lb8WPHCVtmXVGiSxfYELQOu',
+              shipping_rate: process.env.SHIPPING_RATE_ID,
             },
           ],
           mode: 'payment',
