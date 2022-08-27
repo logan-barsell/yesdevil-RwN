@@ -1,27 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import App from './App';
 import { Provider } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
-import { reducers } from './reducers';
-import thunk from 'redux-thunk';
+import { store, persistor } from './redux/store';
 // for authentication
 import { PublicClientApplication } from "@azure/msal-browser";
 import { MsalProvider } from "@azure/msal-react";
 import { msalConfig } from "./authConfig";
+import { PersistGate } from 'redux-persist/integration/react';
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
-const store = configureStore({
-  reducer: reducers,
-  middleware: [thunk]
-});
 
 ReactDOM.render(
   <Provider store={store}>
-    <MsalProvider instance={msalInstance}>
-      <App />
-    </MsalProvider>
+    <PersistGate loading={null} persistor={persistor}>
+      <MsalProvider instance={msalInstance}>
+        <App />
+      </MsalProvider>
+    </PersistGate>
   </Provider>,
   document.getElementById("root")
 );

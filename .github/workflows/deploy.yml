@@ -21,6 +21,8 @@ jobs:
         script: |
           cd /var/www/yesdevil.com/html/yesdevil-RwN
           git pull
+          npm i
           cd client
+          npm i
           npm run build
           sudo systemctl restart nginx

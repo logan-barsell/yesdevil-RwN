@@ -2,7 +2,7 @@ import spotify from '../../images/music/spotify.png';
 import appleMusic from '../../images/music/applemusic.png';
 
 import React from 'react';
-import SongCredits from '../Music/AudioPlayer/TrackContent/SongCredits';
+import SongCredits from '../../pages/Music/AudioPlayer/TrackContent/SongCredits';
 
 const ModalContent = ({ modalId, track }) => {
   const lyrics = modalId.includes('lyrics');

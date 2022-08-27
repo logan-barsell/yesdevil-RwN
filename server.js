@@ -19,8 +19,10 @@ db.once('open', function () {
 const app = express();
 
 app.use(bodyParser.urlencoded({
-  extended: true,
+  extended: false,
 }));
+
+app.use(bodyParser.json());
 
 app.use('/public', express.static(`public`));
 

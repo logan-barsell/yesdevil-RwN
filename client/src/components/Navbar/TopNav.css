@@ -13,6 +13,7 @@
 nav {
   font-size: 21px;
   background-color: black;
+  overflow: hidden;
 }
 
 .navbar-nav a.nav-link.nav-item:hover {
@@ -37,4 +38,10 @@ nav {
 .navbar-light .navbar-nav .nav-link.show,
 .navbar-light .navbar-nav .show > .nav-link {
   color: darkred;
+}
+
+.cartQuantity {
+  background-color: indianred;
+  border: 1px solid darkred;
+  text-shadow: 1px 1px darkred;
 }
