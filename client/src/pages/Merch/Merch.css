@@ -67,3 +67,21 @@
   margin-left: 5px;
   margin-bottom: 3px;
 }
+
+.toast-container {
+  z-index: 100;
+}
+
+.toast {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.toast-header img {
+  height: 33px;
+  width: 33px;
+}
+
+.toast-header {
+  background-color: black;
+  color: darkred;
+}

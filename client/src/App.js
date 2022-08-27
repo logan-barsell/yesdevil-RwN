@@ -2,7 +2,7 @@ import './App.css';
 import './plugins/loading-bar.css';
 import '@stripe/stripe-js';
 
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, createContext } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import TopNav from './components/Navbar/TopNav';
 import BottomNav from './components/Navbar/BottomNav';
@@ -21,15 +21,6 @@ export const ActiveContext = createContext();
 
 function App() {
 
-  let currentUrl;
-  useEffect(() => {
-    currentUrl = new URLSearchParams(window.location.search);
-    if(currentUrl.has('success')) {
-      console.log('hello');
-      localStorage.clear();
-      window.location = '/merch';
-    }
-  });
 
   const routes = [
     { name: 'Home', value: '/' },
@@ -39,6 +30,8 @@ function App() {
     { name: 'About Us', value: '/aboutus' },
     { name: 'Contact', value: '/contact' }
   ];
+
+  const currentUrl = window.location.pathname;
 
   let initialState;
   for (let i = 0; i < routes.length - 1; i++) {
