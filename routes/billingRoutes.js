@@ -28,7 +28,6 @@ module.exports = app => {
                 price.product
             );
             productlist.push({
-                // price: product.price,
                 quantity: product.quantity,
                 price_data: {
                     unit_amount: price.unit_amount,
@@ -57,8 +56,6 @@ module.exports = app => {
           mode: 'payment',
           success_url: `${process.env.STRIPE_REDIRECT_DOMAIN}/merch?success=true`,
           cancel_url: `${process.env.STRIPE_REDIRECT_DOMAIN}/merch?canceled=true`
-        //   success_url: `${YOUR_DOMAIN}?success=true`,
-        //   cancel_url: `${YOUR_DOMAIN}?canceled=true`,
         });
         res.send(session.url);
     });
@@ -66,7 +63,7 @@ module.exports = app => {
     app.get('/api/shipping', async (req, res) => {
         try {
             const shippingRate = await stripe.shippingRates.retrieve(
-                'shr_1Lb8WPHCVtmXVGiSxfYELQOu'
+                process.env.SHIPPING_RATE_ID
             );
             res.send(shippingRate);
         } catch (err) {
