@@ -2,10 +2,33 @@ const multer = require('multer');
 const fs = require('fs');
 const upload = require('../middlewares/fileUpload');
 const memberModel = require('../models/Member');
+const Bio = require('../models/BioText');
 
 const filePath = process.env.NODE_ENV === 'production' ? 'client/build/' : 'client/public/';
 
 module.exports = app => {
+
+  app.get('/api/bio', async (req, res) => {
+    try {
+      const bio = await Bio.find();
+      res.status(200).send(bio);
+    } catch (err) {
+      console.log(err);
+      res.status(500).send(err);
+    }
+  });
+
+  app.post('/api/updateBio', async (req, res) => {
+    const content = req.body.data;
+    try {
+      const updatedBio = await Bio.updateOne({name: 'bio'}, { text: content }, { upsert: true });
+      console.log(updatedBio);
+      res.status(200).send('updated bio');
+    } catch (err) {
+      console.log(err);
+      res.status(500).send(err);
+    }
+  });
 
   app.post('/api/addMember', upload().single('bioPic'), async (req, res) => {
     const img = fs.readFileSync(req.file.path);

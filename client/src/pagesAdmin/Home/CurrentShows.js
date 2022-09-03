@@ -85,7 +85,7 @@ const CurrentShows = ({ fetchShows, shows }) => {
   createAccordionItems();
 
   return (
-    <>
+    <div className="my-5">
     <Accordion
         id="showsList"
         title="Shows"
@@ -94,10 +94,10 @@ const CurrentShows = ({ fetchShows, shows }) => {
         onEdit={editShow}
         onDelete={deleteShow}
       />
-    <div className="d-flex">
+    <div className="d-flex mb-5">
       <AddShow />
     </div>
-    </>
+    </div>
   );
 }
 

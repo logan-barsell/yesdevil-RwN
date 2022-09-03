@@ -1,4 +1,5 @@
 import {configureStore, combineReducers} from '@reduxjs/toolkit';
+import { bioReducer } from './reducers/bioReducer';
 import { membersReducer } from './reducers/membersReducer';
 import { productsReducer } from './reducers/productsReducer';
 import { shippingReducer } from './reducers/shippingReducer';
@@ -24,6 +25,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({ 
+    currentBio: bioReducer,
     members: membersReducer,
     shows: showsReducer,
     products: productsReducer,

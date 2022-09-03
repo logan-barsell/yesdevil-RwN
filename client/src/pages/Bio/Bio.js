@@ -5,7 +5,7 @@ import followme from '../../images/aboutus/instafollow.png';
 import React, { useEffect } from 'react';
 import SecondaryNav from '../../components/Navbar/SecondaryNav';
 import { connect } from 'react-redux';
-import { fetchMembers } from '../../redux/actions';
+import { fetchBio, fetchMembers } from '../../redux/actions';
 // for authentication
 import { useMsal } from "@azure/msal-react";
 import { loginRequest } from "../../authConfig";
@@ -19,11 +19,12 @@ function handleLogin(instance) {
     console.error(e);
   });
 }
-const BioPage = ({ fetchMembers, members }) => {
+const BioPage = ({ fetchMembers, members, fetchBio, currentBio }) => {
   const { instance } = useMsal();
-
+  const bioText = currentBio[0].text;
   useEffect(() => {
     fetchMembers();
+    fetchBio();
   }, [fetchMembers]);
 
   const renderMembers = members.map((member, index) => {
@@ -80,7 +81,7 @@ const BioPage = ({ fetchMembers, members }) => {
           </div>
 
           <div className="row justify-content-center bio">
-            <p><span>We are <span className="yesdevil">YES DEVIL</span></span> , a metal band from the San Francisco Bay Area. Our sound has been shaped by a variety of influences that all come together to create the in your face heavy metal we play today. With attitude charged riffs and groove fueled beats, we have a unique modern take to bring onto the scene.</p>
+            <p><span>We are <span className="yesdevil">YES DEVIL</span></span> , &nbsp; {bioText}</p>
           </div>
 
         </div>
@@ -106,8 +107,8 @@ const BioPage = ({ fetchMembers, members }) => {
   );
 }
 
-function mapStateToProps({ members }) {
-  return { members };
+function mapStateToProps({ members, currentBio }) {
+  return { members, currentBio };
 }
 
-export default connect(mapStateToProps, { fetchMembers })(BioPage);
+export default connect(mapStateToProps, { fetchMembers, fetchBio })(BioPage);

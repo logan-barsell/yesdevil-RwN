@@ -15,7 +15,6 @@ const MerchPage = () => {
    }
  });
 
-
  useEffect(() => {
   const searchParams = new URLSearchParams(window.location.search);
   const thankyouToast = document.getElementById('thankyouToast');

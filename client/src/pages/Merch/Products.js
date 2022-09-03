@@ -14,7 +14,7 @@ const Products = ({ fetchProducts, products }) => {
   const addToCart = item => {
     dispatch(addProductToCart(item));
   };
-
+console.log(products)
 
   const renderProducts = products.length ? () => 
       products.map((item, index) => {

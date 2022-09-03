@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { FETCH_MEMBERS, FETCH_PRODUCTS, FETCH_SHOWS, FETCH_SHIPPING } from './types';
+import { FETCH_BIO, FETCH_MEMBERS, FETCH_PRODUCTS, FETCH_SHOWS, FETCH_SHIPPING } from './types';
+
+export const fetchBio = () => async dispatch => {
+  const res = await axios.get('/api/bio');
+  dispatch({ type: FETCH_BIO, payload: res.data });
+}
 
 export const fetchMembers = () => async dispatch => {
   const res = await axios.get('/api/members');

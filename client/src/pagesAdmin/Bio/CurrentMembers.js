@@ -74,7 +74,7 @@ const CurrentMembers = ({ fetchMembers, members }) => {
   createAccordionItems();
 
   return (
-    <>
+    <div className="my-5">
       <Accordion
         id="membersList"
         title="Members"
@@ -83,12 +83,10 @@ const CurrentMembers = ({ fetchMembers, members }) => {
         onEdit={editMember}
         onDelete={deleteMember}
       />
-      <div className="d-flex">
+      <div className="d-flex mb-5">
         <AddMember />
       </div>
-      
-      
-    </>
+    </div>
   );
 }
 
