@@ -39,7 +39,7 @@ const BioEdit = ({ currentBio, fetchBio }) => {
               className="form-control" 
               id="bioText"
             >
-              {currentBio[0].text}
+              {/* {currentBio[0].text} */}
             </textarea>
             <label htmlFor="bioText" >We are <span>YES DEVIL</span>,</label>
           </div>

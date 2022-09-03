@@ -21,7 +21,8 @@ function handleLogin(instance) {
 }
 const BioPage = ({ fetchMembers, members, fetchBio, currentBio }) => {
   const { instance } = useMsal();
-  const bioText = currentBio[0].text;
+  // const bioText = currentBio[0].text;
+  const bioText = 'a metal band from the San Francisco Bay Area. Our sound has been shaped by a variety of influences that all come together to create the in your face heavy metal we play today. With attitude charged riffs and groove fueled beats, we have a unique modern take to bring onto the scene.';
 
   useEffect(() => {
     fetchMembers();
