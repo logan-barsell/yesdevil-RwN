@@ -21,7 +21,7 @@ function handleLogin(instance) {
 }
 const BioPage = ({ fetchMembers, members, fetchBio, currentBio }) => {
   const { instance } = useMsal();
-  const bioText = currentBio[0].text;
+  const bioText = currentBio[0].text ? currentBio[0].text : '';
   useEffect(() => {
     fetchMembers();
     fetchBio();
