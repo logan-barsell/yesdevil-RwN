@@ -16,7 +16,7 @@
   .newsletter input {
     margin-bottom: 5px;
   }
-  input.form-control {
+  .newsletter input.form-control {
     margin-left: 0.5rem;
     width: 286px;
   }

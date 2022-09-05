@@ -1,0 +1,42 @@
+#contactEdit {
+    height: fit-content;
+    padding: 0px 18px;
+    margin-top: 81px;
+}
+
+#contactEdit h3 {
+    color: darkred;
+    text-shadow: 2px 1px #3b0600;
+    margin: 22px 0px 33px 0px;
+    font-size: 33px;
+    text-align: center;
+}
+
+#contactEdit form {
+    margin: auto;
+    padding-bottom: 100px;
+    max-width: 666px;
+}
+
+
+#contactEdit label {
+    color: darkred;
+    font-size: 27px;
+}
+
+@media screen and (max-width: 400px) {
+    #contactEdit label {
+        font-size: 24px;
+    }
+}
+
+#contactEdit .form-control {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+}
+
+#contactEdit button {
+    margin: 27px auto;
+    width: 50%;
+    min-width: 250px;
+}
