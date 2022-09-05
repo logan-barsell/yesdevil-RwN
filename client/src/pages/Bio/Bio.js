@@ -2,7 +2,7 @@ import './Bio.css';
 import vango from '../../images/logos/vango.png';
 import followme from '../../images/aboutus/instafollow.png';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import SecondaryNav from '../../components/Navbar/SecondaryNav';
 import { connect } from 'react-redux';
 import { fetchBio, fetchMembers } from '../../redux/actions';
@@ -19,15 +19,34 @@ function handleLogin(instance) {
     console.error(e);
   });
 }
+
+const initialState = {bio: ''};
 const BioPage = ({ fetchMembers, members, fetchBio, currentBio }) => {
   const { instance } = useMsal();
-  const bioText = currentBio[0].text;
-  console.log(bioText);
+  // const [state, dispatch] = useReducer(reducer, initialState);
+  // const bioState = () => currentBio[0].text;
+
+  // function reducer(state, action) {
+  //   switch(action.type) {
+  //     case 'setCurrentBio':
+  //       return {bio: bioState()};
+  //     default:
+  //       return state;
+  //   }
+  // }
 
   useEffect(() => {
     fetchMembers();
     fetchBio();
   }, [fetchMembers, fetchBio]);
+
+  const renderBio = () => {
+    return currentBio && currentBio[0].text;
+  }
+
+  // useEffect(() => {
+  //   dispatch({type: 'setCurrentBio'})
+  // }, [bioState]);
 
   const renderMembers = members.map((member, index) => {
     const { _id, bioPic, name, role, instaTag} = member;
@@ -81,7 +100,7 @@ const BioPage = ({ fetchMembers, members, fetchBio, currentBio }) => {
           </div>
 
           <div className="row justify-content-center bio">
-            <p><span>We are <span className="yesdevil">YES DEVIL</span></span> , &nbsp; {bioText}</p>
+            <p><span>We are <span className="yesdevil">YES DEVIL</span></span> , &nbsp; {renderBio()}</p>
           </div>
 
         </div>
