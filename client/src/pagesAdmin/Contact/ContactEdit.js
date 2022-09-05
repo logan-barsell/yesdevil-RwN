@@ -20,7 +20,7 @@ const ContactEdit = ({ fetchContactInfo, contactInfo }) => {
     }).catch(err => console.log(err));
   };
 
-  return (contactInfo[0] ?
+  return (
     <div id="contactEdit" className="container textForm">
         <h3>Update Contact</h3>
         <Form 
@@ -29,7 +29,7 @@ const ContactEdit = ({ fetchContactInfo, contactInfo }) => {
             <form onSubmit={handleSubmit}>
               <FormSpy subscription={{dirtyFieldsSinceLastSubmit: true}} onChange={() => setUpdated(false)}/>
               <div className="mb-3">
-                <Field name="phone" initialValue={contactInfo[0].phone}>
+                <Field name="phone" initialValue={contactInfo[0] ? contactInfo[0].phone : ''}>
                   {({ input, meta }) => (
                     <>
                       <label htmlFor="phone" className="form-label">
@@ -41,7 +41,7 @@ const ContactEdit = ({ fetchContactInfo, contactInfo }) => {
                 </Field>
               </div>
               <div className="mb-3">
-                <Field name="email" initialValue={contactInfo[0].email}>
+                <Field name="email" initialValue={contactInfo[0] ? contactInfo[0].email : ''}>
                     {({ input, meta }) => (
                       <>
                         <label htmlFor="email" className="form-label">
@@ -53,7 +53,7 @@ const ContactEdit = ({ fetchContactInfo, contactInfo }) => {
                 </Field>
               </div>
               <div className="mb-3">
-                <Field name="facebook" initialValue={contactInfo[0].facebook}>
+                <Field name="facebook" initialValue={contactInfo[0] ? contactInfo[0].facebook : ''}>
                   {({ input, meta }) => (
                     <>
                       <label htmlFor="fb" className="form-label">
@@ -68,7 +68,7 @@ const ContactEdit = ({ fetchContactInfo, contactInfo }) => {
                 </Field>
               </div>
               <div className="mb-3">
-                <Field name="instagram" initialValue={contactInfo[0].instagram} >
+                <Field name="instagram" initialValue={contactInfo[0] ? contactInfo[0].instagram : ''} >
                     {({ input, meta }) => (
                       <>
                         <label htmlFor="ig" className="form-label">
@@ -83,7 +83,7 @@ const ContactEdit = ({ fetchContactInfo, contactInfo }) => {
                 </Field>
               </div>
               <div className="mb-3">
-              <Field name="youtube" initialValue={contactInfo[0].youtube}>
+              <Field name="youtube" initialValue={contactInfo[0] ? contactInfo[0].youtube : ''}>
                 {({ input, meta }) => (
                   <>
                     <label htmlFor="yt" className="form-label">
@@ -98,7 +98,7 @@ const ContactEdit = ({ fetchContactInfo, contactInfo }) => {
               </Field>
               </div>
               <div className="mb-3">
-              <Field name="soundcloud" initialValue={contactInfo[0].soundcloud}>
+              <Field name="soundcloud" initialValue={contactInfo[0] ? contactInfo[0].soundcloud : ''}>
                 {({ input, meta }) => (
                   <>
                     <label htmlFor="sc" className="form-label">
@@ -113,7 +113,7 @@ const ContactEdit = ({ fetchContactInfo, contactInfo }) => {
               </Field>
               </div>
               <div className="mb-3">
-              <Field name="spotify" initialValue={contactInfo[0].spotify}>
+              <Field name="spotify" initialValue={contactInfo[0] ? contactInfo[0].spotify : ''}>
                 {({ input, meta }) => (
                   <>
                     <label htmlFor="sp" className="form-label">
@@ -145,7 +145,7 @@ const ContactEdit = ({ fetchContactInfo, contactInfo }) => {
             </form>
           )}
         />
-      </div> : null
+      </div>
   );
 }
 
