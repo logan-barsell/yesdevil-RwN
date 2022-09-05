@@ -24,7 +24,6 @@ class Accordion extends Component {
 
   renderContent() {
     return this.props.items.map((item, index) => {
-      console.log(item);
 
       const { id, header, img, subhead, content } = item;
       const headerId = `heading${id}`;

@@ -27,7 +27,7 @@ const BioPage = ({ fetchMembers, members, fetchBio, currentBio }) => {
   useEffect(() => {
     fetchMembers();
     fetchBio();
-  }, [fetchMembers]);
+  }, [fetchMembers, fetchBio]);
 
   const renderMembers = members.map((member, index) => {
     const { _id, bioPic, name, role, instaTag} = member;
