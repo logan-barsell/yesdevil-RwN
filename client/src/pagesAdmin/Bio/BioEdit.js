@@ -10,15 +10,15 @@ import CurrentMembers from './CurrentMembers';
 
 
 
-const initialState = {bio: ''};
 const BioEdit = ({ fetchBio, currentBio }) => {
+  const initialState = {bio: ''};
   const [state, dispatch] = useReducer(reducer, initialState);
   const [updated, setUpdated] = useState(false);
   
   function reducer(state, action) {
     switch(action.type) {
-      case 'setCurrentBio':
-        return {bio: currentBio[0].text};
+      // case 'setCurrentBio':
+      //   return {bio: currentBio[0].text};
       case 'updateBio':
         return {bio: action.payload};
       default:
@@ -30,9 +30,9 @@ const BioEdit = ({ fetchBio, currentBio }) => {
     fetchBio();
   }, [fetchBio]);
 
-  useEffect(() => {
-    dispatch({type: 'setCurrentBio'})
-  }, [currentBio[0].text]);
+  // useEffect(() => {
+  //   dispatch({type: 'setCurrentBio'})
+  // }, [currentBio[0].text]);
 
   const handleInput = e => {
     dispatch({type: 'updateBio', payload: e.target.value});
@@ -47,8 +47,10 @@ const BioEdit = ({ fetchBio, currentBio }) => {
     }).catch(err => console.log(err));
   };
 
+  const renderBio = () => {
+    return currentBio && currentBio[0].text;
+  }
 
-  
   return (
     <>
       <div id="bioEdit" className="container">
@@ -56,7 +58,7 @@ const BioEdit = ({ fetchBio, currentBio }) => {
         <form>
           <div className="mb-3 form-floating">
             <textarea
-              defaultValue={state.bio}
+              defaultValue={renderBio()}
               onChange={(e) => handleInput(e)}
               required 
               className="form-control" 

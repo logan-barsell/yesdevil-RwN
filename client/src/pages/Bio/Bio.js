@@ -100,7 +100,7 @@ const BioPage = ({ fetchMembers, members, fetchBio, currentBio }) => {
           </div>
 
           <div className="row justify-content-center bio">
-            <p><span>We are <span className="yesdevil">YES DEVIL</span></span> , &nbsp; {renderBio()}</p>
+            <p><span>We are <span className="yesdevil">YES DEVIL</span></span> , &nbsp;{renderBio()}</p>
           </div>
 
         </div>
