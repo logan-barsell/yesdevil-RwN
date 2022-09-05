@@ -23,7 +23,7 @@ module.exports = app => {
     try {
       const updatedBio = await Bio.updateOne({name: 'bio'}, { text: content }, { upsert: true });
       console.log(updatedBio);
-      res.status(200).send('updated bio');
+      res.status(200).send(content);
     } catch (err) {
       console.log(err);
       res.status(500).send(err);

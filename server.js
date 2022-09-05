@@ -29,6 +29,7 @@ app.use('/public', express.static(`public`));
 require('./routes/billingRoutes')(app);
 require('./routes/homeRoutes')(app);
 require('./routes/bioRoutes')(app);
+require('./routes/contactRoutes')(app);
 
 
 app.get('/', (req, res) => {

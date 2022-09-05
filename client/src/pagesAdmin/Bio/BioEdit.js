@@ -17,8 +17,6 @@ const BioEdit = ({ fetchBio, currentBio }) => {
   
   function reducer(state, action) {
     switch(action.type) {
-      // case 'setCurrentBio':
-      //   return {bio: currentBio[0].text};
       case 'updateBio':
         return {bio: action.payload};
       default:
@@ -29,10 +27,6 @@ const BioEdit = ({ fetchBio, currentBio }) => {
   useEffect(() => {
     fetchBio();
   }, [fetchBio]);
-
-  // useEffect(() => {
-  //   dispatch({type: 'setCurrentBio'})
-  // }, [currentBio[0].text]);
 
   const handleInput = e => {
     dispatch({type: 'updateBio', payload: e.target.value});

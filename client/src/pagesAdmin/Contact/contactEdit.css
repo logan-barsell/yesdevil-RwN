@@ -24,6 +24,10 @@
     font-size: 27px;
 }
 
+#contactEdit .bi {
+    margin-left: 5px;
+}
+
 @media screen and (max-width: 400px) {
     #contactEdit label {
         font-size: 24px;
