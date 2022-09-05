@@ -13,8 +13,6 @@ const TopNav = ({ routes }) => {
   const ref = useRef();
   const { toggle, setToggle } = useContext(ActiveContext);
 
-  console.log(cart);
-
   const menuToggle = () => {
     setToggle(toggle => !toggle);
   }

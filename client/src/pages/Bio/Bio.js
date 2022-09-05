@@ -21,8 +21,8 @@ function handleLogin(instance) {
 }
 const BioPage = ({ fetchMembers, members, fetchBio, currentBio }) => {
   const { instance } = useMsal();
-  // const bioText = currentBio[0].text;
-  const bioText = 'a metal band from the San Francisco Bay Area. Our sound has been shaped by a variety of influences that all come together to create the in your face heavy metal we play today. With attitude charged riffs and groove fueled beats, we have a unique modern take to bring onto the scene.';
+  const bioText = currentBio[0].text;
+  console.log(bioText);
 
   useEffect(() => {
     fetchMembers();
@@ -32,9 +32,7 @@ const BioPage = ({ fetchMembers, members, fetchBio, currentBio }) => {
   const renderMembers = members.map((member, index) => {
     const { _id, bioPic, name, role, instaTag} = member;
     const blob = new Blob([Int8Array.from(bioPic.img.image.data)], {type: bioPic.img.contentType});
-    console.log(blob);
     const imgURL = window.URL.createObjectURL(blob);
-    console.log(imgURL);
 
     return (
       <div key={_id}>
