@@ -33,13 +33,13 @@ class Accordion extends Component {
       return (
         <div key={index} className="accordion-item">
           <h2 className="accordion-header" id={headerId}>
-            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#${collapseId}`} aria-expanded="false" aria-controls={collapseId}>
+            <div className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#${collapseId}`} aria-expanded="false" aria-controls={collapseId}>
               <span className="header">{header}</span>
               <div className="modify-options">
                 <EditItem item={item} editFields={this.props.editFields} onEdit={this.props.onEdit} />
                 <DeleteItem item={item} onDelete={this.props.onDelete} />
               </div>
-            </button>
+            </div>
           </h2>
           <div id={collapseId} className="accordion-collapse collapse" aria-labelledby={headerId} data-bs-parent={`#${this.props.id}`}>
             <div className="accordion-body row">

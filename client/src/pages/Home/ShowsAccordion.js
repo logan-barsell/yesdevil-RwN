@@ -29,7 +29,7 @@ class ShowsAccordion extends Component {
       return (
         <div key={index} className="accordion-item">
           <h2 className="accordion-header" id={headerId}>
-            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#${collapseId}`} aria-expanded="false" aria-controls={collapseId}>
+            <div className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#${collapseId}`} aria-expanded="false" aria-controls={collapseId}>
             <div className="col-auto"><img className="poster" src={poster} alt="show poster" /></div>
               <div className="row w-100 gx-0 justify-content-between ms-2">
                 <div className="col-12 col-sm-6">
@@ -53,7 +53,7 @@ class ShowsAccordion extends Component {
               </div>
               
 
-            </button>
+            </div>
           </h2>
           <div id={collapseId} className="accordion-collapse collapse" aria-labelledby={headerId} data-bs-parent={`#${this.props.id}`}>
             <div className="accordion-body row">
