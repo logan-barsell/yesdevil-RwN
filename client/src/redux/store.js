@@ -5,6 +5,7 @@ import { membersReducer } from './reducers/membersReducer';
 import { productsReducer } from './reducers/productsReducer';
 import { shippingReducer } from './reducers/shippingReducer';
 import { showsReducer } from './reducers/showsReducer';
+import {carouselReducer } from './reducers/carouselReducer';
 import cartReducer from './cartRedux';
 import thunk from 'redux-thunk';
 import {
@@ -26,6 +27,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({ 
+    carouselImages: carouselReducer,
     contactInfo: contactReducer,
     currentBio: bioReducer,
     members: membersReducer,

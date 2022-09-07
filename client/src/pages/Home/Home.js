@@ -6,12 +6,13 @@ import Carousel from '../../components/Bootstrap/Carousel';
 import SecondaryNav from '../../components/Navbar/SecondaryNav';
 import ShowsAccordion from './ShowsAccordion';
 import { connect } from 'react-redux';
-import { fetchShows } from '../../redux/actions';
+import { fetchHomeImages, fetchShows } from '../../redux/actions';
 
-const HomePage = ({ fetchShows, shows }) => {
+const HomePage = ({ fetchShows, shows, fetchHomeImages, images }) => {
   useEffect(() => {
     fetchShows();
-  }, [fetchShows]);
+    fetchHomeImages();
+  }, [fetchShows, fetchHomeImages]);
 
   const accordionItems = [];
 
@@ -47,7 +48,7 @@ const HomePage = ({ fetchShows, shows }) => {
   return (
     <div id="home" className="fadeIn">
 
-      <Carousel />
+      {images.length > 0 && <Carousel images={images}/>}
 
       {shows[0] ?
         <>
@@ -70,8 +71,8 @@ const HomePage = ({ fetchShows, shows }) => {
   );
 }
 
-function mapStateToProps({ shows }) {
-  return { shows };
+function mapStateToProps({ shows, carouselImages }) {
+  return { shows, images: carouselImages };
 }
 
-export default connect(mapStateToProps, { fetchShows })(HomePage);
+export default connect(mapStateToProps, { fetchShows, fetchHomeImages })(HomePage);

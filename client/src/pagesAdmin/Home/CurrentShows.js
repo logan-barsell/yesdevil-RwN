@@ -77,7 +77,7 @@ const CurrentShows = ({ fetchShows, shows }) => {
           { prefix: 'Show: ', value: showtimeString },
           { prefix: 'Door Price: ', value: doorprice },
           { prefix: 'Adv. Price: ', value: advprice },
-          { prefix: 'Ticket Link: ', value: tixlink ? (<a style={{ 'textDecoration': 'underline' }} target="_blank" rel="noreferrer" href={tixlink}>Link</a>) : null }
+          { prefix: 'Ticket Link: ', value: tixlink ? (<a className="btn btn-danger btn-sm" target="_blank" rel="noreferrer" href={tixlink}>Tickets</a>) : null }
         ]
       });
     });

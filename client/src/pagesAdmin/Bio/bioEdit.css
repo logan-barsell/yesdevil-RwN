@@ -46,7 +46,7 @@
 #bioEdit .form-control {
     background-color: rgba(0, 0, 0, 0.6);
     color: white;
-    height: 200px;
+    height: 215px;
 }
 
 @media screen and (max-width: 750px) {

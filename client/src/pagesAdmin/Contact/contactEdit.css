@@ -14,8 +14,12 @@
 
 #contactEdit form {
     margin: auto;
-    padding-bottom: 100px;
+    padding: 66px;
     max-width: 666px;
+    margin-bottom: 100px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 0.3rem;
+    border: 4px solid rgba(0, 0, 0, 0.3);
 }
 
 

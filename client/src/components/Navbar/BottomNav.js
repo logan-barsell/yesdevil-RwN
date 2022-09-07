@@ -1,6 +1,3 @@
-import React from 'react';
-import NavLink from '../Routing/NavLink';
-
 import './BottomNav.css';
 import facebook from '../../images/icons/facebook.png';
 import insta from '../../images/icons/insta.png';
@@ -8,8 +5,17 @@ import soundcloud from '../../images/icons/soundcloud.png';
 import spotify from '../../images/icons/spotify.png';
 import youtube from '../../images/icons/youtube.png';
 
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { fetchContactInfo } from '../../redux/actions';
+import NavLink from '../Routing/NavLink';
 
-const BottomNav = ({ routes }) => {
+const BottomNav = ({ routes, fetchContactInfo, contactInfo }) => {
+
+  useEffect(() => {
+    fetchContactInfo();
+  }, [fetchContactInfo]);
+
   return (
     <>
       <nav id="bottomNav" className="navbar navbar-light justify-content-center">
@@ -61,14 +67,15 @@ const BottomNav = ({ routes }) => {
           </div>
         </div>
 
-
-        <div className="iconsNav col-auto justify-content-center mx-auto">
-          <a className="" target="_blank" rel="noreferrer" href="https://www.facebook.com/YESDEVIL/"><img className="hvr-grow" src={facebook} alt="" /></a>
-          <a className="w" target="_blank" rel="noreferrer" href="https://www.instagram.com/yes_devil/?hl=en"><img className="hvr-grow" src={insta} alt="" /></a>
-          <a className="" target="_blank" rel="noreferrer" href="https://www.youtube.com/channel/UC_jExvqWhRlM-gBt9iEsLxA"><img className="hvr-grow" src={youtube} alt="" /></a>
-          <a className="w" target="_blank" rel="noreferrer" href="https://soundcloud.com/yesdevil"><img className="hvr-grow" src={soundcloud} alt="" /></a>
-          <a className="" target="_blank" rel="noreferrer" href="https://open.spotify.com/album/0AHnuZiQ2wPtntjP9jOXHj?si=L2X71tETRMujmALGs8wzjg"><img className="hvr-grow" src={spotify} alt="" /></a>
-        </div>
+        {contactInfo[0] &&
+          <div className="iconsNav col-auto justify-content-center mx-auto">
+            <a className="" target="_blank" rel="noreferrer" href={contactInfo[0].facebook}><img className="hvr-grow" src={facebook} alt="" /></a>
+            <a className="w" target="_blank" rel="noreferrer" href={contactInfo[0].instagram}><img className="hvr-grow" src={insta} alt="" /></a>
+            <a className="" target="_blank" rel="noreferrer" href={contactInfo[0].youtube}><img className="hvr-grow" src={youtube} alt="" /></a>
+            <a className="w" target="_blank" rel="noreferrer" href={contactInfo[0].soundcloud}><img className="hvr-grow" src={soundcloud} alt="" /></a>
+            <a className="" target="_blank" rel="noreferrer" href={contactInfo[0].spotify}><img className="hvr-grow" src={spotify} alt="" /></a>
+          </div>
+        }
 
       </nav>
       <footer className="page-footer font-small mt-4">
@@ -94,4 +101,8 @@ const BottomNav = ({ routes }) => {
   );
 }
 
-export default BottomNav;
+function mapStateToProps({ contactInfo }) {
+  return { contactInfo };
+};
+
+export default connect(mapStateToProps, { fetchContactInfo })(BottomNav);

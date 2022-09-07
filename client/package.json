@@ -12,6 +12,7 @@
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
     "final-form": "^4.20.7",
+    "firebase": "^9.9.4",
     "history": "^5.2.0",
     "http-proxy-middleware": "^2.0.6",
     "pace-js": "^1.2.4",

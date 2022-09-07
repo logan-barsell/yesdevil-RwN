@@ -1,10 +1,39 @@
 const fs = require('fs');
 const upload = require('../middlewares/fileUpload');
 const showModel = require('../models/Show');
+const HomeImage = require('../models/HomeImage');
 
 const filePath = process.env.NODE_ENV === 'production' ? 'client/build/' : 'client/public/';
 
 module.exports = app => {
+
+  app.get('/api/getHomeImages', async (req, res) => {
+    try {
+      const images = await HomeImage.find();
+      res.status(200).send(images);
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  });
+
+  app.get('/api/removeImage/:id', async (req, res) => {
+    try {
+      await HomeImage.findOneAndDelete({_id: req.params.id});
+      res.status(200).send('deleted image');
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  })
+
+  app.post('/api/addHomeImage', async (req, res) => {
+    const image = new HomeImage(req.body);
+    try {
+      await image.save();
+      res.status(200).send(image);
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  });
 
   app.post('/api/addShow', upload().single('poster'), async (req, res) => {
     const img = fs.readFileSync(req.file.path);

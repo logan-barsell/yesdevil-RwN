@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_BIO, FETCH_MEMBERS, FETCH_PRODUCTS, FETCH_SHOWS, FETCH_SHIPPING, FETCH_CONTACT_INFO } from './types';
+import { FETCH_BIO, FETCH_MEMBERS, FETCH_PRODUCTS, FETCH_SHOWS, FETCH_SHIPPING, FETCH_CONTACT_INFO, FETCH_HOME_IMAGES } from './types';
 
 export const fetchContactInfo = () => async dispatch => {
   const res = await axios.get('/api/getContactInfo');
@@ -29,4 +29,9 @@ export const fetchProducts = () => async dispatch => {
 export const fetchShipping = () => async dispatch => {
   const res = await axios.get('/api/shipping');
   dispatch({ type: FETCH_SHIPPING, payload: res.data });
+}
+
+export const fetchHomeImages = () => async dispatch => {
+  const res = await axios.get('/api/getHomeImages');
+  dispatch({ type: FETCH_HOME_IMAGES, payload: res.data });
 }
