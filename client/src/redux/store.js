@@ -5,7 +5,8 @@ import { membersReducer } from './reducers/membersReducer';
 import { productsReducer } from './reducers/productsReducer';
 import { shippingReducer } from './reducers/shippingReducer';
 import { showsReducer } from './reducers/showsReducer';
-import {carouselReducer } from './reducers/carouselReducer';
+import { carouselReducer } from './reducers/carouselReducer';
+import { mediaReducer } from './reducers/mediaReducer';
 import cartReducer from './cartRedux';
 import thunk from 'redux-thunk';
 import {
@@ -27,6 +28,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({ 
+    media: mediaReducer,
     carouselImages: carouselReducer,
     contactInfo: contactReducer,
     currentBio: bioReducer,

@@ -110,6 +110,13 @@ iframe {
 
 #pictures {
   padding-bottom: 33px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-gap: 55px;
+  margin: 75px auto;
+  padding: 0px 27px;
+  width: 100%;
+  align-items: center;
 }
 
 .yt-api-cont {

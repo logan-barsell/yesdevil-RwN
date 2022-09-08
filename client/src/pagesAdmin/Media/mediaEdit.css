@@ -1,0 +1,72 @@
+
+#editMedia {
+    height: fit-content;
+    margin: 33px auto 100px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#editMedia h3 {
+    color: darkred;
+    text-shadow: 2px 1px #3b0600;
+    margin-top: 33px;
+    font-size: 33px;
+    text-align: center;
+}
+
+#editMedia hr {
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 44px;
+}
+
+#editMedia .currentImages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-gap: 55px;
+  margin-bottom: 77px;
+  padding: 0px 27px;
+  width: 100%;
+}
+
+#editMedia .img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 666px;
+}
+
+#editMedia .currentImages .btn-dark {
+    background-color: black;
+    padding: 0px 9px;
+    border-radius: 20px;
+    align-self: end;
+    position: relative;
+    bottom: -19px;
+    right: -20px;
+    border: 3px solid rgba(255,255,255,0.2);
+}
+
+#editMedia .currentImages img {
+    width: 100%;
+}
+
+#editMedia form {
+    width: 100%;
+    max-width: 666px;
+    margin-bottom: 75px;
+}
+
+#editMedia .selectedFile {
+    color: white;
+}
+
+#editMedia .fileUpload {
+    max-width: 333px;
+    margin: auto;
+    background-color: rgba(0,0,0,0.6);
+    border: 2px solid black;
+}
