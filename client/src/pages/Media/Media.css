@@ -124,3 +124,9 @@ iframe {
   margin: 16px auto;
   height: 19px;
 }
+
+.see-more {
+  max-width: 666px;
+  margin: 88px auto;
+  padding: 0px 27px;
+}

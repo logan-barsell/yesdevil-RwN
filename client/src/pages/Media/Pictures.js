@@ -1,35 +1,39 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { pictureRows } from './PictureRows';
 import { connect } from 'react-redux';
 import { fetchMediaImages } from '../../redux/actions';
 
+const imgCount = 12;
 const Pictures = ({ fetchMediaImages, images }) => {
+  const [limit, setLimit] = useState(imgCount);
 
   useEffect(() => {
     fetchMediaImages();
   }, [fetchMediaImages])
 
-  const renderMediaImages = images.map(image => {
+  const seeMoreImages = () => {
+    setLimit(limit + imgCount);
+  };
+
+  const renderMediaImages = images.slice(0, limit).map(image => {
     return (
         <div key={image._id} className="img-container">
           <img src={image.imgLink} alt="media" className="img-thumbnail"/>
         </div>
-      // <div key={image._id} className="row justify-content-around align-items-center">
-      //   {pictureRow.map(picture => {
-      //     return (
-      //       <div key={picture} className="col-md-5">
-      //         <div className="img-container"><img alt="" className="img-thumbnail" src={picture} /></div>
-      //       </div>
-      //     );
-      //   })}
-      // </div>
     );
   });
 
   return (
-    <div id="pictures" className="fadeIn">
-      {renderMediaImages}
-    </div>
+    <>
+      <div id="pictures" className="fadeIn">
+        {renderMediaImages}
+      </div>
+      {limit < images.length &&
+        <div className="d-grid see-more">
+          <button onClick={seeMoreImages} className="btn btn-danger">Load More Images</button>
+        </div>
+      }
+    </>
   );
 }
 
