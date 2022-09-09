@@ -6,3 +6,4 @@ export const FETCH_SHIPPING = "fetch_shipping";
 export const FETCH_CONTACT_INFO = "fetch_contact_info";
 export const FETCH_HOME_IMAGES = "fetch_home_images";
 export const FETCH_MEDIA_IMAGES = "fetch_media_images";
+export const FETCH_VIDEOS = "fetch_videos";

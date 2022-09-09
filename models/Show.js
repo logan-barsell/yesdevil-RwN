@@ -7,7 +7,7 @@ const ShowSchema = new Schema({
   venue: String,
   location: String,
   date: Date,
-  doors: Date,
+  doors: {type: Date, required: false},
   showtime: Date,
   doorprice: {type: String, required: false},
   advprice:  {type: String, required: false},

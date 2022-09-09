@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { pictureRows } from './PictureRows';
 import { connect } from 'react-redux';
 import { fetchMediaImages } from '../../redux/actions';
 

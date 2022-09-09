@@ -1,6 +1,32 @@
 const MediaImage = require('../models/MediaImage');
+const Video = require('../models/Video');
 
 module.exports = app => {
+
+    app.get('/api/getVideos', async (req, res) => {
+        const qCategory = req.query.category;
+        try {
+            let videos;
+            if(qCategory) {
+                videos = await Video.find({ category: qCategory }).sort({ date: -1 });
+            } else {
+                videos = await Video.find().sort({ date: -1 });
+            }
+            res.status(200).send(videos);
+        } catch (err) {
+            res.status(500).send(err);
+        }
+    });
+
+    app.post('/api/addVideo', async (req, res) => {
+        try {
+            const video = new Video(req.body);
+            await video.save();
+            res.status(200).send(video);
+        } catch (err) {
+            res.status(500).send(err);
+        }
+    });
 
     app.get('/api/getMediaImages', async (req, res) => {
         try {

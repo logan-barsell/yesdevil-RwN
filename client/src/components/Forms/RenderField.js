@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { TextField, DateField, TimeField, ImageUpload, PriceField } from './FieldTypes';
+import OptionsField from './FieldTypes/OptionsField';
 
 class RenderField extends Component {
 
   renderContent() {
-    const { name, label, placeholder, type, initialValue, initialValues } = this.props.field;
+    const { name, label, options, placeholder, type, initialValue, initialValues } = this.props.field;
     
     if (type === 'text') {
       return (
@@ -47,6 +48,15 @@ class RenderField extends Component {
           name={name}
           placeholder={placeholder}
           initialValues={initialValues}
+        />
+      )
+    } else if (type === 'options') {
+      return (
+        <OptionsField 
+          label={label}
+          name={name}
+          options={options}
+          initialValue={initialValue}
         />
       )
     }

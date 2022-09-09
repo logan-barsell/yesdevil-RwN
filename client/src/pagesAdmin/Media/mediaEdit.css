@@ -1,72 +1,44 @@
-
-#editMedia {
-    height: fit-content;
-    margin: 33px auto 100px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-#editMedia h3 {
-    color: darkred;
-    text-shadow: 2px 1px #3b0600;
-    margin-top: 33px;
-    font-size: 33px;
-    text-align: center;
-}
-
-#editMedia hr {
-    width: 100%;
-    margin-top: 0px;
-    margin-bottom: 44px;
-}
-
-#editMedia .currentImages {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  grid-gap: 55px;
-  margin-bottom: 77px;
-  padding: 0px 27px;
-  width: 100%;
-}
-
-#editMedia .img-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    max-width: 666px;
-}
-
-#editMedia .currentImages .btn-dark {
-    background-color: black;
-    padding: 0px 9px;
-    border-radius: 20px;
-    align-self: end;
-    position: relative;
-    bottom: -19px;
-    right: -20px;
-    border: 3px solid rgba(255,255,255,0.2);
-}
-
-#editMedia .currentImages img {
-    width: 100%;
-}
-
-#editMedia form {
-    width: 100%;
-    max-width: 666px;
-    margin-bottom: 75px;
-}
-
-#editMedia .selectedFile {
+#mediaEdit .main.nav {
+    position: sticky;
+    z-index: 1;
+    top: 95.5px;
+  }
+  
+  @media only screen and (max-width: 991px) {
+    #mediaEdit .main.nav {
+      top: 87px;
+    }
+  }
+  
+  #mediaEdit .videos-tab {
+    margin-top: 27px;
     color: white;
-}
-
-#editMedia .fileUpload {
-    max-width: 333px;
-    margin: auto;
-    background-color: rgba(0,0,0,0.6);
-    border: 2px solid black;
-}
+  }
+  
+  .videos-tab .nav-link.select {
+    color: darkred;
+  }
+ 
+  
+  #mediaEdit .main {
+    border-bottom: 1px solid white;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: sticky;
+    z-index: 1;
+    top: 95.5px;
+    box-shadow: 0px -1px 13px black;
+    font-size: 27.5px;
+  }
+  
+  #mediaEdit .nav-link.active {
+    border-color: transparent;
+    background-color: transparent;
+    color: darkred;
+    text-shadow: 2px 0.5px black;
+  }
+  #mediaEdit .nav-link:hover {
+    border-color: transparent;
+    background-color: transparent;
+    color: darkred;
+    text-shadow: 2px 0.5px black;
+  }
