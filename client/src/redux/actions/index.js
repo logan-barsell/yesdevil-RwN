@@ -40,6 +40,7 @@ export const fetchMediaImages = () => async dispatch => {
   const res = await axios.get('/api/getMediaImages');
   dispatch({ type: FETCH_MEDIA_IMAGES, payload: res.data });
 }
+
 export const fetchVideos = () => async dispatch => {
   const res = await axios.get('/api/getVideos');
   dispatch({ type: FETCH_VIDEOS, payload: res.data});

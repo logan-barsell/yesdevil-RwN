@@ -19,6 +19,7 @@ module.exports = app => {
     });
 
     app.post('/api/addVideo', async (req, res) => {
+        console.log(req.body);
         try {
             const video = new Video(req.body);
             await video.save();

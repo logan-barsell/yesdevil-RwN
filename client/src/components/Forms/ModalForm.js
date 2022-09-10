@@ -15,7 +15,8 @@ const ModalForm = ({ onSubmit, fields }) => {
 
   const onFormRestart = form => {
     form.restart();
-    document.querySelector('.upload').value = null;
+    const uploaded = document.querySelector('.upload');
+    if(uploaded) {uploaded.value = null};
   }
 
   return (

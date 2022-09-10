@@ -12,15 +12,15 @@ const OptionsField = ({ label, name, options, initialValue }) => {
                             {label}
                         </label>
                         <select 
-                            class="form-select form-control"
+                            className="form-select form-control"
                             name={name}
                             {...input}
                             required={!initialValue}
                             aria-label="Category Select"
                         >
-                            <option selected>Select a Category</option>
-                            {options.map(option => (
-                                <option value={option.value}>{option.name}</option>
+                            <option disabled>Select a Category</option>
+                            {options.map((option, index) => (
+                                <option defaultValue key={index} value={option.value}>{option.name}</option>
                             ))}
                         </select>
                     </>

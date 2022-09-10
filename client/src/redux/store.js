@@ -7,6 +7,7 @@ import { shippingReducer } from './reducers/shippingReducer';
 import { showsReducer } from './reducers/showsReducer';
 import { carouselReducer } from './reducers/carouselReducer';
 import { mediaReducer } from './reducers/mediaReducer';
+import { videosReducer } from './reducers/videosReducer';
 import cartReducer from './cartRedux';
 import thunk from 'redux-thunk';
 import {
@@ -27,7 +28,8 @@ const persistConfig = {
     storage,
 };
 
-const rootReducer = combineReducers({ 
+const rootReducer = combineReducers({
+    videos: videosReducer,
     media: mediaReducer,
     carouselImages: carouselReducer,
     contactInfo: contactReducer,

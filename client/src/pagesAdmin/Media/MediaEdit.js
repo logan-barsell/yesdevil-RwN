@@ -36,9 +36,9 @@ const MediaEdit = () => {
                 {activeTab === 0 &&
                     <PicturesEdit />
                 }
-                {activeTab === 1 &&
+                {/* {activeTab === 1 &&
                     <VideosEdit />
-                }
+                } */}
                 </div>
         </div>
     );

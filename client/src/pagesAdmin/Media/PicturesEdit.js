@@ -9,6 +9,7 @@ import app from '../firebase';
 import { Form } from 'react-final-form';
 import { ImageUpload } from '../../components/Forms/FieldTypes';
 import RemoveImage from './RemoveImage';
+import MediaNav from '../../components/Navbar/MediaNav';
 
 const imgCount = 12;
 const PicturesEdit = ({ fetchMediaImages, images }) => {
@@ -82,48 +83,51 @@ const PicturesEdit = ({ fetchMediaImages, images }) => {
     };
     
   return (
-    <div id="editPictures" className="container">
-        <h3>Edit Pictures</h3>
-        <hr/>
-        
-        <Form 
-            onSubmit={onSubmit}
-            render={({ handleSubmit, form, meta }) => (
-            <form onSubmit={async (event) => {
-                const error = await handleSubmit(event);
-                if (error) { return error; }
-                onFormRestart(form);
-                }}>
-                <ImageUpload name="pic" />
-                <div className="d-grid gap-2">
-                <button disabled={uploading} className="submit btn btn-danger mt-3">
-                    {uploading ?
-                    `Uploading... ${uploadProgress}%`
-                    :
-                    'Add to Images'
+    <>
+        {/* <MediaNav /> */}
+        <div id="editPictures" className="container">
+            <h3>Edit Pictures</h3>
+            <hr/>
+            
+            <Form 
+                onSubmit={onSubmit}
+                render={({ handleSubmit, form, meta }) => (
+                    <form onSubmit={async (event) => {
+                        const error = await handleSubmit(event);
+                        if (error) { return error; }
+                        onFormRestart(form);
+                    }}>
+                    <ImageUpload name="pic" />
+                    <div className="d-grid gap-2">
+                    <button disabled={uploading} className="submit btn btn-danger mt-3">
+                        {uploading ?
+                        `Uploading... ${uploadProgress}%`
+                        :
+                        'Add to Images'
                     }
-                </button>
+                    </button>
+                    </div>
+                </form>
+                )}
+                />
+            <div className="currentImages">
+                {images.length > 0 ? images.slice(0, limit).map(image => (
+                    <div key={image._id} className="img-container">
+                        <RemoveImage item={image} onDelete={removeImage} />
+                        <img src={image.imgLink} alt="media" />
+                    </div>
+                ))
+                :
+                <h3>No Images</h3>
+            }
+            </div>
+            {limit < images.length &&
+                <div className="d-grid see-more">
+                    <button onClick={seeMoreImages} className="btn btn-danger">Load More Images</button>
                 </div>
-            </form>
-            )}
-        />
-        <div className="currentImages">
-            {images.length > 0 ? images.slice(0, limit).map(image => (
-                <div key={image._id} className="img-container">
-                    <RemoveImage item={image} onDelete={removeImage} />
-                    <img src={image.imgLink} alt="media" />
-                </div>
-            ))
-            :
-            <h3>No Images</h3>
             }
         </div>
-        {limit < images.length &&
-            <div className="d-grid see-more">
-                <button onClick={seeMoreImages} className="btn btn-danger">Load More Images</button>
-            </div>
-        }
-    </div>
+    </>
   );
 };
 

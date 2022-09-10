@@ -13,11 +13,12 @@ const AddVideo = ({ fetchVideos }) => {
             {name: 'Music Videos', value: 'musicVids'},
             {name: 'Live Performances', value: 'liveVids'}, 
             {name: 'Vlogs', value: 'vlogs'}
-        ] 
+        ],
+        initialValue: 'musicVids'
     },
     { label: 'Title', name: 'title', type: 'text' },
-    { label: 'Date', name: 'date', type: 'date' },
-    { label: 'YouTube Link', name: 'link', type: 'text' }
+    { label: 'Release Date', name: 'date', type: 'date' },
+    { label: 'YouTube Embed Link', name: 'link', type: 'text' }
   ];
 
   const onSubmit = ({ category, title, date, link }) => {
@@ -25,16 +26,14 @@ const AddVideo = ({ fetchVideos }) => {
     const newVideo = {
       category,
       title,
-      date,
+      date: date.getTime(),
       link
     };
 
-    // const payload = new FormData();
-    // for (let key in newMember) {
-    //   payload.append(key, newMember[key]);
-    // }
+    console.log(newVideo);
 
-    axios.post('/api/addMember', newVideo).then(res => {
+    axios.post('/api/addVideo', newVideo).then(res => {
+      console.log(res);
       fetchVideos();
     });
   }
@@ -73,8 +72,8 @@ const AddVideo = ({ fetchVideos }) => {
 
 }
 
-function mapStateToProps({ media }) {
-  return { videos: media };
+function mapStateToProps({ videos }) {
+  return { videos };
 }
 
 export default connect(mapStateToProps, { fetchVideos })(AddVideo);
