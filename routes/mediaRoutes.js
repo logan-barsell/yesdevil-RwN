@@ -3,6 +3,26 @@ const Video = require('../models/Video');
 
 module.exports = app => {
 
+    app.post('/api/updateVideo', async (req, res) => {
+        const updatedVideo = req.body;
+        console.log(updatedVideo);
+        try {
+            await Video.findOneAndUpdate({ _id: updatedVideo._id }, updatedVideo);
+            res.status(200).send(updatedVideo);
+        } catch (err) {
+            res.status(500).send(err);
+        }
+    });
+
+    app.get('/api/deleteVideo/:id', async (req, res) => {
+        try {  
+            await Video.findByIdAndDelete(req.params.id);
+            res.status(200).send('deleted');
+        } catch (err) {
+            res.status(500).send(err);
+        }
+    });
+
     app.get('/api/getVideos', async (req, res) => {
         const qCategory = req.query.category;
         try {

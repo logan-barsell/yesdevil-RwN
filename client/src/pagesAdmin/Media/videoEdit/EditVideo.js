@@ -5,10 +5,9 @@ import CustomModal from '../../../components/Bootstrap/CustomModal';
 const EditItem = ({ video, editFields, onEdit }) => {
   const { _id } = video;
   const fields = editFields(video);
-  console.log(fields);
 
   const onSubmit = video => {
-    onEdit(video);
+    onEdit({_id, ...video});
   };
 
   const modalProps = {
