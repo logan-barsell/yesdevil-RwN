@@ -56,13 +56,14 @@ const BioPage = ({ fetchMembers, members, fetchBio, currentBio }) => {
     return (
       <div key={_id}>
         {index === 0 ? null : <hr />}
-        <div className="row justify-content-center">
-          <div className="col-12 col-sm-6 bioPic"><img src={imgURL} alt={`${name}: ${role}`} /></div>
-          <div className="col-12 col-sm-6 ind-bio">
+        <div className="row justify-content-center mb-5 mt-4 mx-1 gap-4">
+          <div className="col-12 col-md-5 bioPic"><img src={imgURL} alt={`${name}: ${role}`} /></div>
+          <div className="col-12 col-md-6 ind-bio">
             <div className="row">
               <h4>
                 {name}
               </h4>
+              <hr/>
               <p>
                 {role}
               </p>
@@ -85,7 +86,7 @@ const BioPage = ({ fetchMembers, members, fetchBio, currentBio }) => {
 
       <div>
 
-        <div className="container">
+        <div id="biography" className="container">
 
           <div className="row justify-content-center">
             <div className="col-7 col-sm-auto">
@@ -104,8 +105,6 @@ const BioPage = ({ fetchMembers, members, fetchBio, currentBio }) => {
           </div>
 
         </div>
-
-        <br />
 
         {members.length ? 
         

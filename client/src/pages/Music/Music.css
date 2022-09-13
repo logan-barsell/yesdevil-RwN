@@ -1,5 +1,5 @@
 #music .audioPlayer {
-  /* height: 50vh; */
-  margin: 55px auto;
+  margin: auto;
+  padding: 55px 16px;
   max-width: 666px;
 }

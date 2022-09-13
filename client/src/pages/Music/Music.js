@@ -15,12 +15,12 @@ const MusicPage = ({ fetchPlayers, players }) => {
     <div id="music" className="fadeIn">
 
       {players?.map(player => (
-        <>
+        <div>
           <SecondaryNav label={player.title} />
           <div className="audioPlayer container">
             <iframe style={{"border-radius":"12px"}} src={player.embedLink} width="100%" height="390px" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
           </div>
-        </>
+        </div>
       ))
       }
     </div>
