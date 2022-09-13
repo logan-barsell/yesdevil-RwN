@@ -11,13 +11,14 @@ import { useMsal } from "@azure/msal-react";
 import { loginRequest } from "../../authConfig";
 
 function handleLogin(instance) {
-  instance.loginPopup(loginRequest).then(() => {
-    window.history.pushState({}, '', '/editHome');
-    const navEvent = new PopStateEvent('popstate');
-    window.dispatchEvent(navEvent);
+  instance.loginRedirect(loginRequest).then(() => {
+   console.log("hello")
   }).catch(e => {
     console.error(e);
   });
+  window.history.pushState({}, '', '/editHome');
+  const navEvent = new PopStateEvent('popstate');
+  window.dispatchEvent(navEvent);
 }
 
 const initialState = {bio: ''};

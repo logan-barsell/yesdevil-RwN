@@ -8,9 +8,10 @@ import { ActiveContext } from '../../pagesAdmin';
 import { useMsal } from "@azure/msal-react";
 
 function handleLogout(instance) {
-  instance.logoutPopup().catch(e => {
+  instance.logoutRedirect().catch(e => {
     console.error(e);
   }).then(() => {
+    console.log("HELLOO AGAIN")
     window.history.pushState({}, '', '/');
     const navEvent = new PopStateEvent('popstate');
     window.dispatchEvent(navEvent);
