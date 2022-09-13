@@ -13,7 +13,7 @@ body {
 
 .pace-done .fadeIn > *:not(.pace) {
   opacity: 1;
-  animation: FadeAnim 3s ease;
+  animation: FadeAnim 1.5s ease;
 }
 
 /* .fadeIn {
