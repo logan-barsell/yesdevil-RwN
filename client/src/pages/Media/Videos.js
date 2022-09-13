@@ -5,7 +5,7 @@ import Video from './Video';
 
 const videoCount = 6;
 const Videos = ({ fetchVideos, videos }) => {
-  const [category, setCategory] = useState('musicVids');
+  const [category, setCategory] = useState('all');
   const [limit, setLimit] = useState(videoCount);
 
   useEffect(() => {
