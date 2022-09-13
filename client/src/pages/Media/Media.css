@@ -6,6 +6,7 @@
   position: sticky;
   z-index: 1;
   top: 95.5px;
+  overflow: hidden;
 }
 
 @media only screen and (max-width: 991px) {
@@ -17,6 +18,27 @@
 #blog .videos-tab {
   margin-top: 27px;
   color: white;
+}
+
+#videos {
+  padding-bottom: 33px;
+}
+
+.videos-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(318px, 1fr));
+  grid-gap: 17px;
+  padding: 27px 0px;
+}
+
+.selectCategory {
+  max-width: 350px;
+  margin: 50px auto 20px;
+}
+
+.selectCategory select.form-select, .selectCategory option {
+  background-color: rgba(0,0,0,.6);
+  color: darkred;
 }
 
 .videos-tab .nav-link.select {
@@ -72,7 +94,7 @@
   width: 100%;
   background-color: black;
   border: 1px solid black;
-  height: 230px;
+  height: 327px;
 }
 
 iframe {
@@ -81,8 +103,8 @@ iframe {
 }
 
 .blog-post {
-  margin: 33px auto;
-  max-width: 420px;
+  margin: 33px 11px;
+  max-width: 666px;
   border: 2px solid white;
   border-radius: 5px;
   background-color: black;
@@ -102,10 +124,6 @@ iframe {
 
 .blog-post .card-header {
   padding: 0px;
-}
-
-#videos {
-  padding-bottom: 13px;
 }
 
 #pictures {
@@ -129,4 +147,14 @@ iframe {
   max-width: 666px;
   margin: 88px auto;
   padding: 0px 27px;
+}
+
+#videos .see-more {
+  margin: 24px auto 88px;
+}
+
+.noVids {
+  text-align: center;
+  color: darkred;
+  margin: 15vh auto 27vh;
 }

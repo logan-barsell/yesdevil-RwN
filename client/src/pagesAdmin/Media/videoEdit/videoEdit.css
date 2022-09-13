@@ -21,7 +21,7 @@
 #videoEdit .currentVideos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(318px, 1fr));
-    grid-gap: 55px;
+    grid-gap: 27px;
     margin-bottom: 15px;
     padding: 33px 0px;
 }
@@ -40,10 +40,13 @@
     width: 100%;
     max-width: 666px;
     margin: auto;
+    padding: 17px 17px 7px 17px;
+    background-color: rgba(0,0,0,0.4);
+    border-radius: 7px;
 }
 
 .currentVideos .video {
-    height: 366px;
+    height: 327px;
     width: 100%;
 }
 

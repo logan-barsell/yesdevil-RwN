@@ -1,79 +1,58 @@
-import React from 'react';
-import { musicVideos, liveVideos, blogVideos } from './VideoDetails';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { fetchVideos } from '../../redux/actions';
+import Video from './Video';
 
-const Videos = () => {
+const videoCount = 4;
+const Videos = ({ fetchVideos, videos }) => {
+  const [category, setCategory] = useState('all');
+  const [limit, setLimit] = useState(videoCount);
 
-  const renderVideos = (video) => {
-    return (
-      <div key={`${video.type}${video.id}`}>
-        {video.id === 0 ? null : <hr />}
-        <div className="blog-post">
-          <div className="title">{video.title}</div>
-          <hr />
-          <div className="date">{video.date}</div>
-          <div className="video embed-responsive embed-responsive-16by9">
-            <iframe title={`${video.type}${video.id}`} className="embed-responsive-item" src={video.url} allowFullScreen></iframe>
-          </div>
-          <div className="yt-api-cont">
-            <div className="g-ytsubscribe" data-channelid="UC_jExvqWhRlM-gBt9iEsLxA" data-layout="default" data-count="default"></div>
-          </div>
-        </div>
-      </div>
-    );
-  };
+  useEffect(() => {
+    fetchVideos();
+  }, [fetchVideos]);
 
-  const renderMusicVideos = musicVideos.map(video => {
-    return renderVideos(video);
-  });
+  const handleChange = selected => {
+    setCategory(selected);
+  }
 
-  const renderLiveVideos = liveVideos.map(video => {
-    return renderVideos(video);
-  });
+  const seeMoreVids = () => {
+    setLimit(limit + videoCount);
+  }
 
-  const renderBlogVideos = blogVideos.map(video => {
-    return renderVideos(video);
-  });
-
+  const filteredVideos = videos?.filter(video => category !== 'all' ? video.category === category : true);
+  
   return (
     <div className="justify-content-center fadeIn" id="videos">
-
-      <ul className="nav nav-tabs justify-content-center videos-tab" role="tablist">
-        <li className="nav-item" role="presentation">
-          <button className="nav-link active" id="mv-tab" data-bs-toggle="tab" data-bs-target="#mv" type="button" role="tab" aria-controls="mv" aria-selected="true">
-            Music Videos
-          </button>
-        </li>
-        <li className="nav-item" role="presentation">
-          <button className="nav-link" id="lv-tab" data-bs-toggle="tab" data-bs-target="#lv" type="button" role="tab" aria-controls="lv" aria-selected="false">
-            Live Videos
-          </button>
-        </li>
-        <li className="nav-item" role="presentation">
-          <button className="nav-link" id="bv-tab" data-bs-toggle="tab" data-bs-target="#bv" type="button" role="tab" aria-controls="bv" aria-selected="false">
-            Blog Videos
-          </button>
-        </li>
-      </ul>
-
-
-      <div className="tab-content">
-
-        <div id="mv" className="tab-pane fade show active" role="tabpanel" aria-labelledby="mv-tab">
-          {renderMusicVideos}
-        </div>
-
-
-        <div id="bv" className="tab-pane fade" role="tabpanel" aria-labelledby="bv-tab">
-          {renderBlogVideos}
-        </div>
-
-        <div id="lv" className="tab-pane fade" role="tabpanel" aria-labelledby="lv-tab">
-          {renderLiveVideos}
-        </div>
+      <div className="selectCategory">
+        <select defaultValue="all" onChange={(e) => handleChange(e.target.value)} className="form-select form-control form-select-lg mb-3" aria-label=".form-select-lg example">
+          <option disabled>Select Category</option>
+          <option value="all">All Videos</option>
+          <option value="musicVids">Music Videos</option>
+          <option value="liveVids">Live Performances</option>
+          <option value="vlogs">Vlogs</option>
+        </select>
+      </div>  
+      <hr />
+      <div className="videos-container">
+        {filteredVideos
+          .slice(0, limit)
+          .map(video => (
+            <Video key={video._id} video={video} />
+          ))}
       </div>
-
+      {limit < filteredVideos.length &&
+        <div className="d-grid see-more">
+          <button onClick={seeMoreVids} className="btn btn-danger">Load More Videos</button>
+        </div>
+      }
+      {filteredVideos.length === 0 && <h4 className="noVids">No Videos</h4>}
     </div>
   );
 };
 
-export default Videos;
+function mapStateToProps({ videos }) {
+  return { videos };
+};
+
+export default connect(mapStateToProps, { fetchVideos })(Videos);

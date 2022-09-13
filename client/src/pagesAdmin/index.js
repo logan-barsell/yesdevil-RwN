@@ -12,8 +12,6 @@ import MediaEdit from './Media/MediaEdit';
 import BioEdit from './Bio/BioEdit';
 import ContactEdit from './Contact/ContactEdit';
 import history from '../history';
-import PicturesEdit from './Media/PicturesEdit';
-import VideosEdit from './Media/videoEdit/VideosEdit';
 
 
 
@@ -25,7 +23,7 @@ const EditPages = () => {
     { name: 'Home', value: '/editHome' },
     { name: 'Music', value: '/editMusic' },
     { name: 'Store', value: '/editMerch' },
-    { name: 'Media', value: '/editMedia/pictures' },
+    { name: 'Media', value: '/editMedia' },
     { name: 'About Us', value: '/editAboutus' },
     { name: 'Contact', value: '/editContact' }
   ];

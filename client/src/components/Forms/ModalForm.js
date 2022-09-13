@@ -40,7 +40,8 @@ const ModalForm = ({ onSubmit, fields }) => {
               </div>
               <div className="d-grid col-6">
                 <button
-                  data-bs-dismiss={Object.keys(form.getState().errors).length === 0 ? "modal" : null}
+                disabled={Object.keys(form.getState().errors).length === 0 ? false : true}
+                data-bs-dismiss="modal"
                   className="submitForm btn btn-primary btn-danger"
                   type="submit"
                 >

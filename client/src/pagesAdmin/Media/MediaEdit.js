@@ -1,24 +1,31 @@
 import './mediaEdit.css';
 
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import  { useSearchParams } from 'react-router-dom';
 import PicturesEdit from './PicturesEdit';
 import VideosEdit from './videoEdit/VideosEdit';
 
 const MediaEdit = () => {
-    const [activeTab, setActiveTab] = useState(0);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const currentTab = searchParams.get('tab');
     const navOptions = ['Pictures', 'Videos'];
 
-    const onNavClick = (index, event) => {
+    useEffect(() => {
+        !currentTab && setSearchParams({'tab': 'pictures'});
+    }, [currentTab, setSearchParams]);
+
+    
+    const onNavClick = (option, event) => {
         event.preventDefault();
-        setActiveTab(index);
         window.scrollTo({ top: 0 });
+        setSearchParams({'tab': option.toLowerCase()});
     };
 
     const renderedNavItems = navOptions.map((option, index) => {
-        const active = index === activeTab ? 'active' : '';
+        const active = option.toLowerCase() === currentTab ? 'active' : '';
         return (
         <li key={index} className="nav-item col-auto">
-            <a href="#!" className={`nav-link ${active}`} onClick={(event) => onNavClick(index, event)}>
+            <a href="#!" className={`nav-link ${active}`} onClick={(event) => onNavClick(option, event)}>
                 {option}
             </a>
         </li>
@@ -33,12 +40,12 @@ const MediaEdit = () => {
                 </div>
             </ul>
             <div className="container">
-                {activeTab === 0 &&
+                {currentTab === 'pictures' &&
                     <PicturesEdit />
                 }
-                {/* {activeTab === 1 &&
+                {currentTab === 'videos' &&
                     <VideosEdit />
-                } */}
+                }
                 </div>
         </div>
     );
