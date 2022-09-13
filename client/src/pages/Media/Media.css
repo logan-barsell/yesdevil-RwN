@@ -31,6 +31,8 @@
   padding: 27px 0px;
 }
 
+
+
 .selectCategory {
   max-width: 350px;
   margin: 50px auto 20px;
@@ -95,6 +97,16 @@
   background-color: black;
   border: 1px solid black;
   height: 327px;
+}
+
+
+@media screen and (max-width: 360px) {
+  .videos-container {
+      grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+  }
+  #blog .video {
+    height: 250px;
+  }
 }
 
 iframe {

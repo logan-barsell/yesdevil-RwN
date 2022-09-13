@@ -37,7 +37,6 @@ const Video = ({ video }) => {
     const dateFormatted = `${month} ${day}${daySuffix(day)}, ${year}`
 
     return (
-        <div>
             <div className="blog-post">
                 <div className="title">{video.title}</div>
                 <hr />
@@ -49,7 +48,6 @@ const Video = ({ video }) => {
                     <div className="g-ytsubscribe" data-channelid="UC_jExvqWhRlM-gBt9iEsLxA" data-layout="default" data-count="default"></div>
                 </div>
             </div>
-        </div>
     );
 };
 
