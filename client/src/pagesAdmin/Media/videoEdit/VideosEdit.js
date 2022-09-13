@@ -34,7 +34,7 @@ const VideosEdit = ({ fetchVideos, videos }) => {
     setLimit(limit + videoCount);
   }
 
-  const currentVideos = videos?.map(video => (
+  const currentVideos = videos?.slice(0, limit).map(video => (
     <div key={video._id} className="vid-container">
       <div className="video embed-responsive embed-responsive-16by9">
         <iframe title={video._id} className="embed-responsive-item" src={video.link}></iframe>
