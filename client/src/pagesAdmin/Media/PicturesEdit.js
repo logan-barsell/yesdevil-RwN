@@ -9,7 +9,6 @@ import app from '../firebase';
 import { Form } from 'react-final-form';
 import { ImageUpload } from '../../components/Forms/FieldTypes';
 import RemoveImage from './RemoveImage';
-import MediaNav from '../../components/Navbar/MediaNav';
 
 const imgCount = 12;
 const PicturesEdit = ({ fetchMediaImages, images }) => {

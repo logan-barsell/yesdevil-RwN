@@ -50,6 +50,11 @@
     width: 100%;
 }
 
+.video iframe {
+    height: 100%;
+    width: 100%;
+}
+
 .vid-container .buttons {
     padding: 13px 0px;
     width: 100%;

@@ -31,6 +31,7 @@ require('./routes/homeRoutes')(app);
 require('./routes/bioRoutes')(app);
 require('./routes/contactRoutes')(app);
 require('./routes/mediaRoutes')(app);
+require('./routes/musicRoutes')(app);
 
 
 app.get('/', (req, res) => {

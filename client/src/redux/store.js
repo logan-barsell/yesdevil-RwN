@@ -8,6 +8,7 @@ import { showsReducer } from './reducers/showsReducer';
 import { carouselReducer } from './reducers/carouselReducer';
 import { mediaReducer } from './reducers/mediaReducer';
 import { videosReducer } from './reducers/videosReducer';
+import { musicReducer } from './reducers/musicReducer';
 import cartReducer from './cartRedux';
 import thunk from 'redux-thunk';
 import {
@@ -29,6 +30,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
+    music: musicReducer,
     videos: videosReducer,
     media: mediaReducer,
     carouselImages: carouselReducer,
