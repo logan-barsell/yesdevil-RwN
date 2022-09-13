@@ -42,7 +42,7 @@ const Video = ({ video }) => {
                 <hr />
                 <div className="date">{dateFormatted}</div>
                 <div className="video embed-responsive embed-responsive-16by9">
-                    <iframe title={`${video.id}`} className="embed-responsive-item" src={video.link} allowFullScreen></iframe>
+                    <iframe title={`${video.id}`} className="embed-responsive-item" src={video.embedLink} allowFullScreen></iframe>
                 </div>
                 <div className="yt-api-cont">
                     <div className="g-ytsubscribe" data-channelid="UC_jExvqWhRlM-gBt9iEsLxA" data-layout="default" data-count="default"></div>

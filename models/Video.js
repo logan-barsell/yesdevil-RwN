@@ -5,7 +5,8 @@ const VideoSchema = new Schema({
     category: String,
     title: String,
     date: Date,
-    link: String
+    link: String,
+    embedLink: String
 });
 
 const Video = mongoose.model('Videos', VideoSchema);

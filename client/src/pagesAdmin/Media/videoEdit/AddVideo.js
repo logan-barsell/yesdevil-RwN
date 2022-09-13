@@ -22,12 +22,14 @@ const AddVideo = ({ fetchVideos }) => {
   ];
 
   const onSubmit = ({ category, title, date, link }) => {
-
+    const path = new URL(link).pathname;
+    const embedLink = `https://www.youtube.com/embed${path}`;
     const newVideo = {
       category,
       title,
       date: date.getTime(),
-      link
+      link,
+      embedLink
     };
 
     console.log(newVideo);

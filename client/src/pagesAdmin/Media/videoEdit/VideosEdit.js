@@ -18,7 +18,11 @@ const VideosEdit = ({ fetchVideos, videos }) => {
   }, [fetchVideos]);
 
   const editVideo = video => {
-    axios.post('/api/updateVideo', video)
+    const path = new URL(video.link).pathname;
+    const embedLink = `https://www.youtube.com/embed${path}`;
+    const updatedVideo = {...video, embedLink};
+
+    axios.post('/api/updateVideo', updatedVideo)
       .then(res => fetchVideos())
       .catch(err => console.log(err));
   }
@@ -37,7 +41,7 @@ const VideosEdit = ({ fetchVideos, videos }) => {
   const currentVideos = videos?.slice(0, limit).map(video => (
     <div key={video._id} className="vid-container">
       <div className="video embed-responsive embed-responsive-16by9">
-        <iframe title={video._id} className="embed-responsive-item" src={video.link}></iframe>
+        <iframe title={video._id} className="embed-responsive-item" src={video.embedLink}></iframe>
       </div>
       <div className="buttons d-grid gap-1">
         <EditVideo video={video} editFields={editVideoFields} onEdit={editVideo}/>

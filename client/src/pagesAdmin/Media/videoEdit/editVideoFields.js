@@ -12,6 +12,6 @@ export default video => {
         },
         { label: 'Title', name: 'title', type: 'text', initialValue: title },
         { label: 'Release Date', name: 'date', type: 'date', initialValue: date },
-        { label: 'YouTube Embed Link', name: 'link', type: 'text', initialValue: link }
+        { label: 'YouTube Share Link', name: 'link', type: 'text', initialValue: link }
     ];
 }
