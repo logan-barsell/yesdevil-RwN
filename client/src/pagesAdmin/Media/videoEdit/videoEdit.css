@@ -58,3 +58,16 @@
 .buttons .bi {
     margin-right: 7px;
 }
+
+.noVids {
+    text-align: center;
+    color: darkred;
+    margin: 15vh auto 27vh;
+}
+
+#videoEdit .see-more {
+    width: 100%;
+    max-width: 666px;
+    margin: 30px auto 45px;
+    padding: 0px 27px;
+}

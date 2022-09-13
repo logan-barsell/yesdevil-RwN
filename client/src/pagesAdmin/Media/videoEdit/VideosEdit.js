@@ -1,6 +1,6 @@
 import './videoEdit.css';
 
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import AddVideo from './AddVideo';
 import DeleteVideo from './DeleteVideo';
@@ -9,7 +9,10 @@ import editVideoFields from './editVideoFields';
 import { fetchVideos } from '../../../redux/actions';
 import axios from 'axios';
 
+const videoCount = 6;
 const VideosEdit = ({ fetchVideos, videos }) => {
+  const [limit, setLimit] = useState(videoCount);
+
   useEffect(() => {
     fetchVideos();
   }, [fetchVideos]);
@@ -26,6 +29,10 @@ const VideosEdit = ({ fetchVideos, videos }) => {
       .catch(err => console.log(err));
     
   };
+
+  const loadMoreVids = () => {
+    setLimit(limit + videoCount);
+  }
 
   const currentVideos = videos?.map(video => (
     <div key={video._id} className="vid-container">
@@ -48,6 +55,12 @@ const VideosEdit = ({ fetchVideos, videos }) => {
         <div className="currentVideos">
           {currentVideos}
         </div>
+        {limit < videos.length && 
+          <div className="d-grid see-more">
+            <button onClick={loadMoreVids} className="btn btn-danger">Load More Videos</button>
+          </div>
+        }
+        {!videos && <h4 className="noVids">No Videos</h4>}
       </div>
     </>
   );
