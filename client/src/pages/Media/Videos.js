@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchVideos } from '../../redux/actions';
 import Video from './Video';
 
-const videoCount = 4;
+const videoCount = 6;
 const Videos = ({ fetchVideos, videos }) => {
   const [category, setCategory] = useState('all');
   const [limit, setLimit] = useState(videoCount);
