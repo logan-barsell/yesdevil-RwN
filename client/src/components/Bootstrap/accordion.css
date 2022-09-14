@@ -87,6 +87,11 @@
   padding: 27px 0px;
   margin-top: 7px;
 }
+
+.accordion .content .subItemVal .btn {
+  margin: 13px 0px;
+}
+
 .addButton.btn {
   margin: 27px auto;
   width: 69%;
@@ -106,4 +111,12 @@
   position: absolute;
   right: 29px;
   display: flex;
+}
+
+.accordion .modify-options a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  padding: 9px 12px;
 }

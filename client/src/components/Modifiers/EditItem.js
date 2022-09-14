@@ -19,6 +19,7 @@ const EditItem = ({ item, editFields, onEdit }) => {
   const EditButton = () => {
     return (
       <a
+        href="#!"
         data-bs-toggle="modal"
         data-bs-target={`#${modalProps.id}`}
         className="btn btn-sm btn-dark align-middle"

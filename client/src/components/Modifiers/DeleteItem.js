@@ -29,6 +29,7 @@ const DeleteItem = ({ item, onDelete }) => {
   const DeleteButton = () => {
     return (
       <a
+        href="#!"
         className="btn btn-sm btn-danger"
         type="button"
         data-bs-toggle="modal"
