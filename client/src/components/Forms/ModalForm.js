@@ -42,7 +42,7 @@ const ModalForm = ({ onSubmit, fields }) => {
                 <button
                 disabled={Object.keys(form.getState().errors).length === 0 ? false : true}
                 data-bs-dismiss="modal"
-                  className="submitForm btn btn-primary btn-danger"
+                  className="submitForm btn btn-danger"
                   type="submit"
                 >
                   Submit
