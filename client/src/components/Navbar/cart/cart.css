@@ -42,3 +42,8 @@
     margin-top: 10px;
 }
 
+
+.offcanvas-header button.btn-close:focus:not(:focus-visible) {
+    box-shadow: none;
+  }
+

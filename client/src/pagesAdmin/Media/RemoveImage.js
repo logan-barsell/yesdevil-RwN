@@ -15,10 +15,10 @@ const RemoveImage = ({ item, onDelete }) => {
             Remove from Media Page?
           </div>
           <div className="modal-footer">
-            <div type="button" className="btn btn-dark" data-bs-dismiss="modal">Cancel</div>
-            <div onClick={() => onDelete(item)} type="button" data-bs-dismiss="modal" className="btn btn-danger">
+            <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
+            <button onClick={() => onDelete(item)} type="button" data-bs-dismiss="modal" className="btn btn-danger">
               Delete
-            </div>
+            </button>
           </div>
         </>
       )

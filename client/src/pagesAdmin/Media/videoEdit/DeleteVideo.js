@@ -17,10 +17,10 @@ const DeleteVideo = ({ video, onDelete }) => {
           Remove video from media?
         </div>
         <div className="modal-footer">
-          <div type="button" className="btn btn-dark" data-bs-dismiss="modal">Cancel</div>
-          <div onClick={() => onDelete(video._id)} type="button" data-bs-dismiss="modal" className="btn btn-danger">
+          <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
+          <button onClick={() => onDelete(video._id)} type="button" data-bs-dismiss="modal" className="btn btn-danger">
             Delete
-          </div>
+          </button>
         </div>
       </>
     )

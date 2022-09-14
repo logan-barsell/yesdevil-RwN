@@ -17,10 +17,10 @@ const DeletePlayer = ({ player, onDelete }) => {
           Remove <span>{player.title}</span> from music?
         </div>
         <div className="modal-footer">
-          <div type="button" className="btn btn-dark" data-bs-dismiss="modal">Cancel</div>
-          <div onClick={() => onDelete(player._id)} type="button" data-bs-dismiss="modal" className="btn btn-danger">
+          <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
+          <button onClick={() => onDelete(player._id)} type="button" data-bs-dismiss="modal" className="btn btn-danger">
             Delete
-          </div>
+          </button>
         </div>
       </>
     )

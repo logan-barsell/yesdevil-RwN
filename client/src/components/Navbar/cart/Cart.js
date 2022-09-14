@@ -43,7 +43,13 @@ const Cart = ({ fetchShipping, shipping }) => {
       <div className="offcanvas offcanvas-end text-bg-dark" data-bs-backdrop="false" tabIndex="-1" id="shoppingCart" aria-labelledby="cartLabel">
         <div className="offcanvas-header">
             <h5 className="offcanvas-title" id="cartLabel">Shopping Cart</h5>
-            <button onClick={e => e.stopPropagation()} type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <button onClick={e => e.stopPropagation()} type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="whitesmoke" className="bi bi-x-lg" viewBox="0 0 16 16">
+                <path fillRule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z" />
+                <path fillRule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
+              </svg>
+            </button>
+            {/* <button onClick={e => e.stopPropagation()} type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button> */}
         </div>
         <div className="offcanvas-body">
           <div className="productsContainer">
