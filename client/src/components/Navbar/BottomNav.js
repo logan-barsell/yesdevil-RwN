@@ -78,7 +78,7 @@ const BottomNav = ({ routes, fetchContactInfo, contactInfo }) => {
         }
 
       </nav>
-      <footer className="page-footer font-small mt-4">
+      <footer className="page-footer font-small pt-4">
         {/* Footer Links */}
         <div className="container-fluid text-center text-md-left">
           <div className="row">
