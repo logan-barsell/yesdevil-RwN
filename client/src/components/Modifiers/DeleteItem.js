@@ -17,10 +17,10 @@ const DeleteItem = ({ item, onDelete }) => {
           Remove <span>{item.name}</span> from {item.group}?
         </div>
         <div className="modal-footer">
-          <div type="button" className="btn btn-dark" data-bs-dismiss="modal">Cancel</div>
-          <div onClick={() => onDelete(item.id)} type="button" data-bs-dismiss="modal" className="btn btn-danger">
+          <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
+          <button onClick={() => onDelete(item.id)} type="button" data-bs-dismiss="modal" className="btn btn-danger">
             Delete
-          </div>
+          </button>
         </div>
       </>
     )
