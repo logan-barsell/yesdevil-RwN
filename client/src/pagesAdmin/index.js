@@ -20,12 +20,12 @@ export const ActiveContext = createContext();
 const EditPages = () => {
 
   const routes = [
-    { name: 'Home', value: '/editHome' },
-    { name: 'Music', value: '/editMusic' },
-    { name: 'Store', value: '/editMerch' },
-    { name: 'Media', value: '/editMedia' },
-    { name: 'About Us', value: '/editAboutus' },
-    { name: 'Contact', value: '/editContact' }
+    { name: 'Home', value: '/home' },
+    { name: 'Music', value: '/music' },
+    { name: 'Store', value: '/merch' },
+    { name: 'Media', value: '/media' },
+    { name: 'About Us', value: '/aboutus' },
+    { name: 'Contact', value: '/contact' }
   ];
 
   const currentUrl = window.location.pathname;
@@ -47,14 +47,13 @@ const EditPages = () => {
         <ActiveContext.Provider value={{ activeIndex, setActiveIndex, toggle, setToggle }}>
           <TopNavEdit routes={routes} />
           <Routes>
-            <Route path="/editHome" exact element={<HomeEdit />} />
-            <Route path="/editMusic" exact element={<MusicEdit />} />
-            <Route path="/editMerch" exact element={<MerchEdit />} />
-            <Route path="/editMedia" exact element={<MediaEdit />} />
-            <Route path="/editAboutus" exact element={<BioEdit />} />
-            <Route path="/editContact" exact element={<ContactEdit />} />
+            <Route path="/home" exact element={<HomeEdit />} />
+            <Route path="/music" exact element={<MusicEdit />} />
+            <Route path="/merch" exact element={<MerchEdit />} />
+            <Route path="/media" exact element={<MediaEdit />} />
+            <Route path="/aboutus" exact element={<BioEdit />} />
+            <Route path="/contact" exact element={<ContactEdit />} />
           </Routes>
-          {/* <BottomNavEdit routes={routes} /> */}
         </ActiveContext.Provider>
       </Router>
     </>

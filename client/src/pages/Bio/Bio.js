@@ -12,29 +12,17 @@ import { loginRequest } from "../../authConfig";
 
 function handleLogin(instance) {
   instance.loginRedirect(loginRequest).then(() => {
-   console.log("hello")
+    window.history.pushState({}, '', '/editHome');
+  const navEvent = new PopStateEvent('popstate');
+  window.dispatchEvent(navEvent);
   }).catch(e => {
     console.error(e);
   });
-  window.history.pushState({}, '', '/editHome');
-  const navEvent = new PopStateEvent('popstate');
-  window.dispatchEvent(navEvent);
 }
 
 const initialState = {bio: ''};
 const BioPage = ({ fetchMembers, members, fetchBio, currentBio }) => {
   const { instance } = useMsal();
-  // const [state, dispatch] = useReducer(reducer, initialState);
-  // const bioState = () => currentBio[0].text;
-
-  // function reducer(state, action) {
-  //   switch(action.type) {
-  //     case 'setCurrentBio':
-  //       return {bio: bioState()};
-  //     default:
-  //       return state;
-  //   }
-  // }
 
   useEffect(() => {
     fetchMembers();
@@ -44,10 +32,6 @@ const BioPage = ({ fetchMembers, members, fetchBio, currentBio }) => {
   const renderBio = () => {
     return currentBio && currentBio[0].text;
   }
-
-  // useEffect(() => {
-  //   dispatch({type: 'setCurrentBio'})
-  // }, [bioState]);
 
   const renderMembers = members.map((member, index) => {
     const { _id, bioPic, name, role, instaTag} = member;

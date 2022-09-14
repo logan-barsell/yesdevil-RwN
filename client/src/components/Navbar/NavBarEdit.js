@@ -11,7 +11,6 @@ function handleLogout(instance) {
   instance.logoutRedirect().catch(e => {
     console.error(e);
   }).then(() => {
-    console.log("HELLOO AGAIN")
     window.history.pushState({}, '', '/');
     const navEvent = new PopStateEvent('popstate');
     window.dispatchEvent(navEvent);

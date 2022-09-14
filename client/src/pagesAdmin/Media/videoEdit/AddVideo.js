@@ -18,7 +18,7 @@ const AddVideo = ({ fetchVideos }) => {
     },
     { label: 'Title', name: 'title', type: 'text' },
     { label: 'Release Date', name: 'date', type: 'date' },
-    { label: 'YouTube Embed Link', name: 'link', type: 'text' }
+    { label: 'YouTube Share Link', name: 'link', type: 'text' }
   ];
 
   const onSubmit = ({ category, title, date, link }) => {
